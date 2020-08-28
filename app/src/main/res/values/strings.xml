@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Logic University Inventory System</string>
+
+    <!--Navigation-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!---->
+
+    <string name="view_pending_requisitions">View Pending Requisitions</string>
+    <string name="view_processed_requisitions">View Processed Requisitions</string>
+    <string name="create_requisition">Create Requisition</string>
+    <string name="requisition_summary">Requisition Summary</string>
+    <string name="profile">Profile</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="product">Product</string>
+    <string name="directory">Directory</string>
+    <string name="requisition">Requisition</string>
+    <string name="disbursement">Disbursement</string>
+    <string name="create_disbursement">Create Disbursement</string>
+    <string name="disbursement_summary">Disbursement Summary</string>
+    <string name="delegation">Delegation</string>
+    <string name="trendAnalysis">Trend Analysis</string>
+    <string name="reports">Reports</string>
+    <string name="logout">Logout</string>
+    <string name="disbursementSummary">Disbursement Summary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_opendrawer">Open Drawer</string>
+    <string name="nav_closedrawer">Closer Drawer</string>
+
+    <string-array name="user_array">
+        <item>Rohan Mhatre</item>
+        <item>Zhong Yanbin</item>
+        <item>Li Xinqi</item>
+        <item>Sheryl Yuan Ting Teo</item>
+    </string-array>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+</resources>
