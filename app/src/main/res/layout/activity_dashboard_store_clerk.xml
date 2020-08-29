@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="20dp"
     app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
     <Button
         android:id="@+id/CLERK_TOTAL_RF_APPROVED"
         android:layout_width="match_parent"
@@ -18,7 +20,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg2"
+        android:background="@drawable/badgegreen"
         android:text="TOTAL REQUISITIONS APPROVED"
         android:textColor="#ffffff"
         android:textSize="24sp" />
@@ -31,7 +33,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/badgegreen"
+        android:background="@drawable/bg2"
         android:text="TOTAL REQUISITIONS NOT COMPLETED"
         android:textColor="#ffffff"
         android:textSize="24sp" />
@@ -57,7 +59,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg3"
+        android:background="@drawable/bg2"
         android:text="TOTAL STATIONERY RETRIEVALS PENDING ASSIGNMENT"
         android:textColor="#ffffff"
         android:textSize="24sp" />
@@ -70,21 +72,34 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg3"
+        android:background="@drawable/badgegreen"
         android:text="TOTAL STATIONERY RETRIEVALS COMPLETED"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/CLERK_TOTAL_DF_PENDING"
+        android:id="@+id/CLERK_TOTAL_DF_PENDING_APPROVAL"
         android:layout_width="match_parent"
         android:layout_height="173dp"
-        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_PENDING"
+        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_COMPLETED"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg3"
+        android:background="@drawable/bg2"
         android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY STORE CLERK"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/CLERK_TOTAL_DF_PENDING_DELIVERY"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING_APPROVAL"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bg2"
+        android:text="TOTAL DISBURSEMENT FORMS PENDING DELIVERY"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
@@ -92,20 +107,28 @@
         android:id="@+id/CLERK_TOTAL_DF_PENDING"
         android:layout_width="match_parent"
         android:layout_height="173dp"
-        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_PENDING"
+        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING_DELIVERY"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bg2"
+        android:text="TOTAL DISBURSEMENT FORMS PENDING ASSIGNMENT"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/CLERK_TOTAL_DF_COMPLETED"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/bg3"
-        android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY STORE CLERK"
+        android:text="TOTAL DISBURSEMENT FORMS COMPLETED"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
-    TOTAL DISBURSEMENT FORMS PENDING DELIVERY
-    TOTAL DISBURSEMENT FORMS PENDING ASSIGNMENT
-    TOTAL DISBURSEMENT FORMS COMPLETED
-
-
-</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.core.widget.NestedScrollView>

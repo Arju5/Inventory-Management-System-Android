@@ -54,8 +54,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     }
     @Override
-    public void onClick(View view) {
-        int id = view.getId();
+    public void onClick(View v) {
+        int id = v.getId();
         if (id == R.id.emp_CreateRequisition) {
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
