@@ -7,17 +7,23 @@
         <item
             android:id="@+id/storeclerk_menuProfile"
             android:icon="@drawable/ic_profile"
-            android:title="@string/profile" />
+            android:title="@string/profile">
+        </item>
 
         <item
             android:id="@+id/storeclerk_Dashboard"
             android:icon="@drawable/ic_dashboard"
-            android:title="@string/dashboard" />
+            android:title="@string/dashboard">
+        </item>
 
         <item
             android:id="@+id/storeclerk_Requisitions"
             android:icon="@drawable/ic_summary"
-            android:title="Requisitions" />
+            android:title="Requisitions">
+        </item>
+
+        <item android:title="AA" android:id="@+id/AA" android:visible="false"></item>
+        <item android:title="BB" android:id="@+id/BB" android:visible="false"></item>
 
         <item
             android:id="@+id/storeclerk_StationeryRetrievals"

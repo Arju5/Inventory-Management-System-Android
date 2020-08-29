@@ -152,7 +152,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
+        Menu m=nv.getMenu();
         int id = item.getItemId();
+        if(id == R.id.storeclerk_Requisitions){
+            boolean b=!m.findItem(R.id.AA).isVisible();
+            //setting submenus visible state
+            m.findItem(R.id.AA).setVisible(b);
+            m.findItem(R.id.BB).setVisible(b);
+            return true;
+        }
         if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
