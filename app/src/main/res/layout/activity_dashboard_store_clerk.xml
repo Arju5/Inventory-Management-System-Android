@@ -86,7 +86,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/bg2"
-        android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY STORE CLERK"
+        android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY DEPT REP"
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
