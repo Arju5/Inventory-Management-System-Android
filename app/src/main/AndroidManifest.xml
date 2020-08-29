@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.requisition.RequisitionSummaryActivity"></activity>
+        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity"></activity>
+        <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
+        <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.SplashActivity">
@@ -22,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BaseActivity" />
         <activity android:name=".activities.DashboardActivity" />
         <activity android:name=".activities.LoginActivity">
 
