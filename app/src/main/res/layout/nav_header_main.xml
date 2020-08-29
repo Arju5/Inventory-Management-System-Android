@@ -23,13 +23,13 @@
         android:id="@+id/nav_header_empName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Darell Manager"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     <TextView
         android:id="@+id/nav_header_textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logic Univeristy"
+        android:text="Logic University"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>
