@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity"></activity>
-        <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.BaseActivity" />

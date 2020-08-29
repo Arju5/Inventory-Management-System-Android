@@ -12,7 +12,7 @@ import iss.workshop.inventory_management_system_android.activities.requisition.A
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionSummaryActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
-public class DashboardActivity extends BaseActivity implements View.OnClickListener{
+public class DashboardActivity extends BaseActivity implements View.OnClickListener {
 
     SharePreferenceHelper sharePreferenceHelper;
 
@@ -38,23 +38,32 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_head, frameLayout);
             txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Department Representative")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_rep, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Temporary Department Head")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_temp_dept_head, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Manager")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_store_manager, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Supervisor")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_store_supervisor, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
         }
-    }
 
+    }
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if(id == R.id.emp_CreateRequisition) {
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.emp_CreateRequisition) {
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
-        }
-        else if(id == R.id.emp_Requisitions)
-        {
+        } else if (id == R.id.emp_Requisitions) {
             Intent intent = new Intent(this, RequisitionSummaryActivity.class);
             intent.putExtra("btnId", id);
             startActivity(intent);
         }
 
     }
-
 }

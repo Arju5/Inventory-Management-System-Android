@@ -55,12 +55,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
-        } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.storeclerk_drawer);
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.dephead_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Department Representative")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.deptrep_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Temporary Department Head")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.tempdepthead_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Manager")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storemanager_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Supervisor")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storesupervisor_drawer);
         }
 
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) BaseActivity.this);
