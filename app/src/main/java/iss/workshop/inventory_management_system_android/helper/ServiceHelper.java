@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -102,14 +104,17 @@ public class ServiceHelper {
        /* //Requisition APIs start
         @GET("Requisition/GetRequisitionById")
         Call<RequisitionForm> getReqByid(@Query("reqId") Integer reqId);
+        */
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
-        @GET("Requisition/ViewRequisitionFormById")
+
+    /*  @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
         @GET("Requisition/ViewApprovalRF")
         Call<RequisitionViewModel> ViewApprovalRF(@Query("id") Integer reqId);
+        */
 
         @GET("Requisition/ApplyRequisitionForm")
         Call<RequisitionViewModel> ApplyRF();
@@ -118,7 +123,7 @@ public class ServiceHelper {
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
 
-        @POST("Requisition/Approve")
+      /*@POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
