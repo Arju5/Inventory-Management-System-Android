@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+    <Button
+        android:id="@+id/emp_CreateRequisition"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bg2"
+        android:text="Create Requisition"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/emp_Requisitions"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:layout_constraintTop_toBottomOf="@+id/emp_CreateRequisition"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/badgegreen"
+        android:text="Requisitions"
+        android:textColor="#ffffff"
+        android:radius="10dp"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/emp_Disbursements"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        app:layout_constraintTop_toBottomOf="@+id/emp_Requisitions"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bg3"
+        android:text="Disbursements"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

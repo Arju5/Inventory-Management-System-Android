@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -52,6 +51,18 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_head, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Department Representative")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_rep, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Temporary Department Head")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_temp_dept_head, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Manager")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_store_manager, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Supervisor")) {
+            View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_store_supervisor, frameLayout);
             txt_menuTitle.setText("DASHBOARD");
         }
     }
