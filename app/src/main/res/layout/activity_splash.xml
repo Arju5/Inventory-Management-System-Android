@@ -7,6 +7,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/inventory"></ImageView>
+        android:src="@drawable/inventory2"></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

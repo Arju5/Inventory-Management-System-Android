@@ -27,7 +27,7 @@
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:paddingTop="20dp"
-            android:src="@drawable/inventory" />
+            android:src="@drawable/inventory2" />
 
         <EditText
             android:id="@+id/editUsername"
