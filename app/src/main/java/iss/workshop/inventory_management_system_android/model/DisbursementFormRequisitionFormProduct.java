@@ -1,40 +1,40 @@
 package iss.workshop.inventory_management_system_android.model;
 
 public class DisbursementFormRequisitionFormProduct {
-    public int Id;
-    public DisbursementForm DisbursementForm;
-    public RequisitionFormsProduct RequisitionFormsProduct;
-    public int ProductCollected;
+    public int id;
+    public DisbursementForm disbursementForm;
+    public RequisitionFormsProduct requisitionFormsProduct;
+    public int productCollected;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
-    public iss.workshop.inventory_management_system_android.model.DisbursementForm getDisbursementForm() {
-        return DisbursementForm;
+    public DisbursementForm getDisbursementForm() {
+        return disbursementForm;
     }
 
-    public void setDisbursementForm(iss.workshop.inventory_management_system_android.model.DisbursementForm disbursementForm) {
-        DisbursementForm = disbursementForm;
+    public void setDisbursementForm(DisbursementForm disbursementForm) {
+        this.disbursementForm = disbursementForm;
     }
 
-    public iss.workshop.inventory_management_system_android.model.RequisitionFormsProduct getRequisitionFormsProduct() {
-        return RequisitionFormsProduct;
+    public RequisitionFormsProduct getRequisitionFormsProduct() {
+        return requisitionFormsProduct;
     }
 
-    public void setRequisitionFormsProduct(iss.workshop.inventory_management_system_android.model.RequisitionFormsProduct requisitionFormsProduct) {
-        RequisitionFormsProduct = requisitionFormsProduct;
+    public void setRequisitionFormsProduct(RequisitionFormsProduct requisitionFormsProduct) {
+        this.requisitionFormsProduct = requisitionFormsProduct;
     }
 
     public int getProductCollected() {
-        return ProductCollected;
+        return productCollected;
     }
 
     public void setProductCollected(int productCollected) {
-        ProductCollected = productCollected;
+        this.productCollected = productCollected;
     }
 }

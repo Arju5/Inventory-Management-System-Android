@@ -25,7 +25,7 @@
             android:title="Stationery Retrievals" />
 
         <item
-            android:id="@+id/storeclerk_Disbursements"
+            android:id="@+id/storeclerk_CreateDisbursement"
             android:icon="@drawable/ic_person"
             android:title="Disbursements"/>
 

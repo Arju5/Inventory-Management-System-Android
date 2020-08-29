@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
+import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import okhttp3.Cache;
@@ -139,14 +142,18 @@ public class ServiceHelper {
         Call<Object> getDashTest(@Query("Username") String Username);
         //Dash APIS ends
 */
-        /*// Disbursement APIS starts
+        // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
         Call<ArrayList<DisbursementForm>> getCreatedDisbursementList();
 
-        @GET("Disbursement/GetPendingDisbursementList")
+        @GET("Disbursement/GetPendingAssignmentDisbursementList")
 //For Disbursement Lists
-        Call<ArrayList<DisbursementForm>> getPendingDisbursementList();
+        Call<ArrayList<DisbursementForm>> getPendingAssignmentDisbursementList();
+
+        @GET("Disbursement/GetPendingDeliveryDisbursementList")
+//For Disbursement Lists
+        Call<ArrayList<DisbursementForm>> getPendingDeliveryDisbursementList();
 
         @GET("Disbursement/GetCompleteDisbursementList")
 //For Disbursement Lists
@@ -167,7 +174,7 @@ public class ServiceHelper {
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
 
         // Disbursement APIS ends
-*/
+
         /*// Stationery APIS starts
         @GET("Stationery/GetOpenSRSummary")
         Call<StationeryRetrievalSummaryViewModel> getOpenSRSummary();
