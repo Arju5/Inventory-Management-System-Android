@@ -155,13 +155,50 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
         Menu m=nv.getMenu();
         int id = item.getItemId();
-        if(id == R.id.storeclerk_Requisitions){
-            boolean b=!m.findItem(R.id.AA).isVisible();
+
+        /*store clerk menu items*/
+        if(id == R.id.storeclerk_Dashboard){
+
+        }
+        if(id == R.id.product_catalogue){
+
+        }
+        if(id == R.id.directory){
+            boolean b=!m.findItem(R.id.deptsummary).isVisible();
             //setting submenus visible state
-            m.findItem(R.id.AA).setVisible(b);
-            m.findItem(R.id.BB).setVisible(b);
+            m.findItem(R.id.deptsummary).setVisible(b);
+            m.findItem(R.id.suppliersummary).setVisible(b);
             return true;
         }
+        if(id == R.id.deptsummary){
+
+        }
+        if(id == R.id.suppliersummary){
+
+        }
+        if(id == R.id.storeclerk_forms){
+            boolean b=!m.findItem(R.id.create_srform).isVisible();
+            //setting submenus visible state
+            m.findItem(R.id.create_srform).setVisible(b);
+            m.findItem(R.id.view_srsummary).setVisible(b);
+            m.findItem(R.id.create_dform).setVisible(b);
+            m.findItem(R.id.view_dfsummary).setVisible(b);
+            return true;
+        }
+        if(id == R.id.create_srform){
+
+        }
+        if(id == R.id.view_srsummary){
+
+        }
+        if(id == R.id.create_dform){
+
+        }
+        if(id == R.id.view_dfsummary){
+
+        }
+        /*------*/
+
         if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
