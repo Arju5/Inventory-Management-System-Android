@@ -22,13 +22,11 @@
         <!--Hide Sub Menu-->
         <item android:id="@+id/deptsummary"
             android:title="Department Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <item android:id="@+id/suppliersummary"
             android:title="Supplier Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <!-- -&#45;&#45;&#45;&#45;-->
 
@@ -40,23 +38,19 @@
         <!--Hide Sub Menu-->
         <item android:id="@+id/create_srform"
             android:title="Create Stationery Form"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <item android:id="@+id/view_srsummary"
             android:title="View Stationery Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <item android:id="@+id/create_dform"
             android:title="Create Disbursement Form"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <item android:id="@+id/view_dfsummary"
             android:title="View Disbursement Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
         <!-- -&#45;&#45;&#45;&#45;-->
 
