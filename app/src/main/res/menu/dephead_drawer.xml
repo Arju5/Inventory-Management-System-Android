@@ -14,7 +14,6 @@
             android:icon="@drawable/ic_dashboard"
             android:title="@string/dashboard" />
 
-        <menu>
             <item
                 android:id="@+id/dephead_approveRequisition"
                 android:icon="@drawable/ic_summary"
@@ -25,9 +24,6 @@
                 android:icon="@drawable/ic_summary"
                 android:title="@string/requisition_summary" />
 
-        </menu>
-
-        <menu>
             <item
                 android:id="@+id/dephead_DelegateDepHead"
                 android:icon="@drawable/ic_person"
@@ -36,18 +32,13 @@
             <item
                 android:id="@+id/dephead_delegateDepRep"
                 android:icon="@drawable/ic_person"
-                android:title="Delegate Representative" />
+                android:title="Delegation Rep" />
 
-        </menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/logout"/>
 
-        <item
-            android:id="@+id/logout2"
-            android:icon="@drawable/ic_logout"
-            android:title="@string/logout"/>
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_logout"
-            android:title="@string/logout"/>
     </group>
 
 </menu>

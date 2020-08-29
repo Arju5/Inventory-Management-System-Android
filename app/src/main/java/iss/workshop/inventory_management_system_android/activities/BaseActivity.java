@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,7 +106,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private void ExitApp() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setTitle("Logic University");
+        builder.setTitle("Logic University Inventory");
         builder.setMessage("Do You Want To Exit?");
         builder.setIcon(R.drawable.ic_key);
         //final AlertDialog dialog = builder.create();
@@ -159,6 +160,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
+            startActivity(intent);
         } else if (id == R.id.base_nav_requisitionSummary && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Requisition Summary", Toast.LENGTH_SHORT).show();
         }
