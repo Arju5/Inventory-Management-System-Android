@@ -18,6 +18,7 @@ import java.util.List;
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.department.EmployeeRequisitionSummarySelectionActivity;
 import iss.workshop.inventory_management_system_android.adapters.ProductlistAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -137,7 +138,7 @@ public class ApplyRequistionActivity extends BaseActivity implements SearchView.
                     RequisitionViewModel rfViewmodel = response.body();
                     if(rfViewmodel != null){
                         Toast.makeText(getApplicationContext(), "Apply Requisition successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ApplyRequistionActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(ApplyRequistionActivity.this, EmployeeRequisitionSummarySelectionActivity.class);
                         intent.putExtra("empType",sharePreferenceHelper.getUserRole());
                         startActivity(intent);
                     }
