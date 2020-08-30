@@ -9,9 +9,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.model.Department;
+import iss.workshop.inventory_management_system_android.model.Department;
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;
+import iss.workshop.inventory_management_system_android.model.Product;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.model.Supplier;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
@@ -30,6 +34,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -95,12 +100,12 @@ public class ServiceHelper {
 
 
     public interface ApiService {
-       /* // Product APIS starts
+        // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-*/
+
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
@@ -109,6 +114,11 @@ public class ServiceHelper {
 
         @GET("Employee/GetEmployeeById")
         Call<Employee> getEmployeeById(@Query("empId") int empId);
+        Call<Employee> getEmployeeById(@Query("empId") int empId);
+
+        @GET("Employee/GetEmployeeList")
+        Call<ArrayList<Employee>> getEmployeeList();
+
         //Employee APIS ends
 
         //Requisition APIs start
@@ -119,6 +129,7 @@ public class ServiceHelper {
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
 
+        @GET("Requisition/ViewRequisitionFormById")
         @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
@@ -138,7 +149,9 @@ public class ServiceHelper {
         @POST("Requisition/Reject")
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
 
-        //Requisition APIs ends*/
+        @POST("Requisition/Cancel")
+        Call<String> Cancel(@Query("id") Integer reqId);
+        //Requisition APIs ends
 
         /*//Dashboard APIS starts
 
@@ -179,6 +192,12 @@ public class ServiceHelper {
 
         @POST("Disbursement/DeliverDF")
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/ApproveDF")
+        Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/CeatedDF")
+        Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
 
         // Disbursement APIS ends
 

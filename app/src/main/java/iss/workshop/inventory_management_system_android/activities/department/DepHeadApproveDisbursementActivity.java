@@ -1,4 +1,6 @@
-package iss.workshop.inventory_management_system_android.activities.disbursement;
+package iss.workshop.inventory_management_system_android.activities.department;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +13,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormDetailsActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
+import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
@@ -21,96 +28,94 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DisbursementFormDetailsActivity extends BaseActivity {
+public class DepHeadApproveDisbursementActivity extends BaseActivity {
 
-    private static final String TAG = "DisburseDetailActivity";
+    private static final String TAG = "Approve Disbursement Activi";
     private ServiceHelper.ApiService service;
     private int count = 1;
     private DisbursementViewModel disbursementViewModel;
-    private  String currentStatus;
+    private List<DisbursementForm> disbursementForms;
+    SharePreferenceHelper sharePreferenceHelper;
+    String currentStatus;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_form_details, frameLayout);
-        txt_menuTitle.setText("DISBURSEMENT DETAILS");
-        Intent intent = getIntent();
+        rootView = getLayoutInflater().inflate(R.layout.activity_dep_head_approve_disbursement, frameLayout);
+        txt_menuTitle.setText("APPROVE DISBURSEMENT");
         Log.d(TAG, "onResponse: Disbursement Summary Activity - Details");
         service = ServiceHelper.getClient(this);
+        Intent intent = getIntent();
         currentStatus = intent.getStringExtra("CurrentStatus");
-        Call<DisbursementViewModel> serviceDVMAPICall = null;
-        serviceDVMAPICall = service.getDisbursementFormFullDetailsByDFCode(intent.getStringExtra("DFCode"));
-        serviceDVMAPICall.enqueue(new Callback<DisbursementViewModel>() {
+        sharePreferenceHelper = new SharePreferenceHelper(this);
+
+
+        Call<List<DisbursementForm>> serviceDVMAPICall = null;
+        serviceDVMAPICall = service.getCreatedDFByDepRep(sharePreferenceHelper.getuserId());
+        serviceDVMAPICall.enqueue(new Callback<List<DisbursementForm>>() {
             @Override
-            public void onResponse(Call<DisbursementViewModel> call, Response<DisbursementViewModel> response) {
+            public void onResponse(Call<List<DisbursementForm>> call, Response<List<DisbursementForm>> response) {
                 if (response.isSuccessful()) {
-                    disbursementViewModel = response.body();
+                    disbursementForms = (List<DisbursementForm>) response.body();
                     Log.d(TAG, "onResponse : Success - " + disbursementViewModel.disbursementForm.dfCode);
                     Log.d(TAG, "onResponse : Success - " + disbursementViewModel.disbursementForm.dfStatus);
                     putDataToLayout(disbursementViewModel);
                 }
             }
             @Override
-            public void onFailure(Call<DisbursementViewModel> call, Throwable t) {
+            public void onFailure(Call<List<DisbursementForm>> call, Throwable t) {
                 Log.e(TAG, "onFailure: ",t );
             }
         });
 
-        Button mSubmitbutton = (Button) findViewById(R.id.disbursementFormSubmit);
-        if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
-            mSubmitbutton.setVisibility(View.GONE);
-        } else if (currentStatus.equals("PENDING_DELIVERY")){
-            mSubmitbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d(TAG, "View Model - " + disbursementViewModel.disbursementFormProducts.size() + " Status - " + currentStatus);
+        Button mSubmitbutton = (Button) rootView.findViewById(R.id.df_ApprovedisbursementFormSubmit);
+        mSubmitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(DepHeadApproveDisbursementActivity.this, "Approving Disbursement", Toast.LENGTH_SHORT).show();
+                Call<DisbursementViewModel> serviceDVMAPICall = null;
+                serviceDVMAPICall = service.approveDFByDeptRep(disbursementViewModel);
+                serviceDVMAPICall.enqueue(new Callback<DisbursementViewModel>() {
+                    @Override
+                    public void onResponse(Call<DisbursementViewModel> call, Response<DisbursementViewModel> response) {
+                        if (response.isSuccessful()) {
+                            disbursementViewModel = response.body();
+                            Log.d(TAG, "onResponse : Success - " + disbursementViewModel.disbursementForm.dfCode);
+                            Log.d(TAG, "onResponse : Success - " + disbursementViewModel.disbursementForm.dfStatus);
+                            putDataToLayout(disbursementViewModel);
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<DisbursementViewModel> call, Throwable t) {
+                        Log.e(TAG, "onFailure: ",t );
+                    }
+                });
+            }
+        });
 
-                    DibursementHandOverActivity.setDisbursementViewModel(disbursementViewModel);
-                    Toast.makeText(DisbursementFormDetailsActivity.this, "Proceeding to DELIVERY", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(DisbursementFormDetailsActivity.this, DibursementHandOverActivity.class);
-                    //intent.putExtra("DisbursementViewModel", disbursementViewModel);
-                    startActivity(intent);
-                    finish();
-
-                }
-            });
-        } else if (currentStatus.equals("PENDING_ASSIGNMENT")){
-            mSubmitbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d(TAG, "View Model - " + disbursementViewModel.disbursementFormProducts.size() + " Status - " + currentStatus);
-
-                    DisbursementAssignment.setDisbursementViewModel(disbursementViewModel);
-                    Toast.makeText(DisbursementFormDetailsActivity.this, "Proceeding to Assignment", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(DisbursementFormDetailsActivity.this, DisbursementAssignment.class);
-                    //intent.putExtra("DisbursementViewModel", disbursementViewModel);
-                    startActivity(intent);
-                    finish();
-
-                }
-            });
-        }
 
     }
+
     public void putDataToLayout(DisbursementViewModel disbursementViewModel) {
-        TextView disbursementFormCode = findViewById(R.id.disbursementFormCode);
+        TextView disbursementFormCode = rootView.findViewById(R.id.df_ApprovedisbursementFormCode);
         disbursementFormCode.append(disbursementViewModel.disbursementForm.dfCode);
-        TextView departmentName = findViewById(R.id.departmentName);
+        TextView departmentName = rootView.findViewById(R.id.df_ApprovedepartmentName);
         departmentName.append(disbursementViewModel.disbursementForm.deptRep.department.departmentName);
-        TextView departmentRepresentative = findViewById(R.id.departmentRepresentative);
+        TextView departmentRepresentative = rootView.findViewById(R.id.df_ApprovedepartmentRepresentative);
         departmentRepresentative.append(disbursementViewModel.disbursementForm.deptRep.firstname + " " + disbursementViewModel.disbursementForm.deptRep.lastname);
-        TextView collectionPoint = findViewById(R.id.collectionPoint);
+        TextView collectionPoint = rootView.findViewById(R.id.df_ApprovecollectionPoint);
         collectionPoint.append(disbursementViewModel.disbursementForm.collectionPoint.collectionName);
-        TextView collectionDateTime = findViewById(R.id.collectionDateTime);
+        TextView collectionDateTime = rootView.findViewById(R.id.df_ApprovecollectionDateTime);
         collectionDateTime.append(disbursementViewModel.disbursementForm.dfDeliveryDate);
-        TableLayout disbursementRequisitionFormsTable = (TableLayout) findViewById(R.id.disbursementRequisitionForms);
-        TableLayout disbursementFormProductsTable = (TableLayout) findViewById(R.id.disbursementFormProducts);
+        TableLayout disbursementRequisitionFormsTable = (TableLayout) rootView.findViewById(R.id.df_ApprovedisbursementRequisitionForms);
+        TableLayout disbursementFormProductsTable = (TableLayout) rootView.findViewById(R.id.df_ApprovedisbursementFormProducts);
         TableRow.LayoutParams parameters = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         for (DisbursementFormRequisitionForm disbursementFormRequisitionForm : disbursementViewModel.disbursementFormRequisitionForms) {
-            TableRow disbursementRequisitionForm = new TableRow(DisbursementFormDetailsActivity.this);
-            TextView requisitionSerialnumber = new TextView(DisbursementFormDetailsActivity.this);
-            TextView requisitionCode = new TextView(DisbursementFormDetailsActivity.this);
-            TextView requisitionDeliveryDate = new TextView(DisbursementFormDetailsActivity.this);
+            TableRow disbursementRequisitionForm = new TableRow(DepHeadApproveDisbursementActivity.this);
+            TextView requisitionSerialnumber = new TextView(DepHeadApproveDisbursementActivity.this);
+            TextView requisitionCode = new TextView(DepHeadApproveDisbursementActivity.this);
+            TextView requisitionDeliveryDate = new TextView(DepHeadApproveDisbursementActivity.this);
             requisitionSerialnumber.setText(String.valueOf(count));
             requisitionSerialnumber.setLayoutParams(parameters);
             requisitionSerialnumber.setGravity(Gravity.CENTER);
@@ -128,11 +133,11 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         }
         count = 1;
         for (DisbursementFormProduct disbursementFormProduct : disbursementViewModel.disbursementFormProducts) {
-            TableRow disbursementFormProductrow = new TableRow(DisbursementFormDetailsActivity.this);
-            TextView productSerialnumber = new TextView(DisbursementFormDetailsActivity.this);
-            TextView productDescription = new TextView(DisbursementFormDetailsActivity.this);
-            TextView productQuantityRequested = new TextView(DisbursementFormDetailsActivity.this);
-            TextView productQuantityReceived = new TextView(DisbursementFormDetailsActivity.this);
+            TableRow disbursementFormProductrow = new TableRow(DepHeadApproveDisbursementActivity.this);
+            TextView productSerialnumber = new TextView(DepHeadApproveDisbursementActivity.this);
+            TextView productDescription = new TextView(DepHeadApproveDisbursementActivity.this);
+            TextView productQuantityRequested = new TextView(DepHeadApproveDisbursementActivity.this);
+            TextView productQuantityReceived = new TextView(DepHeadApproveDisbursementActivity.this);
             productSerialnumber.setText(String.valueOf(count));
             productSerialnumber.setLayoutParams(parameters);
             productSerialnumber.setGravity(Gravity.CENTER);

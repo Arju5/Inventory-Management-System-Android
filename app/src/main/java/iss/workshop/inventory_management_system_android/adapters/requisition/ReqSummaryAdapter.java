@@ -1,4 +1,4 @@
-package iss.workshop.inventory_management_system_android.adapters;
+package iss.workshop.inventory_management_system_android.adapters.requisition;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,7 +20,6 @@ import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 
 public class ReqSummaryAdapter extends ArrayAdapter {
-
     private Context context;
     private static final String TAG = "ReqSummaryAdapter";
     List<RequisitionForm> reqlist ;
@@ -65,7 +64,7 @@ public class ReqSummaryAdapter extends ArrayAdapter {
         Date testDate = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         try {
-            testDate = sdf.parse(reqlist.get(pos).rfDate);
+           testDate = sdf.parse(reqlist.get(pos).rfDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

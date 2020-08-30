@@ -13,7 +13,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_RF_APPROVED"
+            android:id="@+id/CLERK_TOTAL_RF_APPROVED"
             android:layout_width="match_parent"
             android:layout_height="173dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -26,10 +26,10 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_RF_NOT_COMPLETED"
+            android:id="@+id/CLERK_TOTAL_RF_NOT_COMPLETED"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_RF_APPROVED"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_RF_APPROVED"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -39,10 +39,10 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_SR_CREATED"
+            android:id="@+id/CLERK_TOTAL_SR_CREATED"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_RF_NOT_COMPLETED"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_RF_NOT_COMPLETED"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -52,10 +52,10 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_SR_PENDING"
+            android:id="@+id/CLERK_TOTAL_SR_PENDING"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_SR_CREATED"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_CREATED"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -65,10 +65,10 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_SR_COMPLETED"
+            android:id="@+id/CLERK_TOTAL_SR_COMPLETED"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_SR_PENDING"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_PENDING"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -78,23 +78,23 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_DF_PENDING_APPROVAL"
+            android:id="@+id/CLERK_TOTAL_DF_PENDING_APPROVAL"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_SR_COMPLETED"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_SR_COMPLETED"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/bg2"
-            android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY DEPT REP"
+            android:text="TOTAL DISBURSEMENT FORMS PENDING APPROVAL BY DEP REP"
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_DF_PENDING_DELIVERY"
+            android:id="@+id/CLERK_TOTAL_DF_PENDING_DELIVERY"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_DF_PENDING_APPROVAL"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING_APPROVAL"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -104,10 +104,10 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_DF_PENDING"
+            android:id="@+id/CLERK_TOTAL_DF_PENDING_ASSIGN"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_DF_PENDING_DELIVERY"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING_DELIVERY"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -117,41 +117,15 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/MANAGER_TOTAL_DF_COMPLETED"
+            android:id="@+id/CLERK_TOTAL_DF_COMPLETED"
             android:layout_width="match_parent"
             android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_DF_PENDING"
+            app:layout_constraintTop_toBottomOf="@+id/CLERK_TOTAL_DF_PENDING_ASSIGN"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/bg3"
             android:text="TOTAL DISBURSEMENT FORMS COMPLETED"
-            android:textColor="#ffffff"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/MANAGER_TOTAL_ITF_PENDING"
-            android:layout_width="match_parent"
-            android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_DF_COMPLETED"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/bg2"
-            android:text="TOTAL INVENTORY TRANSACTIONS PENDING APPROVAL"
-            android:textColor="#ffffff"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/MANAGER_TOTAL_ITF_APPROVED"
-            android:layout_width="match_parent"
-            android:layout_height="173dp"
-            app:layout_constraintTop_toBottomOf="@+id/MANAGER_TOTAL_ITF_PENDING"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/bg3"
-            android:text="TOTAL INVENTORY TRANSACTIONS APPROVED"
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
