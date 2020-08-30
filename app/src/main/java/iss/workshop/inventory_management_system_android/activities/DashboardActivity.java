@@ -41,7 +41,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 */
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Intent intent = new Intent(this, StoreClerkDashboard.class);
+            Intent intent = new Intent(this, StoreClerkDashboardActivity.class);
             startActivity(intent);
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
