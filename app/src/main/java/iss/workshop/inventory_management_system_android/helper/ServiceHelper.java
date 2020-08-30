@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
+import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
@@ -99,6 +101,8 @@ public class ServiceHelper {
         @GET("Employee/GetEmpObj")//For Login
         Call<Employee> getEmpObj(@Query("Username") String Username, @Query("Password") String Password);
 
+        @GET("Dashboard/GetCountDashboard") //For count of card items on dashboard
+        Call<DashboardViewModel> getCountDashboard(@Query("Id") int id);
 /*
         @GET("Employee/GetEmployeeById")
         Call<Employee> getEmployeeById(@Query("empId") int empId);*/
