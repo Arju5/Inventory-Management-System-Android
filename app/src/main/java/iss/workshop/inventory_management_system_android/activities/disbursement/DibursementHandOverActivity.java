@@ -1,12 +1,8 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
 
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,7 +17,7 @@ import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+//import iss.workshop.inventorymanagementsystem.activities.DashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
@@ -156,7 +152,7 @@ public class DibursementHandOverActivity extends BaseActivity {
                         if (response.isSuccessful()) {
                             DisbursementViewModel disbursementViewModel = response.body();
                             if(disbursementViewModel != null){
-                                Intent intent = new Intent(DibursementHandOverActivity.this, DashboardActivity.class);
+                                Intent intent = new Intent(DibursementHandOverActivity.this, iss.workshop.inventory_management_system_android.activities.DashboardActivity.class);
                                 startActivity(intent);
                             }
                         } else {

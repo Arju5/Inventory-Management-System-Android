@@ -1,4 +1,5 @@
-package iss.workshop.inventory_management_system_android.activities.disbursement;
+/*
+package iss.workshop.inventorymanagementsystem.activities.disbursement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -128,3 +129,4 @@ public class DisbursementFormActivity extends BaseActivity {
     }
 
 }
+*/
