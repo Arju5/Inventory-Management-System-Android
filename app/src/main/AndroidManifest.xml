@@ -26,6 +26,16 @@
         <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFCompletedSRFActivity" />
         <activity android:name=".activities.SupplierSummaryActivity"></activity>
         <activity android:name="iss.workshop.inventorymanagementsystem.activities.SplashActivity">
+        <activity android:name=".activities.disbursement.DibursementHandOverActivity"></activity>
+        <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
+        <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
+        <activity android:name=".activities.disbursement.DisbursementFormActivity" />
+        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" />
+        <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
+        <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
+        <activity android:name=".activities.requisition.ApplyRequistionActivity" />
+        <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

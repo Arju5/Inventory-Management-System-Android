@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/base_nav_Profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile"/>
+
+        <item
+            android:id="@+id/base_nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="Dashboard" />
+
+        <menu>
+            <item
+                android:id="@+id/base_nav_createRequisition"
+                android:icon="@drawable/ic_form"
+                android:title="@string/create_requisition" />
+
+            <item
+                android:id="@+id/base_nav_requisitionSummary"
+                android:icon="@drawable/ic_summary"
+                android:title="@string/requisition_summary" />
+
+        </menu>
+
+        <item
+            android:id="@+id/base_nav_disbursements"
+            android:icon="@drawable/ic_form"
+            android:title="Disbursements" />
+
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout"/>
+
+    </group>
+
+</menu>
