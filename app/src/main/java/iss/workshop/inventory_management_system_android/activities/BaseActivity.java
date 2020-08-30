@@ -24,12 +24,12 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_SRFActivity;
-import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalSummaryActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +42,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     SharePreferenceHelper sharePreferenceHelper;
     private DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    String getUserRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +54,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         sharePreferenceHelper = new SharePreferenceHelper(this);
-        if(sharePreferenceHelper.getUserRole().equals("Employee")) {
+        getUserRole = sharePreferenceHelper.getUserRole();
+        if(getUserRole.equals("Employee")) {
             //setText(sharePreferenceHelper.getUserName().toUpperCase());
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.base_drawer);
+        } else if (getUserRole.equals("Store Clerk")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storeclerk_drawer);
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
@@ -146,13 +151,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.storeclerk_SupplierSummary).setVisible(b);
             return true;
         } else if (id == R.id.storeclerk_Inventory) {
-            boolean b=!m.findItem(R.id.storeclerk_ProductCatalogue).isVisible();
-            m.findItem(R.id.storeclerk_ProductCatalogue).setVisible(b);
+            boolean b=!m.findItem(R.id.storeclerk_product_catalogue).isVisible();
+            m.findItem(R.id.storeclerk_product_catalogue).setVisible(b);
             m.findItem(R.id.storeclerk_UpdateInventory).setVisible(b);
             m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
             m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Requisitions) {
+        } else if (id == R.id.storeclerk_Forms) {
             boolean b=!m.findItem(R.id.storeclerk_DisbursementSummary).isVisible();
             m.findItem(R.id.storeclerk_DisbursementSummary).setVisible(b);
             m.findItem(R.id.storeclerk_StationeryRetrievalSummary).setVisible(b);
@@ -169,21 +174,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
-        /*if(id == R.id.create_srform){
-            Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.view_srsummary){
-            Intent intent = new Intent(BaseActivity.this, SF_StationeryRetrievalSummaryActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.create_dform){
-
-        }
-        if(id == R.id.view_dfsummary){
-
-        }*/
-        /*------*/
 
         if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
@@ -199,19 +189,27 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.base_nav_productcatalogue && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.storeclerk_StationeryRetrievalSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            Toast.makeText(context, "Stationery Retrieval Summary", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, DisbursementFormActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_CreateStationeryRetrieval && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
-            //Intent intent   = new Intent(this, DisbursementFormActivity.class);
-            //startActivity(intent);
+            Intent intent   = new Intent(this, DisbursementFormActivity.class);
+            startActivity(intent);
             finish();
         }
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

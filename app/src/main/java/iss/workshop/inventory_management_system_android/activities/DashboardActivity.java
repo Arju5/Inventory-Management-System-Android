@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -9,14 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.AlertDialog;
 
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboard;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionSummaryActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class DashboardActivity extends BaseActivity implements View.OnClickListener{
@@ -41,8 +39,18 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 */
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Intent intent = new Intent(this, StoreClerkDashboard.class);
-            startActivity(intent);
+
+            View rootView = getLayoutInflater().inflate(R.layout.activity_store_clerk_dashboard, frameLayout);
+            txt_menuTitle.setText("DASHBOARD");
+            Button mCLERK_TOTAL_DF_PENDING_APPROVAL = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_APPROVAL);
+            Button mCLERK_TOTAL_DF_PENDING_DELIVERY = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_DELIVERY);
+            Button mCLERK_TOTAL_DF_PENDING_ASSIGN = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_ASSIGN);
+            Button mCLERK_TOTAL_DF_COMPLETED = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_COMPLETED);
+
+            mCLERK_TOTAL_DF_PENDING_APPROVAL.setOnClickListener(this);
+            mCLERK_TOTAL_DF_PENDING_DELIVERY.setOnClickListener(this);
+            mCLERK_TOTAL_DF_PENDING_ASSIGN.setOnClickListener(this);
+            mCLERK_TOTAL_DF_COMPLETED.setOnClickListener(this);
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_head, frameLayout);
@@ -66,16 +74,23 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
 
-        /*if(id == R.id.emp_CreateRequisition) {
-            Intent intent = new Intent(this, ApplyRequistionActivity.class);
+        if (id == R.id.CLERK_TOTAL_DF_PENDING_APPROVAL) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_APPROVAL");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_PENDING_DELIVERY) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_DELIVERY");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_PENDING_ASSIGN) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_DELIVERY");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_COMPLETED) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "COMPLETED");
             startActivity(intent);
         }
-        else if(id == R.id.emp_Requisitions)
-        {
-            Intent intent = new Intent(this, RequisitionSummaryActivity.class);
-            intent.putExtra("btnId", id);
-            startActivity(intent);
-        }*/
 
     }
 
