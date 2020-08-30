@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class DashboardActivity extends BaseActivity implements View.OnClickListener{
