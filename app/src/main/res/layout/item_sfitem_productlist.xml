@@ -45,7 +45,7 @@
                     ></TextView>
 
                 <TextView
-                    android:text="Product Requested"
+                    android:text="Total Quantity Approved"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -54,6 +54,22 @@
 
                 <TextView
                     android:id="@+id/productqty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    ></TextView>
+
+                <TextView
+                    android:text="Total Quantity Pending For Collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/pendingqty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"

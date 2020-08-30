@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="iss.workshop.inventorymanagementsystem">
+    package="iss.workshop.inventory_management_system_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,38 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.department.EmployeeDisbursementSummarySelectionActivity"></activity>
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.department.EmployeeRequisitionSummarySelectionActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.requisition.RequisitionSummaryActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.requisition.ApplyRequistionActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.BaseActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_StationeryRetrievalSummaryActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFPendingSRFActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFOpenSRFActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFProductActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.stationery.SF_SRFCompletedSRFActivity" />
-        <activity android:name=".activities.SupplierSummaryActivity"></activity>
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.SplashActivity">
-        <activity android:name=".activities.disbursement.DibursementHandOverActivity"></activity>
-        <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
-        <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
-        <activity android:name=".activities.disbursement.DisbursementFormActivity" />
-        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" />
+        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity"></activity>
         <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.BaseActivity" />
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".activities.stationery.SF_StationeryRetrievalSummaryActivity" />
+        <activity android:name=".activities.stationery.SF_SRFActivity" />
+        <activity android:name=".activities.stationery.SF_SRFPendingSRFActivity" />
+        <activity android:name=".activities.stationery.SF_SRFOpenSRFActivity" />
+        <activity android:name=".activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity" />
+        <activity android:name=".activities.stationery.SF_SRFProductActivity" />
+        <activity android:name=".activities.stationery.SF_SRFCompletedSRFActivity" />
+        <activity android:name=".activities.SupplierSummaryActivity"></activity>
+        <activity android:name=".activities.disbursement.DibursementHandOverActivity"></activity>
+        <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
+        <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
+        <!--<activity android:name=".activities.disbursement.DisbursementFormActivity" />-->
+        <activity android:name="iss.workshop.inventory_management_system_android.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.DashboardActivity" />
-        <activity android:name="iss.workshop.inventorymanagementsystem.activities.LoginActivity">
+        <activity android:name="iss.workshop.inventory_management_system_android.activities.DashboardActivity" />
+        <activity android:name="iss.workshop.inventory_management_system_android.activities.LoginActivity">
 
             <!--
             <intent-filter>
