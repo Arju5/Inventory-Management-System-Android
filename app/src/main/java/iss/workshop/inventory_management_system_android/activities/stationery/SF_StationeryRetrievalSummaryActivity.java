@@ -41,7 +41,7 @@ public class SF_StationeryRetrievalSummaryActivity extends BaseActivity {
         Button openSRbutton = (Button)rootView.findViewById(R.id.opensr);
         Button pendingSRbutton = (Button)rootView.findViewById(R.id.pendingsr);
         Button completedSRbutton = (Button)rootView.findViewById(R.id.completedsr);
-        Button createSRbutton = (Button)rootView.findViewById(R.id.createsr);
+        //Button createSRbutton = (Button)rootView.findViewById(R.id.createsr);
 
         openSRbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +73,13 @@ public class SF_StationeryRetrievalSummaryActivity extends BaseActivity {
             }
         });
 
-        createSRbutton.setOnClickListener(new View.OnClickListener() {
+        /*createSRbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SF_StationeryRetrievalSummaryActivity.this,SF_SRFActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 
