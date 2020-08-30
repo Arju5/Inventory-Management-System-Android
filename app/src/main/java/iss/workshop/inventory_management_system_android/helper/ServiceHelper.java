@@ -10,6 +10,7 @@ import java.util.List;
 
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
@@ -104,20 +105,17 @@ public class ServiceHelper {
         Call<Employee> getEmployeeById(@Query("empId") int empId);*/
         //Employee APIS ends
 
-       /* //Requisition APIs start
+        //Requisition APIs start
         @GET("Requisition/GetRequisitionById")
         Call<RequisitionForm> getReqByid(@Query("reqId") Integer reqId);
-        */
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
-
-    /*  @GET("Requisition/ViewRequisitionFormById")
+        @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
         @GET("Requisition/ViewApprovalRF")
         Call<RequisitionViewModel> ViewApprovalRF(@Query("id") Integer reqId);
-        */
 
         @GET("Requisition/ApplyRequisitionForm")
         Call<RequisitionViewModel> ApplyRF();
@@ -126,12 +124,14 @@ public class ServiceHelper {
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
 
-      /*@POST("Requisition/Approve")
+        @POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
 
-        //Requisition APIs ends*/
+        @POST("Requisition/Cancel")
+        Call<String> Cancel(@Query("id") Integer reqId);
+        //Requisition APIs ends
 
         /*//Dashboard APIS starts
 

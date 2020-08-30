@@ -1,7 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities.requisition;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
-import iss.workshop.inventory_management_system_android.adapters.ReqSummaryAdapter;
+import iss.workshop.inventory_management_system_android.adapters.requisition.ReqSummaryAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
@@ -21,7 +19,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RequisitionSummaryActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class RequisitionSummaryActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener {
+
 
     private static final String TAG = "ReqSummaryActivity";
     private ServiceHelper.ApiService service;
@@ -31,12 +31,10 @@ public class RequisitionSummaryActivity extends BaseActivity implements AdapterV
     int btnId;
     String username;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_requisition_summary, frameLayout);
-        txt_menuTitle.setText("REQUISITION SUMMARY");
+        setContentView(R.layout.activity_requisition_summary);
 
         //Get UserName by sharePreference
         sharePreferenceHelper = new SharePreferenceHelper(this);
@@ -51,11 +49,9 @@ public class RequisitionSummaryActivity extends BaseActivity implements AdapterV
         //Log.d(TAG, "btnId ::"+ btnId);
         getReqSummary();
     }
-
     private void getReqSummary() {
         rfsummaryadapter.clear();
 
-        //final ListView rfsummaryListView = findViewById(R.id.reqSummarylistView);
         Call<RequisitionSummaryViewModel> callrfsummary = service.getReqSummary(username);
         callrfsummary.enqueue(new Callback<RequisitionSummaryViewModel>() {
             @Override
@@ -65,11 +61,11 @@ public class RequisitionSummaryActivity extends BaseActivity implements AdapterV
                     RequisitionSummaryViewModel rfsummary = response.body();
 
                     //check if the btn clicked is pending list btn or processed list btn
-                    if(btnId == R.id.emp_Requisitions){
+                    if(btnId == R.id.view_pending_req){
                         rfsummaryadapter.setrfSummaryList(rfsummary.rfListPending);
 
                     }
-                    else if(btnId == R.id.emp_Requisitions){
+                    else if(btnId == R.id.view_processed_req){
                         rfsummaryadapter.setrfSummaryList(rfsummary.rfListProcessed);
                     }
                     Log.d(TAG, "employee:: "+rfsummary.employee.firstname);
@@ -99,11 +95,10 @@ public class RequisitionSummaryActivity extends BaseActivity implements AdapterV
 
         Log.d(TAG, "from summary to form req-code sending :" + req_id.getText().toString());
 
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity.class);
 
         intent.putExtra("reqId", req_id.getText().toString());
         startActivity(intent);
 
     }
-
 }
