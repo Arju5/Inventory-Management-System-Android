@@ -14,23 +14,48 @@
             android:icon="@drawable/ic_dashboard"
             android:title="Dashboard" />
 
-        <menu>
-            <item
-                android:id="@+id/base_nav_createRequisition"
-                android:icon="@drawable/ic_form"
-                android:title="@string/create_requisition" />
-
-            <item
-                android:id="@+id/base_nav_requisitionSummary"
-                android:icon="@drawable/ic_summary"
-                android:title="@string/requisition_summary" />
-
-        </menu>
+        <item
+            android:id="@+id/base_nav_product_catalogue"
+            android:title="@string/product_catalogue"
+            android:visible="false"/>
+        <item
+            android:id="@+id/storeclerk_Inventory"
+            android:title="@string/inventory"
+            android:visible="false"/>
+        <item
+            android:id="@+id/storemanager_directory"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/directory" />
+        <item
+            android:id="@+id/storemanager_department"
+            android:title="@string/department"
+            android:visible="false"/>
 
         <item
-            android:id="@+id/base_nav_disbursements"
-            android:icon="@drawable/ic_form"
-            android:title="Disbursements" />
+            android:id="@+id/storemanager_supplier"
+            android:title="@string/supplier"
+            android:visible="false"/>
+        <item
+            android:id="@+id/forms"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/forms" />
+        <item
+            android:id="@+id/storeclerk_StationeryRetrievalSummary"
+            android:title="@string/sr_summary"
+            android:visible="false"/>
+        <item
+            android:id="@+id/base_nav_DFSummary"
+            android:title="@string/disbursement_summary"
+            android:visible="false"/>
+        <item
+            android:id="@+id/storeclerk_CreateStationeryRetrieval"
+            android:title="@string/create_sr"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/storeclerk_CreateDisbursement"
+            android:title="@string/create_disbursement"
+            android:visible="false"/>
 
 
         <item

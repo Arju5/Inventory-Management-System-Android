@@ -20,15 +20,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SupplierSummaryActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class SupplierSummaryActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "SupplierSummaryActivity";
 
     private ServiceHelper.ApiService service;
     private SupplierSummaryAdapter supplierSummaryAdapter;
+    View rootView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier);
+        rootView = getLayoutInflater().inflate(R.layout.activity_supplier, frameLayout);
+        txt_menuTitle.setText("DASHBOARD");
         service = ServiceHelper.getClient(this);
         supplierSummaryAdapter = new SupplierSummaryAdapter(SupplierSummaryActivity.this, R.layout.supplierlist_row);
         getSupplierList();
