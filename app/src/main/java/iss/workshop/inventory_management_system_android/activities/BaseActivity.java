@@ -59,6 +59,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storeclerk_drawer);
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.dephead_drawer);
@@ -107,6 +110,38 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            ExitApp();
+        }
+    }
+    private void ExitApp() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle("Logic University Inventory");
+        builder.setMessage("Do You Want To Exit?");
+        builder.setIcon(R.drawable.ic_key);
+        //final AlertDialog dialog = builder.create();
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                finish();
+
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -173,7 +208,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(intent);
-        } else if (id == R.id.base_nav_applyrequisitions && sharePreferenceHelper.getUserRole().equals("Employee")) {
+        }
+        if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
             startActivity(intent);
