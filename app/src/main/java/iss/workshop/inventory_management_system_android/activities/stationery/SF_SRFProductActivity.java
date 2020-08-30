@@ -18,7 +18,7 @@ import java.util.List;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.adapters.SF_ProductListAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_ProductListAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;

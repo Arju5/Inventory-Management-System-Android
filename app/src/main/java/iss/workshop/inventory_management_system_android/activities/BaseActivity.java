@@ -210,6 +210,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
+        if(id == R.id.storeclerk_ProductCatalogue){
+            Intent intent = new Intent(BaseActivity.this, ProductCatalogue.class);
+            startActivity(intent);
+        }
         if(id == R.id.storeclerk_CreateStationeryRetrieval){
             Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
             startActivity(intent);
@@ -217,12 +221,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if(id == R.id.storeclerk_StationeryRetrievalSummary){
             Intent intent = new Intent(BaseActivity.this, SF_StationeryRetrievalSummaryActivity.class);
             startActivity(intent);
-        }
-        if(id == R.id.storeclerk_CreateDisbursement){
-
-        }
-        if(id == R.id.storeclerk_DisbursementSummary){
-
         }
         /*------*/
 
@@ -246,18 +244,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-=========
-        } /*else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
->>>>>>>>> Temporary merge branch 2
+        }
+         /*else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementFormActivity.class);
             startActivity(intent);
             finish();
-        }
+        }*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+  }

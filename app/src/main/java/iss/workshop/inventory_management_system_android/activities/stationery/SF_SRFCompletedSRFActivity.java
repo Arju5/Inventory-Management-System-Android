@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.adapters.SF_CompletedSRFReqAdapter;
-import iss.workshop.inventory_management_system_android.adapters.SF_CompletedSRFSummaryAdapter;
-import iss.workshop.inventory_management_system_android.adapters.SF_CompletedSRFWarehouseAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFReqAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFSummaryAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFWarehouseAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalViewModel;
