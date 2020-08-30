@@ -24,13 +24,17 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import iss.workshop.inventory_management_system_android.R;
+<<<<<<<<< Temporary merge branch 1
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
+=========
+import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_SRFActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalSummaryActivity;
+>>>>>>>>> Temporary merge branch 2
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -109,6 +113,38 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            ExitApp();
+        }
+    }
+    private void ExitApp() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle("Logic University Inventory");
+        builder.setMessage("Do You Want To Exit?");
+        builder.setIcon(R.drawable.ic_key);
+        //final AlertDialog dialog = builder.create();
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                finish();
+
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -135,8 +171,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
         Menu m=nv.getMenu();
+
         int id = item.getItemId();
 
         /*Store Clerk Menu Item Expansion*/
@@ -153,12 +191,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
             m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Forms) {
+<<<<<<<<< Temporary merge branch 1
+        } else if (id == R.id.storeclerk_Requisitions) {
             boolean b=!m.findItem(R.id.storeclerk_DisbursementSummary).isVisible();
             m.findItem(R.id.storeclerk_DisbursementSummary).setVisible(b);
             m.findItem(R.id.storeclerk_StationeryRetrievalSummary).setVisible(b);
             m.findItem(R.id.storeclerk_CreateStationeryRetrieval).setVisible(b);
-            m.findItem(R.id.storeclerk_DisbursementCreate).setVisible(b);
+            m.findItem(R.id.storeclerk_CreateDisbursement).setVisible(b);
             return true;
         } else if (id == R.id.base_nav_products) {
             boolean b=!m.findItem(R.id.base_nav_productcatalogue).isVisible();
@@ -169,8 +208,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
+        } else if(id == R.id.logout) {
+=========
         }
-        /*if(id == R.id.create_srform){
+        if(id == R.id.create_srform){
             Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
             startActivity(intent);
         }
@@ -183,58 +224,42 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         if(id == R.id.view_dfsummary){
 
-        }*/
+        }
         /*------*/
-        // Logout button
+
         if(id == R.id.logout) {
+>>>>>>>>> Temporary merge branch 2
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(intent);
-
-            // Employee nav bar button clicks starts
-        } else if (id == R.id.base_nav_applyrequisitions && sharePreferenceHelper.getUserRole().equals("Employee")) {
+        }
+        if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
             startActivity(intent);
         } else if (id == R.id.base_nav_requisitionSummary && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Requisition Summary", Toast.LENGTH_SHORT).show();
+<<<<<<<<< Temporary merge branch 1
             Intent intent = new Intent(this, RequisitionLandingActivity.class);
-            intent.putExtra("empType", sharePreferenceHelper.getUserRole());
             startActivity(intent);
         } else if (id == R.id.base_nav_productcatalogue && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
-
-            // Employee nav bar button clicks starts
-
-            // Store Clerk nav bar button clicks starts
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.storeclerk_DisbursementCreate && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+        } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+=========
+        } /*else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+>>>>>>>>> Temporary merge branch 2
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementFormActivity.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
-            startActivity(intent);
-            finish();
-        } else if (id == R.id.storeclerk_CreateStationeryRetrieval && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Toast.makeText(context, "Create Stationery Retrieval", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, SF_SRFActivity.class);
-            startActivity(intent);
-            finish();
-        } else if (id == R.id.storeclerk_StationeryRetrievalSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Toast.makeText(context, "Stationery Retrieval Summary", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, SF_StationeryRetrievalSummaryActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        }*/
 
-        // Store Clerk nav bar button clicks starts
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
