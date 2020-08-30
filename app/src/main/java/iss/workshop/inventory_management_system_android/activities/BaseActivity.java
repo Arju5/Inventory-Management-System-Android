@@ -202,20 +202,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
-        if(id == R.id.create_srform){
+        if(id == R.id.storeclerk_CreateStationeryRetrieval){
             Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
             startActivity(intent);
         }
-        if(id == R.id.view_srsummary){
+        if(id == R.id.storeclerk_StationeryRetrievalSummary){
             Intent intent = new Intent(BaseActivity.this, SF_StationeryRetrievalSummaryActivity.class);
             startActivity(intent);
         }
-        if(id == R.id.create_dform){
+        if(id == R.id.storeclerk_CreateDisbursement){
 
         }
-        if(id == R.id.view_dfsummary){
+        if(id == R.id.storeclerk_DisbursementSummary){
 
         }
+
         /*------*/
 
         if(id == R.id.logout) {
@@ -244,7 +245,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         }
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

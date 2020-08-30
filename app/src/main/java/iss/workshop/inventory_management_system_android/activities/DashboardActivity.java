@@ -31,7 +31,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard, frameLayout);
             txt_menuTitle.setText("DASHBOARD");
 
-
            /* Button memp_PendingRequisitions = (Button) rootView.findViewById(R.id.emp_CreateRequisition);
             memp_PendingRequisitions.setOnClickListener(this);
             Button memp_ApprovedRequisitions = (Button) rootView.findViewById(R.id.emp_Requisitions);

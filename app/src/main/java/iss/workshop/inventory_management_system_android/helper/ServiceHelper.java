@@ -97,8 +97,6 @@ public class ServiceHelper {
         }
     }
 
-
-
     public interface ApiService {
         // Product APIS starts
         @GET("Product/GetProductList")
@@ -114,7 +112,6 @@ public class ServiceHelper {
 
         @GET("Employee/GetEmployeeById")
         Call<Employee> getEmployeeById(@Query("empId") int empId);
-        Call<Employee> getEmployeeById(@Query("empId") int empId);
 
         @GET("Employee/GetEmployeeList")
         Call<ArrayList<Employee>> getEmployeeList();
@@ -128,8 +125,6 @@ public class ServiceHelper {
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
-
-        @GET("Requisition/ViewRequisitionFormById")
         @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
@@ -248,9 +243,6 @@ public class ServiceHelper {
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
         //Supplier APIs end
-
-        @GET("Employee/GetEmployeeList")
-        Call<ArrayList<Employee>> getEmployeeList();
     }
 
 }

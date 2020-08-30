@@ -60,7 +60,7 @@
         <item
             android:id="@+id/storeclerk_Requisitions"
             android:icon="@drawable/ic_person"
-            android:title="Requisitions"/>
+            android:title="Forms"/>
 
         <!--Hide Sub Menu starts-->
 
