@@ -82,7 +82,7 @@ public class StoreClerkDashboardActivity extends BaseActivity implements View.On
                     if (dashboardViewModel != null) {
                         Button mCLERK_TOTAL_RF_APPROVED = (Button) findViewById(R.id.CLERK_TOTAL_RF_APPROVED);
                         Button mCLERK_TOTAL_RF_NOT_COMPLETED = (Button) findViewById(R.id.CLERK_TOTAL_RF_NOT_COMPLETED);
-                        Button mCCLERK_TOTAL_SR_CREATED = (Button) findViewById(R.id.CLERK_TOTAL_SR_CREATED);
+                        Button mCLERK_TOTAL_SR_CREATED = (Button) findViewById(R.id.CLERK_TOTAL_SR_CREATED);
                         Button mCLERK_TOTAL_SR_PENDING = (Button)findViewById(R.id.CLERK_TOTAL_SR_PENDING);
                         Button mCLERK_TOTAL_SR_COMPLETED = (Button)findViewById(R.id.CLERK_TOTAL_SR_COMPLETED);
                         Button mCLERK_TOTAL_DF_PENDING_APPROVAL = (Button)findViewById(R.id.CLERK_TOTAL_DF_PENDING_APPROVAL);
@@ -92,7 +92,7 @@ public class StoreClerkDashboardActivity extends BaseActivity implements View.On
 
                         mCLERK_TOTAL_RF_APPROVED.append(" ( " + String.valueOf(dashboardViewModel.totalRFApproved) + " )");
                         mCLERK_TOTAL_RF_NOT_COMPLETED.append(" ( " + String.valueOf(dashboardViewModel.totalRFNotCompleted) + " )");
-                        mCCLERK_TOTAL_SR_CREATED.append(" ( " + String.valueOf(dashboardViewModel.totalSROpen) + " )");
+                        mCLERK_TOTAL_SR_CREATED.append(" ( " + String.valueOf(dashboardViewModel.totalSROpen) + " )");
                         mCLERK_TOTAL_SR_PENDING.append(" ( " + String.valueOf(dashboardViewModel.totalSRPendingAssignment) + " )");
                         mCLERK_TOTAL_SR_COMPLETED.append(" ( " + String.valueOf(dashboardViewModel.totalSRAssigned) + " )");
                         mCLERK_TOTAL_DF_PENDING_APPROVAL.append(" ( " + String.valueOf(dashboardViewModel.totalDFCreated) + " )");

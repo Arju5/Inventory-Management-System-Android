@@ -3,6 +3,8 @@ package iss.workshop.inventory_management_system_android.helper;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.core.util.Supplier;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,18 +18,13 @@ import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
-import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;
 import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
-import iss.workshop.inventory_management_system_android.model.Supplier;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
-import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
-import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalSummaryViewModel;
-import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 
 import okhttp3.Cache;
@@ -203,7 +200,7 @@ public class ServiceHelper {
         Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
 
         // Disbursement APIS ends
-
+/*
         // Stationery APIS starts
         @GET("Stationery/GetOpenSRSummary")
         Call<StationeryRetrievalSummaryViewModel> getOpenSRSummary();
@@ -238,7 +235,7 @@ public class ServiceHelper {
 
         @GET("Stationery/GetCompleteSRById")
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
-        // Stationery APIS ends
+        // Stationery APIS ends */
         //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
