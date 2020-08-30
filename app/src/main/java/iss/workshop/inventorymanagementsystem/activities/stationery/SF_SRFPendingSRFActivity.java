@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iss.workshop.inventorymanagementsystem.R;
+import iss.workshop.inventorymanagementsystem.activities.BaseActivity;
 import iss.workshop.inventorymanagementsystem.adapter.SF_SRFOpenDelegate;
 import iss.workshop.inventorymanagementsystem.adapter.SF_SRFPendingAssignedAdapter;
 import iss.workshop.inventorymanagementsystem.adapter.SF_SRFPendingSRFAdapter;
@@ -29,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class SF_SRFPendingSRFActivity extends AppCompatActivity implements SF_SRFOpenDelegate {
+public class SF_SRFPendingSRFActivity extends BaseActivity implements SF_SRFOpenDelegate {
 
     private static final String TAG = "SF_SRFPendingSRFActivit";
     Integer selected_sfId;
@@ -70,7 +71,10 @@ public class SF_SRFPendingSRFActivity extends AppCompatActivity implements SF_SR
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sf_pendingsrf);
+        //setContentView(R.layout.activity_sf_pendingsrf);
+
+        View rootView = getLayoutInflater().inflate(R.layout.activity_sf_pendingsrf, frameLayout);
+        txt_menuTitle.setText("Pending SRF");
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,12 +89,12 @@ public class SF_SRFPendingSRFActivity extends AppCompatActivity implements SF_SR
 
         Log.e(TAG, "onCreate: sfId" + selected_sfId );
 
-        warehousepacker = findViewById(R.id.sclerkname);
+        warehousepacker = rootView.findViewById(R.id.sclerkname);
         //warehouseName = findViewById(R.id.whousename);
-        createDate = findViewById(R.id.crdate);
-        retrievalId = findViewById(R.id.retrieval_name);
-        status = findViewById(R.id.status_name);
-        assignButton = findViewById(R.id.btnAssignProductToRequ);
+        createDate = rootView.findViewById(R.id.crdate);
+        retrievalId = rootView.findViewById(R.id.retrieval_name);
+        status = rootView.findViewById(R.id.status_name);
+        assignButton = rootView.findViewById(R.id.btnAssignProductToRequ);
 
         cachelist = new ArrayList<>();
 
@@ -119,12 +123,12 @@ public class SF_SRFPendingSRFActivity extends AppCompatActivity implements SF_SR
 
         sfSrfPendingAdapter = new SF_SRFPendingSRFAdapter();
         pendingAssignedAdapter = new SF_SRFPendingAssignedAdapter(this);
-        rcv_assigned = findViewById(R.id.pdassigned_recycler);
+        rcv_assigned = rootView.findViewById(R.id.pdassigned_recycler);
         rcv_assigned.setHasFixedSize(true);
         rcv_assigned.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv_assigned.setAdapter(sfSrfPendingAdapter);
 
-        rcv_requisition = findViewById(R.id.srrf_recycler);
+        rcv_requisition = rootView.findViewById(R.id.srrf_recycler);
         rcv_requisition.setHasFixedSize(true);
         rcv_requisition.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv_requisition.setAdapter(pendingAssignedAdapter);

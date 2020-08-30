@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import iss.workshop.inventorymanagementsystem.R;
+import iss.workshop.inventorymanagementsystem.activities.BaseActivity;
 import iss.workshop.inventorymanagementsystem.adapter.SF_CompletedSRFReqAdapter;
 import iss.workshop.inventorymanagementsystem.adapter.SF_CompletedSRFSummaryAdapter;
 import iss.workshop.inventorymanagementsystem.adapter.SF_CompletedSRFWarehouseAdapter;
@@ -24,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class SF_SRFCompletedSRFActivity extends AppCompatActivity {
+public class SF_SRFCompletedSRFActivity extends BaseActivity {
 
     private static final String TAG = "SF_SRFCompletedSRFActiv";
 
@@ -69,7 +70,10 @@ public class SF_SRFCompletedSRFActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sf_completsrf);
+        //setContentView(R.layout.activity_sf_completsrf);
+
+        View rootView = getLayoutInflater().inflate(R.layout.activity_sf_completsrf, frameLayout);
+        txt_menuTitle.setText("Completed SRF");
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         service = ServiceHelper.getClient(this);
@@ -81,11 +85,11 @@ public class SF_SRFCompletedSRFActivity extends AppCompatActivity {
         Intent intent = getIntent();
         selected_sfId = Integer.parseInt(intent.getStringExtra("SFId"));
 
-        clerkName = findViewById(R.id.sclerkname);
+        clerkName = rootView.findViewById(R.id.sclerkname);
         //warehouseName = findViewById(R.id.whousename);
-        createDate = findViewById(R.id.crdate);
-        retrievalId = findViewById(R.id.retrieval_name);
-        status = findViewById(R.id.status_name);
+        createDate = rootView.findViewById(R.id.crdate);
+        retrievalId = rootView.findViewById(R.id.retrieval_name);
+        status = rootView.findViewById(R.id.status_name);
 
         srform = new StationeryRetrievalViewModel();
 
@@ -93,17 +97,17 @@ public class SF_SRFCompletedSRFActivity extends AppCompatActivity {
         summaryAdapter = new SF_CompletedSRFSummaryAdapter();
         warehouseAdapter = new SF_CompletedSRFWarehouseAdapter();
 
-        rcv_req = findViewById(R.id.requ_recycler);
+        rcv_req = rootView.findViewById(R.id.requ_recycler);
         rcv_req.setHasFixedSize(true);
         rcv_req.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv_req.setAdapter(completedSRFReqAdapter);
 
-        rcv_warehouse = findViewById(R.id.warehouse_recycler);
+        rcv_warehouse = rootView.findViewById(R.id.warehouse_recycler);
         rcv_warehouse.setHasFixedSize(true);
         rcv_warehouse.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv_warehouse.setAdapter(warehouseAdapter);
 
-        rcv_summary = findViewById(R.id.summary_recycler);
+        rcv_summary = rootView.findViewById(R.id.summary_recycler);
         rcv_summary.setHasFixedSize(true);
         rcv_summary.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv_summary.setAdapter(summaryAdapter);

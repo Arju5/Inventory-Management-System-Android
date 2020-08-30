@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import iss.workshop.inventorymanagementsystem.R;
+import iss.workshop.inventorymanagementsystem.activities.BaseActivity;
+import iss.workshop.inventorymanagementsystem.adapter.BaseAdapter;
 import iss.workshop.inventorymanagementsystem.adapter.SF_ProductListAdapter;
 import iss.workshop.inventorymanagementsystem.helper.ServiceHelper;
 import iss.workshop.inventorymanagementsystem.helper.SharePreferenceHelper;
@@ -28,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SF_SRFProductActivity extends AppCompatActivity {
+public class SF_SRFProductActivity extends BaseActivity {
     private static final String TAG = "SF_SRFProductActivity";
 
     public static final String IE_list = "list";
@@ -65,21 +67,20 @@ public class SF_SRFProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sf_productlist);
+        //setContentView(R.layout.activity_sf_productlist);
+        View rootView = getLayoutInflater().inflate(R.layout.activity_sf_productlist, frameLayout);
+        txt_menuTitle.setText("Create SRF");
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         service = ServiceHelper.getClient(this);
 
-
         //Get UserName by sharePreference
         sharePreferenceHelper = new SharePreferenceHelper(this);
         username = sharePreferenceHelper.getUserName();
 
-
-        btncreate = findViewById(R.id.createsrf);
-        edicomment = (EditText)findViewById(R.id.textArea_comment);
-
+        btncreate = rootView.findViewById(R.id.createsrf);
+        edicomment = (EditText)rootView.findViewById(R.id.textArea_comment);
 
         sf_productListAdapter = new SF_ProductListAdapter();
 

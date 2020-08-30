@@ -11,8 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import iss.workshop.inventorymanagementsystem.R;
+import iss.workshop.inventorymanagementsystem.activities.BaseActivity;
 
-public class SF_StationeryRetrievalSummaryActivity extends AppCompatActivity {
+public class SF_StationeryRetrievalSummaryActivity extends BaseActivity {
     private static final String TAG = "SF_SRSummaryActivity";
 
     /*private ServiceHelper.ApiService service;
@@ -30,15 +31,18 @@ public class SF_StationeryRetrievalSummaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sf_stationery_retrieval_summary);
+        //setContentView(R.layout.activity_sf_stationery_retrieval_summary);
+
+        View rootView = getLayoutInflater().inflate(R.layout.activity_sf_stationery_retrieval_summary, frameLayout);
+        txt_menuTitle.setText("SRF Summary");
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Button openSRbutton = (Button)findViewById(R.id.opensr);
-        Button pendingSRbutton = (Button)findViewById(R.id.pendingsr);
-        Button completedSRbutton = (Button)findViewById(R.id.completedsr);
-        Button createSRbutton = (Button)findViewById(R.id.createsr);
+        Button openSRbutton = (Button)rootView.findViewById(R.id.opensr);
+        Button pendingSRbutton = (Button)rootView.findViewById(R.id.pendingsr);
+        Button completedSRbutton = (Button)rootView.findViewById(R.id.completedsr);
+        Button createSRbutton = (Button)rootView.findViewById(R.id.createsr);
 
         openSRbutton.setOnClickListener(new View.OnClickListener() {
             @Override

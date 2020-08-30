@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iss.workshop.inventorymanagementsystem.R;
+import iss.workshop.inventorymanagementsystem.activities.BaseActivity;
 import iss.workshop.inventorymanagementsystem.adapter.SF_SRFOpenDelegate;
 import iss.workshop.inventorymanagementsystem.adapter.SF_SRFOpenSRFAdapter;
 import iss.workshop.inventorymanagementsystem.helper.MyDateFormat;
@@ -33,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class SF_SRFOpenSRFActivity extends AppCompatActivity implements SF_SRFOpenDelegate {
+public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDelegate {
 
     private static final String TAG = "SF_SRFOpenSRFActivity";
     Integer selected_sfId;
@@ -77,7 +78,10 @@ public class SF_SRFOpenSRFActivity extends AppCompatActivity implements SF_SRFOp
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sf_opensrf);
+        //setContentView(R.layout.activity_sf_opensrf);
+
+        View rootView = getLayoutInflater().inflate(R.layout.activity_sf_opensrf, frameLayout);
+        txt_menuTitle.setText("Open SRF");
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,24 +97,24 @@ public class SF_SRFOpenSRFActivity extends AppCompatActivity implements SF_SRFOp
 
         Log.e(TAG, "onCreate: sfId" + selected_sfId );
 
-        clerkName = findViewById(R.id.sclerkname);
+        clerkName = rootView.findViewById(R.id.sclerkname);
         //warehouseName = findViewById(R.id.whousename);
-        createDate = findViewById(R.id.crdate);
-        retrievalId = findViewById(R.id.retrieval_name);
-        status = findViewById(R.id.status_name);
+        createDate = rootView.findViewById(R.id.crdate);
+        retrievalId = rootView.findViewById(R.id.retrieval_name);
+        status = rootView.findViewById(R.id.status_name);
         dateFormat = new MyDateFormat();
-        pswclerk = findViewById(R.id.passwordclerk);
-        pswwarehouse = findViewById(R.id.passwordwarehouse);
+        pswclerk = rootView.findViewById(R.id.passwordclerk);
+        pswwarehouse = rootView.findViewById(R.id.passwordwarehouse);
 
         productadapter = new SF_SRFOpenSRFAdapter(this);
-        rcv = findViewById(R.id.pd_recycler);
+        rcv = rootView.findViewById(R.id.pd_recycler);
         rcv.setHasFixedSize(true);
         rcv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
         rcv.setAdapter(productadapter);
 
-        btn_openDialog_clerk = findViewById(R.id.signForClerk);
-        btn_openDialog_wh = findViewById(R.id.signForWarehouseKeeper);
-        btn_assign = findViewById(R.id.btnAssignProduct);
+        btn_openDialog_clerk = rootView.findViewById(R.id.signForClerk);
+        btn_openDialog_wh = rootView.findViewById(R.id.signForWarehouseKeeper);
+        btn_assign = rootView.findViewById(R.id.btnAssignProduct);
 
         btn_openDialog_clerk.setOnClickListener(new View.OnClickListener() {
             @Override
