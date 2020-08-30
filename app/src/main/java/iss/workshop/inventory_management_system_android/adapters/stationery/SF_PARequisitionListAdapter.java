@@ -1,4 +1,4 @@
-package iss.workshop.inventory_management_system_android.adapters;
+package iss.workshop.inventory_management_system_android.adapters.stationery;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.adapters.BaseAdapter;
 import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 

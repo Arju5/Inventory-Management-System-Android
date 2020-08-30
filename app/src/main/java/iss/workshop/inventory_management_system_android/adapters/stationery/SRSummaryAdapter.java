@@ -1,4 +1,4 @@
-package iss.workshop.inventory_management_system_android.adapters;
+package iss.workshop.inventory_management_system_android.adapters.stationery;
 
 import android.content.Context;
 import android.util.Log;
@@ -48,8 +48,6 @@ public class SRSummaryAdapter extends ArrayAdapter {
         srcode.setText(stationeryRetrievalList.get(position).srCode);
         TextView srdate = view.findViewById(R.id.srDate);
         srdate.setText(stationeryRetrievalList.get(position).srDate);
-
-
         return view;
     }
 }
