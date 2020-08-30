@@ -19,7 +19,6 @@ import java.util.List;
 import iss.workshop.inventory_management_system_android.helper.Pageable;
 
 public abstract class BaseAdapter extends RecyclerView.Adapter {
-
     private static final String TAG = BaseAdapter.class.getSimpleName();
 
     private static final int VIEW_LOADING = 0;
@@ -413,5 +412,4 @@ public abstract class BaseAdapter extends RecyclerView.Adapter {
             this.onRetryListener = onRetryListener;
         }
     }
-
 }

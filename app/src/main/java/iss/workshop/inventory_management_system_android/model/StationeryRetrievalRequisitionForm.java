@@ -1,10 +1,6 @@
 package iss.workshop.inventory_management_system_android.model;
 
-import java.io.Serializable;
-
-import iss.workshop.inventory_management_system_android.helper.Pageable;
-
-public class StationeryRetrievalRequisitionForm implements Serializable, Pageable {
+public class StationeryRetrievalRequisitionForm {
     public int id;
     public StationeryRetrieval stationeryRetrieval;
     public RequisitionForm requisitionForm;
@@ -50,5 +46,6 @@ public class StationeryRetrievalRequisitionForm implements Serializable, Pageabl
     public void setIsSelected(boolean selected) {
         isSelected = selected;
     }
+
     public boolean getIsSelected() {return isSelected;}
 }

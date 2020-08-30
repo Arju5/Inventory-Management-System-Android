@@ -1,10 +1,6 @@
 package iss.workshop.inventory_management_system_android.model;
 
-import java.io.Serializable;
-
-import iss.workshop.inventory_management_system_android.helper.Pageable;
-
-public class ProductCategory implements Serializable, Pageable {
+public class ProductCategory {
     public int id;
     public String productCategoryName;
 
