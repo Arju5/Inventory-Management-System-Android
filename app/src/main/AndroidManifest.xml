@@ -25,6 +25,8 @@
         <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
         <activity android:name=".activities.disbursement.DisbursementFormActivity" />
         <!-- by htp -->
+        <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
+        <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity
@@ -47,8 +49,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.DashboardActivity" />
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.LoginActivity">
+        <activity android:name=".activities.DashboardActivity" />
+        <activity android:name=".activities.LoginActivity">
 
             <!--
             <intent-filter>

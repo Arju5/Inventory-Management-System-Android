@@ -27,6 +27,9 @@ import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
+import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
+import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
+import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_SRFActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalSummaryActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
@@ -58,6 +61,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             //setText(sharePreferenceHelper.getUserName().toUpperCase());
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.base_drawer);
+        } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storeclerk_drawer);
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
@@ -167,8 +173,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
         Menu m=nv.getMenu();
+
         int id = item.getItemId();
 
         /*Store Clerk Menu Item Expansion*/
@@ -216,7 +224,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if(id == R.id.storeclerk_DisbursementSummary){
 
         }
-
         /*------*/
 
         if(id == R.id.logout) {
@@ -240,6 +247,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+=========
+        } /*else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+>>>>>>>>> Temporary merge branch 2
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementFormActivity.class);
             startActivity(intent);
