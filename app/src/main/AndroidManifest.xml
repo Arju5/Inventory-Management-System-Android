@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.department.DepHeadApproveDisbursementActivity"></activity>
+        <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
+        <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
         <activity android:name=".activities.dashboard.StoreClerkDashboard" />
@@ -20,15 +21,15 @@
         <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
         <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
         <activity android:name=".activities.disbursement.DisbursementFormActivity" />
-        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" />
-        <!--<activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />-->
-        <!-- Requisition Activities--><!--by htp-->
-        <activity android:name=".activities.requisition.ApplyRequistionActivity"></activity>
+        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" /> <!-- <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" /> -->
+        <!-- Requisition Activities -->
+        <!-- by htp -->
+        <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
-        <activity android:name=".activities.requisition.RequisitionFormActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <!--END Requisition Activities-->
+        <activity
+            android:name=".activities.requisition.RequisitionFormActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- END Requisition Activities -->
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>

@@ -31,13 +31,14 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard, frameLayout);
             txt_menuTitle.setText("DASHBOARD");
 
-            Button memp_PendingRequisitions = (Button) rootView.findViewById(R.id.emp_CreateRequisition);
+
+           /* Button memp_PendingRequisitions = (Button) rootView.findViewById(R.id.emp_CreateRequisition);
             memp_PendingRequisitions.setOnClickListener(this);
             Button memp_ApprovedRequisitions = (Button) rootView.findViewById(R.id.emp_Requisitions);
             memp_ApprovedRequisitions.setOnClickListener(this);
             Button memp_Disbursements = (Button) rootView.findViewById(R.id.emp_Disbursements);
             memp_Disbursements.setOnClickListener(this);
-
+*/
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Intent intent = new Intent(this, StoreClerkDashboard.class);
@@ -65,7 +66,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
 
-        if(id == R.id.emp_CreateRequisition) {
+        /*if(id == R.id.emp_CreateRequisition) {
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
         }
@@ -74,7 +75,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             Intent intent = new Intent(this, RequisitionSummaryActivity.class);
             intent.putExtra("btnId", id);
             startActivity(intent);
-        }
+        }*/
 
     }
 

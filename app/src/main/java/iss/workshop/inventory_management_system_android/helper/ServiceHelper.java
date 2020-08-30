@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
@@ -89,20 +91,23 @@ public class ServiceHelper {
 
 
     public interface ApiService {
-       /* // Product APIS starts
+        // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-*/
+
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
         Call<Employee> getEmpObj(@Query("Username") String Username, @Query("Password") String Password);
 
-/*
         @GET("Employee/GetEmployeeById")
-        Call<Employee> getEmployeeById(@Query("empId") int empId);*/
+        Call<Employee> getEmployeeById(@Query("empId") int empId);
+
+        @GET("Employee/GetEmployeeList")
+        Call<ArrayList<Employee>> getEmployeeList();
+
         //Employee APIS ends
 
         //Requisition APIs start
@@ -123,7 +128,6 @@ public class ServiceHelper {
         @POST("Requisition/SaveRf")
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
-
         @POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
@@ -133,15 +137,15 @@ public class ServiceHelper {
         Call<String> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
-        /*//Dashboard APIS starts
+        //Dashboard APIS starts
 
-        @GET("Dashboard/GetDashBox")//For Dashboard
+        /*@GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
         @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);
+        Call<Object> getDashTest(@Query("Username") String Username);*/
         //Dash APIS ends
-*/
+
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
@@ -217,21 +221,20 @@ public class ServiceHelper {
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
         // Stationery APIS ends
 */
-       /* //Department APIs start
+        //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
 
         @GET("Department/GetDepartmentInfo")
         Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
         //Department APIs end
-*/
+
         /*//Supplier APIs start
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
-        //Supplier APIs end
+        //Supplier APIs end*/
 
-        @GET("Employee/GetEmployeeList")
-        Call<ArrayList<Employee>> getEmployeeList();*/
+
     }
 
 }
