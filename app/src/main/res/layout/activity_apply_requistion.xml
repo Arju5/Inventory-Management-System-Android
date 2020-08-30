@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.requisition.ApplyRequistionActivity">
+    tools:context=".activities.requisition.ApplyRequistionActivity"
+    >
     <TableLayout
         android:id="@+id/apply_table"
         android:layout_width="match_parent"
@@ -31,17 +32,24 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-            <SearchView
-                android:id="@+id/search"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:iconifiedByDefault="false"
-                app:layout_constraintTop_toBottomOf="@+id/rf_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                >
 
-                <requestFocus />
-            </SearchView>
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:drawableLeft="@drawable/ic_search"
+                android:iconifiedByDefault="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rf_title"></EditText>
+            <Button
+                android:id="@+id/search_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Search"
+                android:textSize="15sp"
+                android:background="@drawable/bg2"/>
         </TableRow>
 
         <TableRow
