@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
-import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.department.DepHeadApproveDisbursementActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.model.Employee;

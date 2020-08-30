@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.adapters.SRSummaryAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SRSummaryAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalSummaryViewModel;
 import retrofit2.Call;
@@ -44,7 +44,7 @@ public class SF_StationeryRetrievalFormSummaryListViewActivity extends BaseActiv
         //setContentView(R.layout.srsummary_listview);
 
         View rootView = getLayoutInflater().inflate(R.layout.srsummary_listview, frameLayout);
-        txt_menuTitle.setText("Create SRF");
+        txt_menuTitle.setText("Summary");
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
