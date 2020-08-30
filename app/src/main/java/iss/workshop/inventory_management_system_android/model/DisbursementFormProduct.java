@@ -1,10 +1,51 @@
 package iss.workshop.inventory_management_system_android.model;
 
 public class DisbursementFormProduct {
-    public int Id;
+    public int id;
 
-    public DisbursementForm DisbursementForm;
-    public Product Product;
-    public int ProductToDeliverTotal;
-    public int ProductDeliveredTotal;
+    public DisbursementForm disbursementForm;
+    public Product product;
+    public int productToDeliverTotal;
+    public int productDeliveredTotal;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public DisbursementForm getDisbursementForm() {
+        return disbursementForm;
+    }
+
+    public void setDisbursementForm(DisbursementForm disbursementForm) {
+        this.disbursementForm = disbursementForm;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getProductToDeliverTotal() {
+        return productToDeliverTotal;
+    }
+
+    public void setProductToDeliverTotal(int productToDeliverTotal) {
+        this.productToDeliverTotal = productToDeliverTotal;
+    }
+
+    public int getProductDeliveredTotal() {
+        return productDeliveredTotal;
+    }
+
+    public void setProductDeliveredTotal(int productDeliveredTotal) {
+        this.productDeliveredTotal = productDeliveredTotal;
+    }
+
 }

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.disbursement.DisbursementFormDetailsActivity"
+    android:layout_marginTop="70dp"
+    app:layout_constraintTop_toBottomOf="@+id/app_bar_layout">
+
+    <TextView
+        android:id="@+id/disbursementFormCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
+        android:text="Disbursement - "></TextView>
+
+
+    <TextView
+        android:id="@+id/departmentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/disbursementFormCode"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:text="Department Name : "></TextView>
+
+
+    <TextView
+        android:id="@+id/departmentRepresentative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/departmentName"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:text="Department Representative : "></TextView>
+
+    <TextView
+        android:id="@+id/collectionPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/departmentRepresentative"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:text="Collection Point : "></TextView>
+
+    <TextView
+        android:id="@+id/collectionDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/collectionPoint"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:text="Collection Date and Time : "></TextView>
+
+    <TableLayout
+        android:id="@+id/disbursementRequisitionForms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/collectionDateTime"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="30dp"
+        android:gravity="center">
+
+        <TableRow
+            android:id="@+id/disbursementRequisitionForm"
+            android:background="@color/colorBlackTransparent"
+            android:showDividers="end">
+
+            <TextView
+                android:id="@+id/requisitionSerialnumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="No"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/requisitionCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="Requisition ID"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/requisitionDeliveryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="Date"
+                android:textSize="15dp" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/disbursementFormProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/disbursementRequisitionForms"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="30dp"
+        android:gravity="center">
+
+        <TableRow
+            android:id="@+id/disbursementFormProduct"
+            android:background="@color/colorBlackTransparent"
+            android:showDividers="end">
+
+            <TextView
+                android:id="@+id/productSerialnumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="No"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:gravity="center"
+                android:text="Product"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/productQuantityRequested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Qty Requested"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/productQuantityCollected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Qty Collected"
+                android:textSize="15dp" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+
+    <Button
+        android:id="@+id/disbursementFormSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/disbursementFormProducts"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/badgegreen"
+        android:text="PROCEED TO DELIVERY" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
