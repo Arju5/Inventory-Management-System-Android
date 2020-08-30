@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
@@ -170,7 +169,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
-        if(id == R.id.create_srform){
+        /*if(id == R.id.create_srform){
             Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
             startActivity(intent);
         }
@@ -183,7 +182,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         if(id == R.id.view_dfsummary){
 
-        }
+        }*/
         /*------*/
 
         if(id == R.id.logout) {
@@ -207,8 +206,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             finish();
         } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, DisbursementFormActivity.class);
-            startActivity(intent);
+            //Intent intent   = new Intent(this, DisbursementFormActivity.class);
+            //startActivity(intent);
             finish();
         }
 
