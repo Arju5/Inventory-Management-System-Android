@@ -150,14 +150,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.storeclerk_DepartmentSummary).setVisible(b);
             m.findItem(R.id.storeclerk_SupplierSummary).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Inventory) {
+        } else if (id == R.id.storeclerk_products) {
             boolean b=!m.findItem(R.id.storeclerk_product_catalogue).isVisible();
             m.findItem(R.id.storeclerk_product_catalogue).setVisible(b);
             m.findItem(R.id.storeclerk_UpdateInventory).setVisible(b);
             m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
             m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Forms) {
+        } else if (id == R.id.storeclerk_forms) {
             boolean b=!m.findItem(R.id.storeclerk_DisbursementSummary).isVisible();
             m.findItem(R.id.storeclerk_DisbursementSummary).setVisible(b);
             m.findItem(R.id.storeclerk_StationeryRetrievalSummary).setVisible(b);
