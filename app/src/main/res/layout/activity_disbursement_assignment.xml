@@ -10,14 +10,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/df_handOverTitle"
+            android:id="@+id/dfassignTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Disbursement Form Hand Over"
+            android:text="Disbursement Assignment"
             android:textStyle="bold"
             android:gravity="center"/>
         <TableLayout
-            android:id="@+id/df_handOverDetails"
+            android:id="@+id/disbursement_HandOverDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="1"
@@ -25,11 +25,11 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/storeclerkfordelivery"
+                    android:id="@+id/dfassign_storeclerkfordelivery"
                     android:text="Store Clerk"
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOverstoreclerknamefordelivery"
+                    android:id="@+id/df_AssignDisbursementStoreClerk"
                     android:text="Yamone"
                     android:gravity="left"
                     android:padding="5dip"/>
@@ -37,11 +37,23 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/df_handOverdepRep"
+                    android:id="@+id/dfassign_depName"
+                    android:text="Department"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementDepName"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_depRep"
                     android:text="Department Rep "
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOverdepRepName"
+                    android:id="@+id/df_AssignDisbursementDepRep"
                     android:text=""
                     android:gravity="left"
                     android:padding="5dip" />
@@ -49,11 +61,11 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/df_dfcode_holder"
+                    android:id="@+id/dfassign_dfnumber_holder"
                     android:text="Disbursement Number"
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOverdfcode"
+                    android:id="@+id/df_AssignDisbursementCode"
                     android:text=""
                     android:gravity="left"
                     android:padding="5dip" />
@@ -61,11 +73,11 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/df_collectionpoint"
+                    android:id="@+id/dfassign_collectionpoint"
                     android:text="Collection Point"
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOvercollectionpointName"
+                    android:id="@+id/df_AssignDisbursementCollection"
                     android:text=""
                     android:gravity="left"
                     android:padding="5dip" />
@@ -73,11 +85,11 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/df_Status"
+                    android:id="@+id/dfassign_Status"
                     android:text="Disbursement Status"
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOverDisbursementStatus"
+                    android:id="@+id/df_AssignDisbursementStatus"
                     android:text=""
                     android:gravity="left"
                     android:padding="5dip" />
@@ -85,11 +97,11 @@
 
             <TableRow>
                 <TextView
-                    android:id="@+id/df_delivery"
+                    android:id="@+id/dfassign_delivery"
                     android:text="Delivery Date and Time"
                     android:padding="5dip" />
                 <TextView
-                    android:id="@+id/df_handOverDeliveryDateTime"
+                    android:id="@+id/df_AssignDisbursementDeliveryDate1"
                     android:text=""
                     android:gravity="left"
                     android:padding="5dip" />
@@ -98,7 +110,7 @@
         </TableLayout>
 
         <TextView
-            android:id="@+id/df_handoverRequisitions"
+            android:id="@+id/df_AssignRequisitions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/disbursement_HandOverDetails"
@@ -108,7 +120,7 @@
 
 
         <TableLayout
-            android:id="@+id/df_handOverdisbursementRequisitionForms"
+            android:id="@+id/df_AssignRequisitionForms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/collectionDateTime"
@@ -116,58 +128,58 @@
             android:layout_marginVertical="30dp"
             android:gravity="center">
 
-        <TableRow
-            android:id="@+id/df_handOverdisbursementRequisitionForm"
-            android:background="@color/colorBlackTransparent"
-            android:showDividers="end">
+            <TableRow
+                android:id="@+id/df_AssignRequisitionForm"
+                android:background="@color/colorBlackTransparent"
+                android:showDividers="end">
 
-            <TextView
-                android:id="@+id/df_handOverrequisitionSerialnumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text="No"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/df_AssignRequisitionSerialNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:text="No"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/df_handOverrequisitionCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:textColor="@color/colorBlack"
-                android:text="Requisition ID"
-                android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/df_AssignRequisitionCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="Requisition ID"
+                    android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/df_handOverrequisitionDeliveryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:textColor="@color/colorBlack"
-                android:text="Date"
-                android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/df_AssignReqDeliveryDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="Date"
+                    android:textSize="15dp" />
 
-        </TableRow>
+            </TableRow>
 
 
-    </TableLayout>
+        </TableLayout>
 
 
         <TextView
-            android:id="@+id/df_handOvercollectionSummary"
+            android:id="@+id/collectionSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/disbursement_HandOverDetails"
-            android:text="Collection SSummary"
+            android:text="Collection Summary"
             android:textStyle="bold"
             android:gravity="center"/>
 
         <TableLayout
-            android:id="@+id/df_handOverdfFormProducts"
+            android:id="@+id/df_AssignDisbursementFormProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/collectionSummary"
@@ -176,12 +188,12 @@
             android:gravity="center">
 
             <TableRow
-                android:id="@+id/df_handOverdisbursementFormProduct"
+                android:id="@+id/df_AssignDisbursementFormProduct"
                 android:background="@color/colorBlackTransparent"
                 android:showDividers="end">
 
                 <TextView
-                    android:id="@+id/df_handOverproductSerialnumber"
+                    android:id="@+id/df_AssignSerialNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -190,7 +202,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/df_handOverproductName"
+                    android:id="@+id/df_AssignProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
@@ -199,7 +211,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/df_handOverproductQuantityRequested"
+                    android:id="@+id/df_AssignRequestedQty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -208,7 +220,7 @@
                     android:textSize="15dp" />
 
                 <TextView
-                    android:id="@+id/df_handOverproductQuantityCollected"
+                    android:id="@+id/df_AssignDeliveredQty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -218,51 +230,9 @@
 
             </TableRow>
         </TableLayout>
-        <LinearLayout
-            android:id="@+id/SignInLinear"
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:layout_constraintTop_toBottomOf="@+id/handOver_dfFormProducts">
-
-            <Button
-                android:id="@+id/df_handOversignForClerk"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg2"
-                android:text="Sign In (Clerk)"
-                android:textColor="@color/colorWhite"></Button>
-
-            <TextView
-                android:id="@+id/df_handOverpasswordclerk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/df_handOversignForDepRep"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg2"
-                android:text="Sign In (DEP REP)"
-                android:textColor="@color/colorWhite"></Button>
-
-            <TextView
-                android:id="@+id/df_handOverpasswordDepRep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:visibility="gone" />
-
-
-        </LinearLayout>
 
         <Button
-            android:id="@+id/df_handOverdisbursementFormSubmit"
+            android:id="@+id/df_AssignDisbursementFormSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/disbursementFormProducts"
@@ -274,3 +244,4 @@
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
+

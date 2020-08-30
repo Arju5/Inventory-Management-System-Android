@@ -10,7 +10,7 @@
     app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     <TextView
-        android:id="@+id/disbursementFormCode"
+        android:id="@+id/df_ApprovedisbursementFormCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,10 +23,10 @@
 
 
     <TextView
-        android:id="@+id/departmentName"
+        android:id="@+id/df_ApprovedepartmentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/disbursementFormCode"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovedisbursementFormCode"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
@@ -35,10 +35,10 @@
 
 
     <TextView
-        android:id="@+id/departmentRepresentative"
+        android:id="@+id/df_ApprovedepartmentRepresentative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/departmentName"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovedepartmentName"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
@@ -46,10 +46,10 @@
         android:text="Department Representative : "></TextView>
 
     <TextView
-        android:id="@+id/collectionPoint"
+        android:id="@+id/df_ApprovecollectionPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/departmentRepresentative"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovedepartmentRepresentative"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
@@ -57,10 +57,10 @@
         android:text="Collection Point : "></TextView>
 
     <TextView
-        android:id="@+id/collectionDateTime"
+        android:id="@+id/df_ApprovecollectionDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/collectionPoint"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovecollectionPoint"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
@@ -68,21 +68,21 @@
         android:text="Collection Date and Time : "></TextView>
 
     <TableLayout
-        android:id="@+id/disbursementRequisitionForms"
+        android:id="@+id/df_ApprovedisbursementRequisitionForms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/collectionDateTime"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovecollectionDateTime"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="30dp"
         android:gravity="center">
 
         <TableRow
-            android:id="@+id/disbursementRequisitionForm"
+            android:id="@+id/df_ApprovedisbursementRequisitionForm"
             android:background="@color/colorBlackTransparent"
             android:showDividers="end">
 
             <TextView
-                android:id="@+id/requisitionSerialnumber"
+                android:id="@+id/df_ApproverequisitionSerialnumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
@@ -92,7 +92,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/requisitionCode"
+                android:id="@+id/df_ApproverequisitionCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
@@ -102,7 +102,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/requisitionDeliveryDate"
+                android:id="@+id/df_ApproverequisitionDeliveryDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
@@ -117,21 +117,21 @@
     </TableLayout>
 
     <TableLayout
-        android:id="@+id/disbursementFormProducts"
+        android:id="@+id/df_ApprovedisbursementFormProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/disbursementRequisitionForms"
+        app:layout_constraintTop_toBottomOf="@+id/df_ApprovedisbursementRequisitionForms"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="30dp"
         android:gravity="center">
 
         <TableRow
-            android:id="@+id/disbursementFormProduct"
+            android:id="@+id/df_ApprovedisbursementFormProduct"
             android:background="@color/colorBlackTransparent"
             android:showDividers="end">
 
             <TextView
-                android:id="@+id/productSerialnumber"
+                android:id="@+id/df_ApproveproductSerialnumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -141,7 +141,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/productName"
+                android:id="@+id/df_ApproveproductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
@@ -151,7 +151,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/productQuantityRequested"
+                android:id="@+id/df_ApproveproductQuantityRequested"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -161,7 +161,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/productQuantityCollected"
+                android:id="@+id/df_ApproveproductQuantityCollected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -178,15 +178,15 @@
 
 
     <Button
-        android:id="@+id/disbursementFormSubmit"
+        android:id="@+id/df_ApprovedisbursementFormSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/disbursementFormProducts"
+        app:layout_constraintTop_toBottomOf="@id/df_ApprovedisbursementFormProducts"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/badgegreen"
-        android:text="PROCEED TO NEXT STEP" />
+        android:text="APPROVE" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

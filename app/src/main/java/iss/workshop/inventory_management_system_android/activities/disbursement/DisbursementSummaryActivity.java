@@ -48,10 +48,12 @@ public class DisbursementSummaryActivity extends BaseActivity implements Adapter
         dfSummaryAdapter.clear();
         final ListView disbursementListView = (ListView) findViewById(R.id.disbursementsummary);
         Call<ArrayList<DisbursementForm>> serviceDFAPICall = null;
-        if(status.equals("PENDING_APPROVAL"))
-            serviceDFAPICall = service.getPendingAssignmentDisbursementList();
+        if(status.equals("OPEN"))
+            serviceDFAPICall = service.getCreatedDisbursementList();
         else if (status.equals("PENDING_DELIVERY"))
             serviceDFAPICall = service.getPendingDeliveryDisbursementList();
+        else if (status.equals("PENDING_ASSIGNMENT"))
+            serviceDFAPICall = service.getPendingAssignmentDisbursementList();
         else if (status.equals("COMPLETED"))
             serviceDFAPICall = service.getCompleteDisbursementList();
         serviceDFAPICall.enqueue(new Callback<ArrayList<DisbursementForm>>() {
@@ -77,7 +79,7 @@ public class DisbursementSummaryActivity extends BaseActivity implements Adapter
     public void onItemClick(AdapterView<?> av,
                             View v, int pos, long id) {
 
-        TextView textView = v.findViewById(R.id.disbursementCode);
+        TextView textView = v.findViewById(R.id.dfsummary_DisbursementCode);
         String expr = textView.getText().toString();
         Intent intent = new Intent(DisbursementSummaryActivity.this, DisbursementFormDetailsActivity.class);
         intent.putExtra("DFCode", expr);

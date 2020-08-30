@@ -43,13 +43,17 @@ public class DisbursementSummaryAdapter extends ArrayAdapter {
                 Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.disbursement_summary_row, null);
 
-        TextView dfcode = view.findViewById(R.id.disbursementCode);
+        TextView dfcode = view.findViewById(R.id.dfsummary_DisbursementCode);
         dfcode.setText(disbursementFormList.get(position).dfCode);
-        TextView deliveryDate = view.findViewById(R.id.deliveryDate);
-        deliveryDate.setText(disbursementFormList.get(position).dfDeliveryDate);
-        TextView deliveryTime = view.findViewById(R.id.deliveryTime);
+        TextView storeClerk = view.findViewById(R.id.dfsummary_StoreClerk);
+        storeClerk.setText(disbursementFormList.get(position).storeClerk.firstname + " " + disbursementFormList.get(position).storeClerk.lastname);
+        TextView departmentName = view.findViewById(R.id.dfsummary_Department);
+        departmentName.setText(disbursementFormList.get(position).deptRep.department.departmentName);
+        TextView departmentRep = view.findViewById(R.id.dfsummary_DepartmentRep);
+        departmentRep.setText(disbursementFormList.get(position).deptRep.firstname + " " + disbursementFormList.get(position).deptRep.lastname);
+        TextView deliveryTime = view.findViewById(R.id.dfsummary_DeliveryDate);
         deliveryTime.setText(disbursementFormList.get(position).dfDeliveryDate);
-        TextView collectionPoint = view.findViewById(R.id.collectionPoint);
+        TextView collectionPoint = view.findViewById(R.id.dfsummary_collectionPoint);
         collectionPoint.setText(disbursementFormList.get(position).collectionPoint.collectionName);
 
         return view;

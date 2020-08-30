@@ -173,6 +173,12 @@ public class ServiceHelper {
         @POST("Disbursement/DeliverDF")
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
 
+        @POST("Disbursement/ApproveDF")
+        Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/CeatedDF")
+        Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
+
         // Disbursement APIS ends
 
         /*// Stationery APIS starts
