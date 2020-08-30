@@ -25,7 +25,10 @@ import com.google.android.material.navigation.NavigationView;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
+import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
+import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
+import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -130,17 +133,61 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
+        Menu m=nv.getMenu();
+
         int id = item.getItemId();
-        if(id == R.id.logout) {
+
+        /*Store Clerk Menu Item Expansion*/
+        if(id == R.id.storeclerk_Directory){
+            boolean b=!m.findItem(R.id.storeclerk_DepartmentSummary).isVisible();
+            //setting submenus visible state
+            m.findItem(R.id.storeclerk_DepartmentSummary).setVisible(b);
+            m.findItem(R.id.storeclerk_SupplierSummary).setVisible(b);
+            return true;
+        } else if (id == R.id.storeclerk_Inventory) {
+            boolean b=!m.findItem(R.id.storeclerk_ProductCatalogue).isVisible();
+            m.findItem(R.id.storeclerk_ProductCatalogue).setVisible(b);
+            m.findItem(R.id.storeclerk_UpdateInventory).setVisible(b);
+            m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
+            m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
+            return true;
+        } else if (id == R.id.storeclerk_Requisitions) {
+            boolean b=!m.findItem(R.id.storeclerk_DisbursementSummary).isVisible();
+            m.findItem(R.id.storeclerk_DisbursementSummary).setVisible(b);
+            m.findItem(R.id.storeclerk_StationeryRetrievalSummary).setVisible(b);
+            m.findItem(R.id.storeclerk_CreateStationeryRetrieval).setVisible(b);
+            m.findItem(R.id.storeclerk_CreateDisbursement).setVisible(b);
+            return true;
+        } else if (id == R.id.base_nav_products) {
+            boolean b=!m.findItem(R.id.base_nav_productcatalogue).isVisible();
+            m.findItem(R.id.base_nav_productcatalogue).setVisible(b);
+            return true;
+        } else if (id == R.id.base_nav_forms) {
+            boolean b=!m.findItem(R.id.base_nav_requisitionSummary).isVisible();
+            m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
+            m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
+            return true;
+        } else if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(intent);
-        } else if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
+        } else if (id == R.id.base_nav_applyrequisitions && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
             startActivity(intent);
         } else if (id == R.id.base_nav_requisitionSummary && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Requisition Summary", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, RequisitionLandingActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.base_nav_productcatalogue && sharePreferenceHelper.getUserRole().equals("Employee")) {
+            Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementFormActivity.class);

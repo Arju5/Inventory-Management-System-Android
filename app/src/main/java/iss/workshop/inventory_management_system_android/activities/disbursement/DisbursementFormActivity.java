@@ -111,7 +111,7 @@ public class DisbursementFormActivity extends BaseActivity {
                     DisbursementViewModel dfViewModel = response.body();
                     if (dfViewModel != null) {
                         Toast.makeText(getApplicationContext(), "Create Disbursement is successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DisbursementFormActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(DisbursementFormActivity.this, DisbursementSummaryStatusSelectionActivity.class);
                         intent.putExtra("empType", sharePreferenceHelper.getUserRole());
                         startActivity(intent);
                     }

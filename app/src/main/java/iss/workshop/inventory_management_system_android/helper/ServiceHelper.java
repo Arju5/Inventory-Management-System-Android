@@ -9,8 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.Product;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
@@ -103,9 +106,13 @@ public class ServiceHelper {
 
         @GET("Dashboard/GetCountDashboard") //For count of card items on dashboard
         Call<DashboardViewModel> getCountDashboard(@Query("Id") int id);
-/*
+
         @GET("Employee/GetEmployeeById")
-        Call<Employee> getEmployeeById(@Query("empId") int empId);*/
+        Call<Employee> getEmployeeById(@Query("empId") int empId);
+
+        @GET("Employee/GetEmployeeList")
+        Call<ArrayList<Employee>> getEmployeeList();
+
         //Employee APIS ends
 
        /* //Requisition APIs start
@@ -115,13 +122,12 @@ public class ServiceHelper {
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
-
-    /*  @GET("Requisition/ViewRequisitionFormById")
+        @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
         @GET("Requisition/ViewApprovalRF")
         Call<RequisitionViewModel> ViewApprovalRF(@Query("id") Integer reqId);
-        */
+
 
         @GET("Requisition/ApplyRequisitionForm")
         Call<RequisitionViewModel> ApplyRF();
@@ -129,23 +135,24 @@ public class ServiceHelper {
         @POST("Requisition/SaveRf")
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
-
-      /*@POST("Requisition/Approve")
+        @POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
 
-        //Requisition APIs ends*/
+        @POST("Requisition/Cancel")
+        Call<String> Cancel(@Query("id") Integer reqId);
+        //Requisition APIs ends
 
-        /*//Dashboard APIS starts
+        //Dashboard APIS starts
 
-        @GET("Dashboard/GetDashBox")//For Dashboard
+        /*@GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
         @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);
+        Call<Object> getDashTest(@Query("Username") String Username);*/
         //Dash APIS ends
-*/
+
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
@@ -176,6 +183,12 @@ public class ServiceHelper {
 
         @POST("Disbursement/DeliverDF")
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/ApproveDF")
+        Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/CreatedDF")
+        Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
 
         // Disbursement APIS ends
 
@@ -215,21 +228,20 @@ public class ServiceHelper {
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
         // Stationery APIS ends
 */
-       /* //Department APIs start
+        //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
 
         @GET("Department/GetDepartmentInfo")
         Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
         //Department APIs end
-*/
+
         /*//Supplier APIs start
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
-        //Supplier APIs end
+        //Supplier APIs end*/
 
-        @GET("Employee/GetEmployeeList")
-        Call<ArrayList<Employee>> getEmployeeList();*/
+
     }
 
 }
