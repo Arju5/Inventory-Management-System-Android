@@ -1,7 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities.department;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;

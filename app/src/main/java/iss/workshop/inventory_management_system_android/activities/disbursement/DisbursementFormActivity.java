@@ -1,5 +1,4 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +16,7 @@ import java.util.List;
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.adapters.DisbursementFormAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -111,7 +111,7 @@ public class DisbursementFormActivity extends BaseActivity {
                     DisbursementViewModel dfViewModel = response.body();
                     if (dfViewModel != null) {
                         Toast.makeText(getApplicationContext(), "Create Disbursement is successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DisbursementFormActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(DisbursementFormActivity.this, DisbursementSummaryStatusSelectionActivity.class);
                         intent.putExtra("empType", sharePreferenceHelper.getUserRole());
                         startActivity(intent);
                     }

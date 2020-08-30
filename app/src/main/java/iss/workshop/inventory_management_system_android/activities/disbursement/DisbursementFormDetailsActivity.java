@@ -1,7 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,22 +57,39 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         });
 
         Button mSubmitbutton = (Button) findViewById(R.id.disbursementFormSubmit);
-        mSubmitbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "View Model - " + disbursementViewModel.disbursementFormProducts.size() + " Status - " + currentStatus);
-                if(disbursementViewModel != null && currentStatus.contains("PENDING")) {
+        if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
+            mSubmitbutton.setVisibility(View.GONE);
+        } else if (currentStatus.equals("PENDING_DELIVERY")){
+            mSubmitbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "View Model - " + disbursementViewModel.disbursementFormProducts.size() + " Status - " + currentStatus);
+
                     DibursementHandOverActivity.setDisbursementViewModel(disbursementViewModel);
                     Toast.makeText(DisbursementFormDetailsActivity.this, "Proceeding to DELIVERY", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DisbursementFormDetailsActivity.this, DibursementHandOverActivity.class);
                     //intent.putExtra("DisbursementViewModel", disbursementViewModel);
                     startActivity(intent);
                     finish();
-                } else {
-                    Toast.makeText(DisbursementFormDetailsActivity.this, "Oops! Not Approved by Department Rep yet.", Toast.LENGTH_SHORT).show();
+
                 }
-            }
-        });
+            });
+        } else if (currentStatus.equals("PENDING_ASSIGNMENT")){
+            mSubmitbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "View Model - " + disbursementViewModel.disbursementFormProducts.size() + " Status - " + currentStatus);
+
+                    DisbursementAssignment.setDisbursementViewModel(disbursementViewModel);
+                    Toast.makeText(DisbursementFormDetailsActivity.this, "Proceeding to Assignment", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DisbursementFormDetailsActivity.this, DisbursementAssignment.class);
+                    //intent.putExtra("DisbursementViewModel", disbursementViewModel);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
 
     }
     public void putDataToLayout(DisbursementViewModel disbursementViewModel) {

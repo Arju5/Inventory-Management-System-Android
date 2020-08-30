@@ -1,7 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
 import iss.workshop.inventory_management_system_android.adapters.DisbursementSummaryAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
@@ -48,10 +45,12 @@ public class DisbursementSummaryActivity extends BaseActivity implements Adapter
         dfSummaryAdapter.clear();
         final ListView disbursementListView = (ListView) findViewById(R.id.disbursementsummary);
         Call<ArrayList<DisbursementForm>> serviceDFAPICall = null;
-        if(status.equals("PENDING_APPROVAL"))
-            serviceDFAPICall = service.getPendingAssignmentDisbursementList();
+        if(status.equals("OPEN"))
+            serviceDFAPICall = service.getCreatedDisbursementList();
         else if (status.equals("PENDING_DELIVERY"))
             serviceDFAPICall = service.getPendingDeliveryDisbursementList();
+        else if (status.equals("PENDING_ASSIGNMENT"))
+            serviceDFAPICall = service.getPendingAssignmentDisbursementList();
         else if (status.equals("COMPLETED"))
             serviceDFAPICall = service.getCompleteDisbursementList();
         serviceDFAPICall.enqueue(new Callback<ArrayList<DisbursementForm>>() {
@@ -77,7 +76,7 @@ public class DisbursementSummaryActivity extends BaseActivity implements Adapter
     public void onItemClick(AdapterView<?> av,
                             View v, int pos, long id) {
 
-        TextView textView = v.findViewById(R.id.disbursementCode);
+        TextView textView = v.findViewById(R.id.dfsummary_DisbursementCode);
         String expr = textView.getText().toString();
         Intent intent = new Intent(DisbursementSummaryActivity.this, DisbursementFormDetailsActivity.class);
         intent.putExtra("DFCode", expr);

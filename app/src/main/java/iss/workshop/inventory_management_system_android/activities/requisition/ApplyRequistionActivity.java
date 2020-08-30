@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.adapters.requisition.ProductlistAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -25,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ApplyRequistionActivity extends AppCompatActivity
+public class ApplyRequistionActivity extends BaseActivity
         implements  View.OnClickListener {
 
     private static final String TAG = "ApplyrfActivity";
@@ -38,18 +39,20 @@ public class ApplyRequistionActivity extends AppCompatActivity
     private RequisitionViewModel rfViewmodel;
     SharePreferenceHelper sharePreferenceHelper;
     String rfcomment, searchText;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apply_requistion);
+        rootView = getLayoutInflater().inflate(R.layout.activity_apply_requistion, frameLayout);
+        txt_menuTitle.setText("DASHBOARD");
 
         //get login userid
         sharePreferenceHelper = new SharePreferenceHelper(this);
         service = ServiceHelper.getClient(this);
 
         //get view
-        listview = (ListView) findViewById(R.id.prodlist);
+        listview = (ListView) rootView.findViewById(R.id.prodlist);
         prodModelList = new ArrayList<>();
         productlistAdapter = new ProductlistAdapter(this, R.layout.product_item,prodModelList);
 
@@ -57,12 +60,12 @@ public class ApplyRequistionActivity extends AppCompatActivity
         ApplyRF();
 
         //editsearch.setOnQueryTextListener(this);
-        btnsearch = (Button)findViewById(R.id.search_btn);
+        btnsearch = (Button)rootView.findViewById(R.id.search_btn);
         btnsearch.setOnClickListener(this);
 
-        add_rf_cmt = (EditText)findViewById(R.id.add_rf_comment) ;
+        add_rf_cmt = (EditText)rootView.findViewById(R.id.add_rf_comment) ;
 
-        btnnext = (Button) findViewById(R.id.next);
+        btnnext = (Button) rootView.findViewById(R.id.next);
         btnnext.setOnClickListener(this);
     }
 
@@ -156,7 +159,7 @@ public class ApplyRequistionActivity extends AppCompatActivity
         }
         else if(btnid == R.id.search_btn){
             //locate the search text view
-            editsearch = (EditText) findViewById(R.id.search);
+            editsearch = (EditText) rootView.findViewById(R.id.search);
             searchText = editsearch.getText().toString();
             Log.d(TAG, "search text in onCreate: "+searchText);
             productlistAdapter.filter(searchText);

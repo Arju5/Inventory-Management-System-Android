@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.department.DepHeadApproveDisbursementActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.model.Employee;
@@ -75,8 +77,14 @@ public class LoginActivity extends AppCompatActivity {
 
                         emptype = employee.employeeType.employeeTypeName;
 
-                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                        startActivity(intent);
+                        if (emptype.equals("Employee")) {
+                            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Department Head")) {
+                            Intent intent = new Intent(LoginActivity.this, DepHeadDashboardActivity.class);
+                            startActivity(intent);
+                        }
+
 
                     }
                 }
