@@ -1,49 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-    <Button
-        android:id="@+id/TOTAL_REQ_MONTH"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="173dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/bg3"
-        android:text="Total Requisitions for current month"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    <Button
-        android:id="@+id/PENDING_REQ_APPROVAL"
-        android:layout_width="match_parent"
-        android:layout_height="173dp"
-        app:layout_constraintTop_toBottomOf="@+id/TOTAL_REQ_MONTH"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/badgegreen"
-        android:text="Pending Requisition Approval"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        <Button
+            android:id="@+id/DEPTHEAD_TOTAL_RF_PENDING"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/badgegreen"
+            android:text="TOTAL REQUISITIONS SUBMITTED"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/dephead_COMPLETED"
-        android:layout_width="match_parent"
-        android:layout_height="173dp"
-        app:layout_constraintTop_toBottomOf="@+id/PENDING_REQ_APPROVAL"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/bg2"
-        android:text="Pending Requisitions Delivery"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        <Button
+            android:id="@+id/DEPTHEAD_TOTAL_RF_APPROVED"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            app:layout_constraintTop_toBottomOf="@+id/DEPTHEAD_TOTAL_RF_PENDING"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg2"
+            android:text="TOTAL REQUISITIONS APPROVED"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/DEPTHEAD_TOTAL_RF_NOT_COMPLETED"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            app:layout_constraintTop_toBottomOf="@+id/DEPTHEAD_TOTAL_RF_APPROVED"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg2"
+            android:text="TOTAL REQUISITIONS NOT COMPLETED"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/DEPTHEAD_TOTAL_SR_COMPLETED"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            app:layout_constraintTop_toBottomOf="@+id/DEPTHEAD_TOTAL_RF_NOT_COMPLETED"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg3"
+            android:text="TOTAL STATIONERY RETRIEVALS COMPLETED"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
