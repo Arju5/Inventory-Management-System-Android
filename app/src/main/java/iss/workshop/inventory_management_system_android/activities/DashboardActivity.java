@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -8,15 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 import androidx.appcompat.app.AlertDialog;
 
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboard;
-import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionSummaryActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class DashboardActivity extends BaseActivity implements View.OnClickListener{
@@ -41,7 +37,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 */
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Intent intent = new Intent(this, StoreClerkDashboard.class);
+            Intent intent = new Intent(this, StoreClerkDashboardActivity.class);
             startActivity(intent);
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
@@ -79,37 +75,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            ExitApp();
-        }
-    }
-    private void ExitApp() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Logic University Inventory");
-        builder.setMessage("Do You Want To Exit?");
-        builder.setIcon(R.drawable.ic_key);
-        //final AlertDialog dialog = builder.create();
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
-    }
 
 }

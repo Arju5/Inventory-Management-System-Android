@@ -8,8 +8,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 
-public class RequisitionLandingActivity extends AppCompatActivity
+public class RequisitionLandingActivity extends BaseActivity
         implements View.OnClickListener {
 
     private static final String TAG = "ReqLandingActivity";
@@ -17,20 +18,21 @@ public class RequisitionLandingActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requsition_landing);
+        View rootView = getLayoutInflater().inflate(R.layout.activity_requsition_landing, frameLayout);
+        txt_menuTitle.setText("REQUISITION SUMMARY");
 
         Intent intent = getIntent();
         String empType = intent.getStringExtra("empType");
 
-        Button pending_req_btn = findViewById(R.id.view_pending_req);
+        Button pending_req_btn = rootView.findViewById(R.id.view_pending_req);
         if (pending_req_btn != null)
             pending_req_btn.setOnClickListener(this);
 
-        Button processed_req_btn = findViewById(R.id.view_processed_req);
+        Button processed_req_btn = rootView.findViewById(R.id.view_processed_req);
         if (processed_req_btn != null)
             processed_req_btn.setOnClickListener(this);
 
-        Button create_req_btn = findViewById(R.id.create_req);
+        Button create_req_btn = rootView.findViewById(R.id.create_req);
 
         if(empType.equals("Employee"))
         {

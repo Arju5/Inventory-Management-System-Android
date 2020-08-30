@@ -18,7 +18,7 @@ public class DisbursementSummaryStatusSelectionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_summary_status_selection, frameLayout);
-        txt_menuTitle.setText("Disbursement Summary");
+        txt_menuTitle.setText("DISBURSEMENT SUMMARY");
         Button createdDF = (Button)rootView.findViewById(R.id.df_CREATED);
         Button pendingDeliveryDF = (Button)rootView.findViewById(R.id.df_PENDING_DELIVERY);
         Button pendingAssignedDF = (Button)rootView.findViewById(R.id.df_PENDING_ASSIGNED);

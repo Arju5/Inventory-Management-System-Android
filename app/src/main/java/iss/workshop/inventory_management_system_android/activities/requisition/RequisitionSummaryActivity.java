@@ -95,7 +95,7 @@ public class RequisitionSummaryActivity extends AppCompatActivity
 
         Log.d(TAG, "from summary to form req-code sending :" + req_id.getText().toString());
 
-        Intent intent = new Intent(this, iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity.class);
+        Intent intent = new Intent(this, RequisitionFormActivity.class);
 
         intent.putExtra("reqId", req_id.getText().toString());
         startActivity(intent);

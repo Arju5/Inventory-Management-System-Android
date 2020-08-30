@@ -16,7 +16,7 @@
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
-        <activity android:name=".activities.dashboard.StoreClerkDashboard" />
+        <activity android:name=".activities.dashboard.StoreClerkDashboardActivity" />
         <activity android:name=".activities.disbursement.DibursementHandOverActivity" />
         <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
         <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
@@ -26,6 +26,8 @@
         <!-- by htp -->
         <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
+        <activity android:name=".activities.requisition.RequisitionFormActivity" />
+        <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.stationery.SF_StationeryRetrievalSummaryActivity" />

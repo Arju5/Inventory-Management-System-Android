@@ -58,9 +58,9 @@
         <!--Hide Sub Menu ends-->
 
         <item
-            android:id="@+id/storeclerk_Requisitions"
+            android:id="@+id/storeclerk_Forms"
             android:icon="@drawable/ic_person"
-            android:title="Requisitions"/>
+            android:title="Forms"/>
 
         <!--Hide Sub Menu starts-->
 
@@ -76,7 +76,7 @@
             android:title="Create Stationery Retrieval"
             android:visible="false" />
 
-        <item android:id="@+id/storeclerk_CreateDisbursement"
+        <item android:id="@+id/storeclerk_DisbursementCreate"
             android:title="Create Disbursement"
             android:visible="false" />
 

@@ -43,6 +43,10 @@
             android:visible="false" />
 
         <!--Hide Sub Menu ends-->
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout"/>
 
     </group>
 
