@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/dfassignTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disbursement Assignment"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TableLayout
+            android:id="@+id/disbursement_HandOverDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            app:layout_constraintTop_toBottomOf="@+id/dfhandoverTitle">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_storeclerkfordelivery"
+                    android:text="Store Clerk"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementStoreClerk"
+                    android:text="Yamone"
+                    android:gravity="left"
+                    android:padding="5dip"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_depName"
+                    android:text="Department"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementDepName"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_depRep"
+                    android:text="Department Rep "
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementDepRep"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_dfnumber_holder"
+                    android:text="Disbursement Number"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementCode"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_collectionpoint"
+                    android:text="Collection Point"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementCollection"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_Status"
+                    android:text="Disbursement Status"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementStatus"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dfassign_delivery"
+                    android:text="Delivery Date and Time"
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/df_AssignDisbursementDeliveryDate1"
+                    android:text=""
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/df_AssignRequisitions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/disbursement_HandOverDetails"
+            android:text="Requisitions"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+
+        <TableLayout
+            android:id="@+id/df_AssignRequisitionForms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/collectionDateTime"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="30dp"
+            android:gravity="center">
+
+            <TableRow
+                android:id="@+id/df_AssignRequisitionForm"
+                android:background="@color/colorBlackTransparent"
+                android:showDividers="end">
+
+                <TextView
+                    android:id="@+id/df_AssignRequisitionSerialNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:text="No"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/df_AssignRequisitionCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="Requisition ID"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/df_AssignReqDeliveryDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="Date"
+                    android:textSize="15dp" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+        <TextView
+            android:id="@+id/collectionSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/disbursement_HandOverDetails"
+            android:text="Collection Summary"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TableLayout
+            android:id="@+id/df_AssignDisbursementFormProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/collectionSummary"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="30dp"
+            android:gravity="center">
+
+            <TableRow
+                android:id="@+id/df_AssignDisbursementFormProduct"
+                android:background="@color/colorBlackTransparent"
+                android:showDividers="end">
+
+                <TextView
+                    android:id="@+id/df_AssignSerialNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:text="No"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/df_AssignProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:gravity="center"
+                    android:text="Product"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/df_AssignRequestedQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Qty Requested"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/df_AssignDeliveredQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Qty Collected"
+                    android:textSize="15dp" />
+
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/df_AssignDisbursementFormSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/disbursementFormProducts"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/badgegreen"
+            android:text="PROCEED TO NEXT STEP" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+

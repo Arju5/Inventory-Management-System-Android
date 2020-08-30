@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical"
+    tools:context=".activities.requisition.RequisitionFormActivity">
+
+
+
+    <TextView
+        android:id="@+id/req_form_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="code"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/req_form_status"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/req_form_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="status"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/req_form_code" />
+    <TableLayout
+        android:id="@+id/req_product_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/req_form_status">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/req_product_name_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="Product"
+            android:textSize="15dp"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/product_uom_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="Uom"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/qty_requested"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="Requested"
+            android:textStyle="bold"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/qty_approve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="Approved "
+            android:textStyle="bold"
+            android:textSize="15dp" />
+    </TableRow>
+    </TableLayout>
+    <ListView
+        android:id="@+id/reqProductlistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#e5e5ff"
+        android:dividerHeight="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/req_product_table" />
+    <TextView
+        android:id="@+id/rf_cmt_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RF comments"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/reqProductlistView"/>
+    <TextView
+        android:id="@+id/req_comment_txt"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorGray"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/rf_cmt_label"
+        />
+    <TextView
+        android:id="@+id/head_reply_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RF DeptHead Comments"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/req_comment_txt"/>
+    <EditText
+        android:id="@+id/head_reply"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Comments(if any)"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp"
+        android:textColor="@color/colorBlack"
+        android:inputType="textMultiLine"
+        android:background="@color/colorGray"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/head_reply_label"
+        />
+    <Button
+        android:id="@+id/btn_approve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approve"
+        app:layout_constraintTop_toBottomOf="@+id/head_reply"
+        app:layout_constraintRight_toLeftOf="@+id/btn_reject"
+        android:background="@drawable/badgegreen"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/btn_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reject"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/head_reply"
+        app:layout_constraintLeft_toRightOf="@+id/btn_approve"
+        android:background="@drawable/badgered"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorWhite"
+        />
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:text="Cancel"
+        android:background="@drawable/badgered"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/btn_reject"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,60 +5,82 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/storeclerk_menuProfile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/profile" />
+
+        <item
             android:id="@+id/storeclerk_Dashboard"
             android:icon="@drawable/ic_dashboard"
-            android:title="@string/dashboard"/>
+            android:title="@string/dashboard" />
 
         <item
-            android:id="@+id/product_catalogue"
+            android:id="@+id/storeclerk_Inventory"
             android:icon="@drawable/ic_summary"
-            android:title="Product Catalogue"/>
+            android:title="Inventory" />
+
+        <!--Hide Sub Menu starts-->
+
+        <item android:id="@+id/storeclerk_ProductCatalogue"
+            android:title="Products Catalogue"
+            android:visible="false" />
+
+        <item android:id="@+id/storeclerk_UpdateInventory"
+            android:title="Update Inventory"
+            android:visible="false" />
+
+        <item android:id="@+id/storeclerk_InventorySummary"
+            android:title="Inventory Summary"
+            android:visible="false" />
+
+        <item android:id="@+id/storeclerk_InventoryTransaction"
+            android:title="Inventory Transaction Summary"
+            android:visible="false" />
+
+
+        <!--Hide Sub Menu ends-->
 
         <item
-            android:id="@+id/directory"
+            android:id="@+id/storeclerk_Directory"
             android:icon="@drawable/ic_summary"
-            android:title="Directory"/>
+            android:title="Directory" />
 
-        <!--Hide Sub Menu-->
-        <item android:id="@+id/deptsummary"
+        <!--Hide Sub Menu starts-->
+
+        <item android:id="@+id/storeclerk_DepartmentSummary"
             android:title="Department Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
-        <item android:id="@+id/suppliersummary"
+        <item android:id="@+id/storeclerk_SupplierSummary"
             android:title="Supplier Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+            android:visible="false" />
 
-        <!-- -&#45;&#45;&#45;&#45;-->
+        <!--Hide Sub Menu ends-->
 
         <item
-            android:id="@+id/storeclerk_forms"
-            android:icon="@drawable/ic_summary"
-            android:title="Forms" />
+            android:id="@+id/storeclerk_Requisitions"
+            android:icon="@drawable/ic_person"
+            android:title="Requisitions"/>
 
-        <!--Hide Sub Menu-->
-        <item android:id="@+id/create_srform"
-            android:title="Create Stationery Form"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+        <!--Hide Sub Menu starts-->
 
-        <item android:id="@+id/view_srsummary"
-            android:title="View Stationery Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+        <item android:id="@+id/storeclerk_DisbursementSummary"
+            android:title="Disbursement Summary"
+            android:visible="false" />
 
-        <item android:id="@+id/create_dform"
-            android:title="Create Disbursement Form"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+        <item android:id="@+id/storeclerk_StationeryRetrievalSummary"
+            android:title="Stationery Retrieval Summary"
+            android:visible="false" />
 
-        <item android:id="@+id/view_dfsummary"
-            android:title="View Disbursement Summary"
-            android:visible="false"
-            android:icon="@drawable/ic_summary"/>
+        <item android:id="@+id/storeclerk_CreateStationeryRetrieval"
+            android:title="Create Stationery Retrieval"
+            android:visible="false" />
 
-        <!-- -&#45;&#45;&#45;&#45;-->
+        <item android:id="@+id/storeclerk_CreateDisbursement"
+            android:title="Create Disbursement"
+            android:visible="false" />
+
+        <!--Hide Sub Menu ends-->
 
         <item
             android:id="@+id/logout"

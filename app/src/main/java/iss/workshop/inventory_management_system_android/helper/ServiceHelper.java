@@ -8,7 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.model.Department;
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.Product;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
+import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
+import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import okhttp3.Cache;
@@ -85,36 +91,36 @@ public class ServiceHelper {
 
 
     public interface ApiService {
-       /* // Product APIS starts
+        // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-*/
+
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
         Call<Employee> getEmpObj(@Query("Username") String Username, @Query("Password") String Password);
 
-/*
         @GET("Employee/GetEmployeeById")
-        Call<Employee> getEmployeeById(@Query("empId") int empId);*/
+        Call<Employee> getEmployeeById(@Query("empId") int empId);
+
+        @GET("Employee/GetEmployeeList")
+        Call<ArrayList<Employee>> getEmployeeList();
+
         //Employee APIS ends
 
-       /* //Requisition APIs start
+        //Requisition APIs start
         @GET("Requisition/GetRequisitionById")
         Call<RequisitionForm> getReqByid(@Query("reqId") Integer reqId);
-        */
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
-
-    /*  @GET("Requisition/ViewRequisitionFormById")
+        @GET("Requisition/ViewRequisitionFormById")
         Call<RequisitionViewModel> ViewRFById(@Query("reqId") Integer reqId, @Query("Username") String Username);
 
         @GET("Requisition/ViewApprovalRF")
         Call<RequisitionViewModel> ViewApprovalRF(@Query("id") Integer reqId);
-        */
 
         @GET("Requisition/ApplyRequisitionForm")
         Call<RequisitionViewModel> ApplyRF();
@@ -122,31 +128,36 @@ public class ServiceHelper {
         @POST("Requisition/SaveRf")
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
-
-      /*@POST("Requisition/Approve")
+        @POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
 
-        //Requisition APIs ends*/
+        @POST("Requisition/Cancel")
+        Call<String> Cancel(@Query("id") Integer reqId);
+        //Requisition APIs ends
 
-        /*//Dashboard APIS starts
+        //Dashboard APIS starts
 
-        @GET("Dashboard/GetDashBox")//For Dashboard
+        /*@GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
         @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);
+        Call<Object> getDashTest(@Query("Username") String Username);*/
         //Dash APIS ends
-*/
-        /*// Disbursement APIS starts
+
+        // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
         Call<ArrayList<DisbursementForm>> getCreatedDisbursementList();
 
-        @GET("Disbursement/GetPendingDisbursementList")
+        @GET("Disbursement/GetPendingAssignmentDisbursementList")
 //For Disbursement Lists
-        Call<ArrayList<DisbursementForm>> getPendingDisbursementList();
+        Call<ArrayList<DisbursementForm>> getPendingAssignmentDisbursementList();
+
+        @GET("Disbursement/GetPendingDeliveryDisbursementList")
+//For Disbursement Lists
+        Call<ArrayList<DisbursementForm>> getPendingDeliveryDisbursementList();
 
         @GET("Disbursement/GetCompleteDisbursementList")
 //For Disbursement Lists
@@ -166,8 +177,14 @@ public class ServiceHelper {
         @POST("Disbursement/DeliverDF")
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
 
+        @POST("Disbursement/ApproveDF")
+        Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/CeatedDF")
+        Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
+
         // Disbursement APIS ends
-*/
+
         /*// Stationery APIS starts
         @GET("Stationery/GetOpenSRSummary")
         Call<StationeryRetrievalSummaryViewModel> getOpenSRSummary();
@@ -204,21 +221,20 @@ public class ServiceHelper {
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
         // Stationery APIS ends
 */
-       /* //Department APIs start
+        //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
 
         @GET("Department/GetDepartmentInfo")
         Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
         //Department APIs end
-*/
+
         /*//Supplier APIs start
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
-        //Supplier APIs end
+        //Supplier APIs end*/
 
-        @GET("Employee/GetEmployeeList")
-        Call<ArrayList<Employee>> getEmployeeList();*/
+
     }
 
 }
