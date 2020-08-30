@@ -16,7 +16,6 @@
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
-        <activity android:name=".activities.dashboard.StoreClerkDashboard" />
         <activity android:name=".activities.disbursement.DibursementHandOverActivity" />
         <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
         <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />

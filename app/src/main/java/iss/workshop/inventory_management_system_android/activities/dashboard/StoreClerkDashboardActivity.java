@@ -11,7 +11,7 @@ import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
 
-public class StoreClerkDashboard extends BaseActivity implements View.OnClickListener{
+public class StoreClerkDashboardActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
