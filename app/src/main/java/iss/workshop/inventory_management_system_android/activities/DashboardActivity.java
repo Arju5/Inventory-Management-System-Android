@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -8,15 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 import androidx.appcompat.app.AlertDialog;
 
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboard;
-import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionSummaryActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class DashboardActivity extends BaseActivity implements View.OnClickListener{
@@ -30,7 +25,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         if (sharePreferenceHelper.getUserRole().equals("Employee")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard, frameLayout);
             txt_menuTitle.setText("DASHBOARD");
-
 
            /* Button memp_PendingRequisitions = (Button) rootView.findViewById(R.id.emp_CreateRequisition);
             memp_PendingRequisitions.setOnClickListener(this);

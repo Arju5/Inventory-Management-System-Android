@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DeptRepDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreManagerDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreSupervisorDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.TempDeptHeadDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.department.DepHeadApproveDisbursementActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -37,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         sharePreferenceHelper = new SharePreferenceHelper(this);
-        editUsername = (EditText)findViewById(R.id.editUsername);
-        editPassword=(EditText)findViewById(R.id.editPassword);
+        editUsername = (EditText) findViewById(R.id.editUsername);
+        editPassword = (EditText) findViewById(R.id.editPassword);
 
-        btnSignIn=(Button)findViewById(R.id.btnSignIn);
-        btnRegister=(Button)findViewById(R.id.btnRegister);
+        btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
 
         service = ServiceHelper.getClient(this);
 
@@ -52,8 +57,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "Please Email to Logic University", Toast.LENGTH_SHORT).show();
             }
         });
@@ -68,12 +73,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Employee> call, Response<Employee> response) {
                 if (response.isSuccessful()) {
                     Employee employee = response.body();
-                    if(employee != null){
-                        Log.e(TAG, "onResponse: employee_name : "+employee.firstname);
-                        Log.e(TAG, "onResponse: employee : "+employee.employeeType.employeeTypeName);
+                    if (employee != null) {
+                        Log.e(TAG, "onResponse: employee_name : " + employee.firstname);
+                        Log.e(TAG, "onResponse: employee : " + employee.employeeType.employeeTypeName);
 
                         //add username to shared preferences
-                        sharePreferenceHelper.setLogin(employee.getUsername(),employee.getId(),employee.employeeType.employeeTypeName);
+                        sharePreferenceHelper.setLogin(employee.getUsername(), employee.getId(), employee.employeeType.employeeTypeName);
 
                         emptype = employee.employeeType.employeeTypeName;
 
@@ -83,17 +88,37 @@ public class LoginActivity extends AppCompatActivity {
                         } else if (emptype.equals("Department Head")) {
                             Intent intent = new Intent(LoginActivity.this, DepHeadDashboardActivity.class);
                             startActivity(intent);
+                        } else if (emptype.equals("Store Clerk")) {
+                            Intent intent = new Intent(LoginActivity.this, StoreClerkDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Store Supervisor")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    StoreSupervisorDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Store Manager")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    StoreManagerDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Department Representative")) {
+                            Intent intent = new Intent(LoginActivity.this, DeptRepDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Temporary Department Head")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    TempDeptHeadDashboardActivity.class);
+                            startActivity(intent);
                         }
-
-
                     }
                 }
-            }
 
+
+            }
             @Override
             public void onFailure(Call<Employee> call, Throwable t) {
-                Log.e(TAG, "onFailure: ",t );
+                Log.e(TAG, "onFailure: ", t);
             }
         });
+
     }
+
+
 }

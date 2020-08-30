@@ -8,17 +8,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.Employee;
+import iss.workshop.inventory_management_system_android.model.Product;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
+import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;
 import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
-import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
-import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
+import iss.workshop.inventory_management_system_android.model.Supplier;
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalSummaryViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
+
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -90,22 +99,18 @@ public class ServiceHelper {
         }
     }
 
-
-
     public interface ApiService {
-       /* // Product APIS starts
+        // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-*/
+
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
         Call<Employee> getEmpObj(@Query("Username") String Username, @Query("Password") String Password);
 
-        @GET("Dashboard/GetCountDashboard") //For count of card items on dashboard
-        Call<DashboardViewModel> getCountDashboard(@Query("Id") int id);
 
         @GET("Employee/GetEmployeeById")
         Call<Employee> getEmployeeById(@Query("empId") int empId);
@@ -115,10 +120,10 @@ public class ServiceHelper {
 
         //Employee APIS ends
 
-       /* //Requisition APIs start
+        //Requisition APIs start
         @GET("Requisition/GetRequisitionById")
         Call<RequisitionForm> getReqByid(@Query("reqId") Integer reqId);
-        */
+
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
@@ -135,6 +140,7 @@ public class ServiceHelper {
         @POST("Requisition/SaveRf")
         Call<RequisitionViewModel> SaveRf(@Body RequisitionViewModel requisitionViewModel);
 
+
         @POST("Requisition/Approve")
         Call<RequisitionViewModel> Approve(@Body RequisitionViewModel requisitionViewModel);
         @POST("Requisition/Reject")
@@ -144,15 +150,15 @@ public class ServiceHelper {
         Call<String> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
-        //Dashboard APIS starts
+        /*//Dashboard APIS starts
 
-        /*@GET("Dashboard/GetDashBox")//For Dashboard
+        @GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
         @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);*/
+        Call<Object> getDashTest(@Query("Username") String Username);
         //Dash APIS ends
-
+*/
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
@@ -187,12 +193,12 @@ public class ServiceHelper {
         @POST("Disbursement/ApproveDF")
         Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
 
-        @POST("Disbursement/CreatedDF")
+        @POST("Disbursement/CeatedDF")
         Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
 
         // Disbursement APIS ends
 
-        /*// Stationery APIS starts
+        // Stationery APIS starts
         @GET("Stationery/GetOpenSRSummary")
         Call<StationeryRetrievalSummaryViewModel> getOpenSRSummary();
 
@@ -206,7 +212,7 @@ public class ServiceHelper {
         Call<ArrayList<RequisitionForm>> getRequisitionList();
 
         @POST("Stationery/PostProductsBySelectedRequisition")
-        Call<List<StationeryProductViewModel>> postProductsBySelectedRequisition(@Body List<Integer> selectedRequisition);
+        Call<List<StationeryRetrievalProduct>> postProductsBySelectedRequisition(@Body List<Integer> selectedRequisition);
 
         @POST("Stationery/CreateSRForm")
         Call<StationeryRequisitionProductViewModel> createSRForm(@Body StationeryRequisitionProductViewModel srvm);
@@ -227,7 +233,6 @@ public class ServiceHelper {
         @GET("Stationery/GetCompleteSRById")
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
         // Stationery APIS ends
-*/
         //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
@@ -236,12 +241,10 @@ public class ServiceHelper {
         Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
         //Department APIs end
 
-        /*//Supplier APIs start
+        //Supplier APIs start
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
-        //Supplier APIs end*/
-
-
+        //Supplier APIs end
     }
 
 }
