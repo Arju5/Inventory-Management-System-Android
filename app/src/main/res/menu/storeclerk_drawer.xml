@@ -15,13 +15,13 @@
             android:title="@string/dashboard" />
 
         <item
-            android:id="@+id/base_nav_products"
+            android:id="@+id/storeclerk_products"
             android:icon="@drawable/ic_dashboard"
             android:title="@string/product" />
 
         <!--Hide Sub Menu starts-->
 
-        <item android:id="@+id/base_nav_product_catalogue"
+        <item android:id="@+id/storeclerk_product_catalogue"
             android:title="Products Catalogue"
             android:visible="false" />
 
@@ -60,16 +60,16 @@
         <item
             android:id="@+id/storeclerk_forms"
             android:icon="@drawable/ic_person"
-            android:title="@string/forms"/>
+            android:title="Requisitions"/>
 
         <!--Hide Sub Menu starts-->
 
-        <item android:id="@+id/storeclerk_StationeryRetrievalSummary"
-            android:title="Stationery Retrieval Summary"
-            android:visible="false" />
-
         <item android:id="@+id/storeclerk_DisbursementSummary"
             android:title="Disbursement Summary"
+            android:visible="false" />
+
+        <item android:id="@+id/storeclerk_StationeryRetrievalSummary"
+            android:title="Stationery Retrieval Summary"
             android:visible="false" />
 
         <item android:id="@+id/storeclerk_CreateStationeryRetrieval"

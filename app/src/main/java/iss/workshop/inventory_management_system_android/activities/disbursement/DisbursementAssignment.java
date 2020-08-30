@@ -55,7 +55,7 @@ public class DisbursementAssignment extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DisbursementAssignment.this, "Calling API Assign DF", Toast.LENGTH_SHORT).show();
-                Call<DisbursementViewModel> callsaveReceivedQty = service.DeliverDF(disbursementViewModel);
+                Call<DisbursementViewModel> callsaveReceivedQty = service.AssignDF(disbursementViewModel);
                 callsaveReceivedQty.enqueue(new Callback<DisbursementViewModel>() {
                     @Override
                     public void onResponse(Call<DisbursementViewModel> call, Response<DisbursementViewModel> response) {

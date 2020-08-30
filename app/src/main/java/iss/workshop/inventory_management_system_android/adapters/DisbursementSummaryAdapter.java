@@ -49,8 +49,8 @@ public class DisbursementSummaryAdapter extends ArrayAdapter {
         storeClerk.setText(disbursementFormList.get(position).storeClerk.firstname + " " + disbursementFormList.get(position).storeClerk.lastname);
         TextView departmentName = view.findViewById(R.id.dfsummary_Department);
         departmentName.setText(disbursementFormList.get(position).deptRep.department.departmentName);
-        TextView departmentRep = view.findViewById(R.id.dfsummary_DepartmentRep);
-        departmentRep.setText(disbursementFormList.get(position).deptRep.firstname + " " + disbursementFormList.get(position).deptRep.lastname);
+        /*TextView departmentRep = view.findViewById(R.id.dfsummary_DepartmentRep);
+        departmentRep.setText(disbursementFormList.get(position).deptRep.firstname + " " + disbursementFormList.get(position).deptRep.lastname);*/
         TextView deliveryTime = view.findViewById(R.id.dfsummary_DeliveryDate);
         deliveryTime.setText(disbursementFormList.get(position).dfDeliveryDate);
         TextView collectionPoint = view.findViewById(R.id.dfsummary_collectionPoint);

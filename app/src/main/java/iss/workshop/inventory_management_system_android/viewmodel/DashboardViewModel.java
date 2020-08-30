@@ -15,9 +15,9 @@ public class DashboardViewModel {
     public List<CollectionPoint> cpList;
     public CollectionPoint cpUpdated;
 
-    //By Dept Head - total Req For this Month
+    //By Dept Head - Total Req For this Month
     public int rFsThisMonth;
-    //By Dept Head - total RF Yet to Approve
+    //By Dept Head - Total RF Yet to Approve
     public int pendingRFApproval;
     public int pendingRFDelivery;
     public int totalReqSubmitted;
@@ -40,17 +40,13 @@ public class DashboardViewModel {
     public int totalRFNotCompletedDept;
     public int totalRFCompletedDept;
     public int totalRFOngoingDept;
-
-
-
-
     public int totalSROpen;
-    public int totalSRpendingAssignment;
+    public int totalSRPendingAssignment;
     public int totalSRAssigned;
 
     public int totalDFCreated;
-    public int totalDFpendingDelivery;
-    public int totalDFpendingAssignment;
+    public int totalDFPendingDelivery;
+    public int totalDFPendingAssignment;
     public int totalDFCompleted;
 
 
@@ -58,7 +54,7 @@ public class DashboardViewModel {
     public int totalPONotCompleted;
     public int totalPOCompleted;
 
-    public int totalITpendingApproval;
+    public int totalITPendingApproval;
     public int totalITApproved;
 
     public Employee getEmp() {
@@ -277,12 +273,12 @@ public class DashboardViewModel {
         this.totalSROpen = totalSROpen;
     }
 
-    public int getTotalSRpendingAssignment() {
-        return totalSRpendingAssignment;
+    public int getTotalSRPendingAssignment() {
+        return totalSRPendingAssignment;
     }
 
-    public void setTotalSRpendingAssignment(int totalSRpendingAssignment) {
-        this.totalSRpendingAssignment = totalSRpendingAssignment;
+    public void setTotalSRPendingAssignment(int totalSRPendingAssignment) {
+        this.totalSRPendingAssignment = totalSRPendingAssignment;
     }
 
     public int getTotalSRAssigned() {
@@ -301,20 +297,20 @@ public class DashboardViewModel {
         this.totalDFCreated = totalDFCreated;
     }
 
-    public int getTotalDFpendingDelivery() {
-        return totalDFpendingDelivery;
+    public int getTotalDFPendingDelivery() {
+        return totalDFPendingDelivery;
     }
 
-    public void setTotalDFpendingDelivery(int totalDFpendingDelivery) {
-        this.totalDFpendingDelivery = totalDFpendingDelivery;
+    public void setTotalDFPendingDelivery(int totalDFPendingDelivery) {
+        this.totalDFPendingDelivery = totalDFPendingDelivery;
     }
 
-    public int getTotalDFpendingAssignment() {
-        return totalDFpendingAssignment;
+    public int getTotalDFPendingAssignment() {
+        return totalDFPendingAssignment;
     }
 
-    public void setTotalDFpendingAssignment(int totalDFpendingAssignment) {
-        this.totalDFpendingAssignment = totalDFpendingAssignment;
+    public void setTotalDFPendingAssignment(int totalDFPendingAssignment) {
+        this.totalDFPendingAssignment = totalDFPendingAssignment;
     }
 
     public int getTotalDFCompleted() {
@@ -349,12 +345,12 @@ public class DashboardViewModel {
         this.totalPOCompleted = totalPOCompleted;
     }
 
-    public int getTotalITpendingApproval() {
-        return totalITpendingApproval;
+    public int getTotalITPendingApproval() {
+        return totalITPendingApproval;
     }
 
-    public void setTotalITpendingApproval(int totalITpendingApproval) {
-        this.totalITpendingApproval = totalITpendingApproval;
+    public void setTotalITPendingApproval(int totalITPendingApproval) {
+        this.totalITPendingApproval = totalITPendingApproval;
     }
 
     public int getTotalITApproved() {

@@ -13,8 +13,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.ParseException;
+import java.util.Date;
+
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
@@ -37,7 +43,18 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_form_details, frameLayout);
         txt_menuTitle.setText("DISBURSEMENT DETAILS");
         Intent intent = getIntent();
+        currentStatus = intent.getStringExtra("CurrentStatus");
         Log.d(TAG, "onResponse: Disbursement Summary Activity - Details");
+        /*TextView DF_DATE = (TextView) findViewById(R.id.DF_DATE);
+        if (currentStatus.equals("OPEN")) {
+            DF_DATE.setText("Expected Delivery");
+        } else if (currentStatus.equals("PENDING_DELIVERY")) {
+            DF_DATE.setText("Confirmed Delivery");
+        } else if (currentStatus.equals("PENDING_ASSIGNMENT")) {
+            DF_DATE.setText("HandOver Date");
+        } else if (currentStatus.equals("COMPLETED")) {
+            DF_DATE.setText("Completion Date");
+        }*/
         service = ServiceHelper.getClient(this);
         currentStatus = intent.getStringExtra("CurrentStatus");
         Call<DisbursementViewModel> serviceDVMAPICall = null;
@@ -61,6 +78,7 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         Button mSubmitbutton = (Button) findViewById(R.id.disbursementFormSubmit);
         if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
             mSubmitbutton.setVisibility(View.GONE);
+            Toast.makeText(this, "Pending for Department Approval", Toast.LENGTH_SHORT).show();
         } else if (currentStatus.equals("PENDING_DELIVERY")){
             mSubmitbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -119,7 +137,14 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
             requisitionCode.setText(disbursementFormRequisitionForm.requisitionForm.rfCode);
             requisitionCode.setLayoutParams(parameters);
             requisitionCode.setGravity(Gravity.CENTER);
-            requisitionDeliveryDate.setText(disbursementFormRequisitionForm.disbursementForm.dfDeliveryDate);
+            try {
+                MyDateFormat dateFormat = new MyDateFormat();
+                Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(disbursementFormRequisitionForm.disbursementForm.dfDeliveryDate));
+                requisitionDeliveryDate.setText(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                requisitionDeliveryDate.setText(disbursementFormRequisitionForm.disbursementForm.dfDeliveryDate);
+            }
             requisitionDeliveryDate.setLayoutParams(parameters);
             requisitionDeliveryDate.setGravity(Gravity.CENTER);
             disbursementRequisitionForm.addView(requisitionSerialnumber);
