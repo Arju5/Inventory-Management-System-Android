@@ -24,60 +24,68 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:gravity="center"
-                android:text=""
+                android:text="Disbursement - "
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp"/>
 
-            <TextView
-                android:id="@+id/dfsummary_StoreClerk"
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:id="@+id/empdetails"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
+                android:stretchColumns="1"
+                app:layout_constraintBottom_toTopOf="@+id/label1">
 
-            <TextView
-                android:id="@+id/dfsummary_Department"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text="Department - "
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
+                <TableRow>
+                    <TextView
+                        android:padding="5dip"
+                        android:text="Store Clerk"/>
+                    <TextView
+                        android:id="@+id/dfsummary_StoreClerk"
+                        android:text="Store Clerk Name"
+                        android:gravity="left"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dip" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/dfsummary_DepartmentRep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
+                <TableRow>
+                    <TextView
+                        android:padding="5dip"
+                        android:text="Department"/>
+                    <TextView
+                        android:id="@+id/dfsummary_Department"
+                        android:text="Department"
+                        android:gravity="left"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dip" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/dfsummary_DeliveryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/DF_DATE"
+                        android:padding="5dip"
+                        android:text="Expected Delivery Date"/>
+                    <TextView
+                        android:id="@+id/dfsummary_DeliveryDate"
+                        android:text="Delivery Date"
+                        android:gravity="left"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dip" />
+                </TableRow>
 
+                <TableRow>
+                    <TextView
+                        android:padding="5dip"
+                        android:text="Expected Delivery Date"/>
+                    <TextView
+                        android:id="@+id/dfsummary_collectionPoint"
+                        android:text="Collection Point"
+                        android:gravity="left"
+                        android:textColor="@color/colorBlack"
+                        android:padding="5dip" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/dfsummary_collectionPoint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
+            </TableLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

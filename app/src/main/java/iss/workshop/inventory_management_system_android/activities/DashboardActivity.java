@@ -42,17 +42,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
 
-            View rootView = getLayoutInflater().inflate(R.layout.activity_store_clerk_dashboard, frameLayout);
-            txt_menuTitle.setText("DASHBOARD");
-            Button mCLERK_TOTAL_DF_PENDING_APPROVAL = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_APPROVAL);
-            Button mCLERK_TOTAL_DF_PENDING_DELIVERY = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_DELIVERY);
-            Button mCLERK_TOTAL_DF_PENDING_ASSIGN = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_PENDING_ASSIGN);
-            Button mCLERK_TOTAL_DF_COMPLETED = (Button)rootView.findViewById(R.id.CLERK_TOTAL_DF_COMPLETED);
-
-            mCLERK_TOTAL_DF_PENDING_APPROVAL.setOnClickListener(this);
-            mCLERK_TOTAL_DF_PENDING_DELIVERY.setOnClickListener(this);
-            mCLERK_TOTAL_DF_PENDING_ASSIGN.setOnClickListener(this);
-            mCLERK_TOTAL_DF_COMPLETED.setOnClickListener(this);
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_head, frameLayout);
@@ -96,37 +85,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            ExitApp();
-        }
-    }
-    private void ExitApp() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Logic University Inventory");
-        builder.setMessage("Do You Want To Exit?");
-        builder.setIcon(R.drawable.ic_key);
-        //final AlertDialog dialog = builder.create();
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
-    }
 
 }

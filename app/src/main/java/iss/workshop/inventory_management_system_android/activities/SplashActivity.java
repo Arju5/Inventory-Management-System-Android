@@ -28,22 +28,17 @@ public class SplashActivity extends AppCompatActivity {
             public void onFinish() {
                 if(sharePreferenceHelper.isLogin()){
 
-                    /*switch (sharePreferenceHelper.getUserRole()){
-                        case "Store Clerk":
-                            Intent intent = new Intent(SplashActivity.this, SF_StationeryRetrievalSummaryActivity.class);
-                            startActivity(intent);
-                            break;
-                        case "Employee": case "Department Representative": case "Department Head":
-                            Intent empintent = new Intent(SplashActivity.this, RequisitionLandingActivity.class);
-                            empintent.putExtra("empType",sharePreferenceHelper.getUserRole());
-                            startActivity(empintent);
-                            break;
-                    }*/
-                    Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
-                    //To be the last activity for back button(need to delete the login activity)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
-                    startActivity(intent);
+                   if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+                       Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
+                       //To be the last activity for back button(need to delete the login activity)
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
+                       startActivity(intent);
+                   } else if (sharePreferenceHelper.getUserRole().equals("Employee")) {
+                       Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
+                       startActivity(intent);
+                   }
+
                 }
                 else{
                     Intent intent = new Intent(SplashActivity.this,LoginActivity.class);

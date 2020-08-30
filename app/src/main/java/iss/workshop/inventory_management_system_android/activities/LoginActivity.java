@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DeptRepDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreManagerDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.department.DepHeadApproveDisbursementActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -62,10 +65,28 @@ public class LoginActivity extends AppCompatActivity {
                                 sharePreferenceHelper.setLogin(employee.getUsername(),employee.getId(),employee.employeeType.employeeTypeName);
 
                                 emptype = employee.employeeType.employeeTypeName;
+                                if (emptype.equals("Store Clerk")) {
+                                    Intent intent = new Intent(LoginActivity.this, StoreClerkDashboardActivity.class);
+                                    intent.putExtra("Status", emptype);
+                                    startActivity(intent);
+                                } else if (emptype.equals("Employee")) {
+                                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                                    intent.putExtra("Status", emptype);
+                                    startActivity(intent);
+                                } else if (emptype.equals("Department Head")) {
+                                    Intent intent = new Intent(LoginActivity.this, DepHeadDashboardActivity.class);
+                                    intent.putExtra("Status", emptype);
+                                    startActivity(intent);
+                                } else if (emptype.equals("Department Representative")) {
+                                    Intent intent = new Intent(LoginActivity.this, DeptRepDashboardActivity.class);
+                                    intent.putExtra("Status", emptype);
+                                    startActivity(intent);
+                                } else if (emptype.equals("Store Manager")) {
+                                    Intent intent = new Intent(LoginActivity.this, StoreManagerDashboardActivity.class);
+                                    intent.putExtra("Status", emptype);
+                                    startActivity(intent);
+                                }
 
-                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                                intent.putExtra("Status", emptype);
-                                startActivity(intent);
                             }
                         }
                     }

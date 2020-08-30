@@ -170,21 +170,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
-        /*if(id == R.id.create_srform){
-            Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.view_srsummary){
-            Intent intent = new Intent(BaseActivity.this, SF_StationeryRetrievalSummaryActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.create_dform){
-
-        }
-        if(id == R.id.view_dfsummary){
-
-        }*/
-        /*------*/
 
         if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
@@ -202,23 +187,23 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.storeclerk_StationeryRetrievalSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Stationery Retrieval Summary", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
+            Intent intent   = new Intent(this, SF_StationeryRetrievalSummaryActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, DisbursementFormActivity.class);
+            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_CreateStationeryRetrieval && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
+            Intent intent   = new Intent(this, SF_SRFActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
-            //Intent intent   = new Intent(this, DisbursementFormActivity.class);
-            //startActivity(intent);
+            Intent intent   = new Intent(this, DisbursementFormActivity.class);
+            startActivity(intent);
             finish();
         }
 

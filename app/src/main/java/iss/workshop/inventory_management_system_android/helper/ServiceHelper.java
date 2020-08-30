@@ -1,6 +1,7 @@
 package iss.workshop.inventory_management_system_android.helper;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.model.Supplier;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
+import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
@@ -150,15 +152,16 @@ public class ServiceHelper {
         Call<String> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
-        /*//Dashboard APIS starts
+        //Dashboard APIS starts
 
         @GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
-        @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);
+        @GET("Dashboard/GetCountDashboard")//For Dashboard
+        Call<DashboardViewModel> getCountDash(@Query("id") Integer id);
+
         //Dash APIS ends
-*/
+
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
