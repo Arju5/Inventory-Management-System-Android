@@ -14,11 +14,17 @@ import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
+>>>>>>>>> Temporary merge branch 2
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
-import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
-import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
+import iss.workshop.inventory_management_system_android.model.Supplier;
+import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalSummaryViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
+
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -27,6 +33,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -89,15 +96,13 @@ public class ServiceHelper {
         }
     }
 
-
-
     public interface ApiService {
-        // Product APIS starts
+       /* // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-
+*/
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
@@ -114,10 +119,10 @@ public class ServiceHelper {
 
         //Employee APIS ends
 
-       /* //Requisition APIs start
+        //Requisition APIs start
         @GET("Requisition/GetRequisitionById")
         Call<RequisitionForm> getReqByid(@Query("reqId") Integer reqId);
-        */
+
         @GET("Requisition/GetReqSummary")
         Call<RequisitionSummaryViewModel> getReqSummary(@Query("Username") String Username);
 
@@ -143,15 +148,15 @@ public class ServiceHelper {
         Call<String> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
-        //Dashboard APIS starts
+        /*//Dashboard APIS starts
 
-        /*@GET("Dashboard/GetDashBox")//For Dashboard
+        @GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
         @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);*/
+        Call<Object> getDashTest(@Query("Username") String Username);
         //Dash APIS ends
-
+*/
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
@@ -186,12 +191,12 @@ public class ServiceHelper {
         @POST("Disbursement/ApproveDF")
         Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
 
-        @POST("Disbursement/CreatedDF")
+        @POST("Disbursement/CeatedDF")
         Call<List<DisbursementForm>> getCreatedDFByDepRep(@Query("id") Integer id);
 
         // Disbursement APIS ends
 
-        /*// Stationery APIS starts
+        // Stationery APIS starts
         @GET("Stationery/GetOpenSRSummary")
         Call<StationeryRetrievalSummaryViewModel> getOpenSRSummary();
 
@@ -205,7 +210,7 @@ public class ServiceHelper {
         Call<ArrayList<RequisitionForm>> getRequisitionList();
 
         @POST("Stationery/PostProductsBySelectedRequisition")
-        Call<List<StationeryProductViewModel>> postProductsBySelectedRequisition(@Body List<Integer> selectedRequisition);
+        Call<List<StationeryRetrievalProduct>> postProductsBySelectedRequisition(@Body List<Integer> selectedRequisition);
 
         @POST("Stationery/CreateSRForm")
         Call<StationeryRequisitionProductViewModel> createSRForm(@Body StationeryRequisitionProductViewModel srvm);
@@ -226,7 +231,6 @@ public class ServiceHelper {
         @GET("Stationery/GetCompleteSRById")
         Call<StationeryRetrievalViewModel> getCompletedSRFormBySelectedId(@Query("SFId") Integer SFId);
         // Stationery APIS ends
-*/
         //Department APIs start
         @GET("Department/GetDepartmentList")
         Call<ArrayList<Department>> getDepartmentList();
@@ -235,7 +239,7 @@ public class ServiceHelper {
         Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
         //Department APIs end
 
-        /*//Supplier APIs start
+        //Supplier APIs start
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
         //Supplier APIs end*/

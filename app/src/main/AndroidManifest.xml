@@ -12,18 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity"></activity>
+        <activity android:name=".activities.ProductCatalogueDetails"></activity>
+        <activity android:name=".activities.ProductCatalogue" />
+        <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" />
         <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
-        <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.DepHeadDashboardActivity" />
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
-        <activity android:name=".activities.dashboard.StoreClerkDashboardActivity" />
         <activity android:name=".activities.disbursement.DibursementHandOverActivity" />
         <activity android:name=".activities.disbursement.DisbursementFormDetailsActivity" />
         <activity android:name=".activities.disbursement.DisbursementSummaryActivity" />
-        <activity android:name=".activities.disbursement.DisbursementFormActivity" />
+        <activity android:name=".activities.disbursement.DisbursementFormActivity" /> <!-- by htp -->
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity
@@ -37,17 +38,16 @@
         <activity android:name=".activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity" />
         <activity android:name=".activities.stationery.SF_SRFProductActivity" />
         <activity android:name=".activities.stationery.SF_SRFCompletedSRFActivity" />
-        <activity android:name=".activities.SupplierSummaryActivity"></activity>
-        <!--<activity android:name=".activities.disbursement.DisbursementFormActivity" />-->
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.SplashActivity">
+        <activity android:name=".activities.SupplierSummaryActivity" /> <!-- <activity android:name=".activities.disbursement.DisbursementFormActivity" /> -->
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.DashboardActivity" />
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.LoginActivity">
+        <activity android:name=".activities.DashboardActivity" />
+        <activity android:name=".activities.LoginActivity">
 
             <!--
             <intent-filter>

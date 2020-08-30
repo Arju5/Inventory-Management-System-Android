@@ -84,10 +84,27 @@ public class LoginActivity extends AppCompatActivity {
                         } else if (emptype.equals("Department Head")) {
                             Intent intent = new Intent(LoginActivity.this, DepHeadDashboardActivity.class);
                             startActivity(intent);
-                        } else if (emptype.equals("Store Clerk")){
+                        } else if (emptype.equals("Store Clerk")) {
                             Intent intent = new Intent(LoginActivity.this, StoreClerkDashboardActivity.class);
                             startActivity(intent);
+                        } else if (emptype.equals("Store Supervisor")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    StoreSupervisorDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Store Manager")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    StoreManagerDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Department Representative")) {
+                            Intent intent = new Intent(LoginActivity.this, DeptRepDashboardActivity.class);
+                            startActivity(intent);
+                        } else if (emptype.equals("Temporary Department Head")) {
+                            Intent intent = new Intent(LoginActivity.this,
+                                    TempDeptHeadDashboardActivity.class);
+                            startActivity(intent);
                         }
+                    }
+                }
 
 
                     }
@@ -96,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Employee> call, Throwable t) {
-                Log.e(TAG, "onFailure: ",t );
+                Log.e(TAG, "onFailure: ", t);
             }
         });
     }
