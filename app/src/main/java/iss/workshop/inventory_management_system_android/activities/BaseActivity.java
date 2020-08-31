@@ -76,6 +76,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (getUserRole.equals("Temporary Department Head")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.tempdepthead_drawer);
+        } else if (getUserRole.equals("Store Manager")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storemanager_drawer);
+        } else if (getUserRole.equals("Store Supervisor")) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.storesupervisor_drawer);
         }
 
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) BaseActivity.this);
@@ -139,6 +145,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Menu m=nv.getMenu();
         int id = item.getItemId();
 
+<<<<<<<<< Temporary merge branch 1
+        /*Store Clerk Menu Item Expansion*/
+        if(id == R.id.storeclerk_Directory){
+=========
         /*Store side Menu Item Expansion*/
         if (id == R.id.base_nav_products && getUserRole.equals("Store Clerk")||getUserRole.equals("Store Supervisor")||getUserRole.equals("Store Manager")) {
             boolean b=!m.findItem(R.id.base_nav_product_catalogue).isVisible();
@@ -161,7 +171,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         /*Store side Menu Item Expansion ends*/
         /*Dept side Menu Item Expansion starts*/
-        else if (id == R.id.base_nav_products && getUserRole.equals("Employee")||getUserRole.equals("Department Head")||getUserRole.equals("Department Representative")) {
+        else if (id == R.id.base_nav_products && (getUserRole.equals("Employee")||getUserRole.equals("Department Head")||getUserRole.equals("Department Representative"))) {
             boolean b=!m.findItem(R.id.base_nav_product_catalogue).isVisible();
             m.findItem(R.id.base_nav_product_catalogue).setVisible(b);
             return true;
@@ -177,6 +187,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
+<<<<<<<<< Temporary merge branch 1
+=========
         else if (id == R.id.base_nav_forms && getUserRole.equals("Department Representative")) {
             boolean b=!m.findItem(R.id.base_nav_requisitionSummary).isVisible();
             m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
@@ -189,11 +201,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.dephead_delegationSummary).setVisible(b);
             m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
             m.findItem(R.id.dephead_DelegateDepHead).setVisible(b);
+            return true;
         }
         else if(id==R.id.dephead_delegations && getUserRole.equals("Temporary Department Head")){
             boolean b=!m.findItem(R.id.dephead_delegationSummary).isVisible();
             m.findItem(R.id.dephead_delegationSummary).setVisible(b);
             m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
+            return true;
         }
         /*Dept side Menu Item Expansion ends*/
         /*------*/
@@ -230,7 +244,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             //Intent intent   = new Intent(this, DisbursementFormActivity.class);
             //startActivity(intent);
-            finish();
+            //finish();
         }
         /* Dept side */
         else if(id== R.id.base_nav_requisitionSummary ){
@@ -259,6 +273,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, DelegateDepHeadActivity.class);
             startActivity(intent);
         }
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

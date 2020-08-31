@@ -4,7 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar"
-    tools:context=".activities.delegation.DelegationSummaryActivity">
+    android:layout_marginTop="70dp"
+    tools:context=".activities.delegation.DelegationSummaryActivity"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Department Head Delegation Summary"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        tools:ignore="MissingConstraints" />
+
+    <ListView
+        android:id="@+id/dephead_delegate_summary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#e5e5ff"
+        android:layout_marginTop="20dp"
+        android:dividerHeight="1dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
