@@ -258,6 +258,12 @@ public class ServiceHelper {
         @GET("delegation/summary")
         Call<DelegationViewModel> getDelegateSummary(@Query("id") Integer id);
 
+        @POST("delegation/SaveEmpDepHead")
+        Call<DelegationViewModel> SaveEmpDepHead(@Body DelegationViewModel dvm);
+
+        @GET("delegation/GetEmpListForDelegate")
+        Call<DelegationViewModel> getEmployeeListForDelegate(@Query("id") Integer user_id);
+
         // Delegation API Ends
     }
 

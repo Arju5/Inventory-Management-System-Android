@@ -63,19 +63,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if(getUserRole.equals("Employee")) {
             //setText(sharePreferenceHelper.getUserName().toUpperCase());
             navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.base_drawer);
+            navigationView.inflateMenu(R.menu.dephead_drawer);
         } else if (getUserRole.equals("Store Clerk")||getUserRole.equals("Store Manager")||getUserRole.equals("Store Supervisor")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
-        } else if (getUserRole.equals("Department Head")) {
+        } else {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.dephead_drawer);
-        } else if (getUserRole.equals("Department Representative")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.deptrep_drawer);
-        } else if (getUserRole.equals("Temporary Department Head")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.tempdepthead_drawer);
         }
 
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) BaseActivity.this);
@@ -248,7 +242,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(context, "Apply Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
-        }else if(id== R.id.base_nav_disbursements ){
+        }else if(id== R.id.deprep_disbursementsummary ){
             Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
@@ -266,8 +260,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, DelegateDepHeadActivity.class);
             startActivity(intent);
         }
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

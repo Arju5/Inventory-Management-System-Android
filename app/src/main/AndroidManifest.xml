@@ -18,7 +18,11 @@
         <activity android:name=".activities.dashboard.StoreManagerDashboardActivity"></activity>
         <activity android:name=".activities.dashboard.StoreSupervisorDashboardActivity"></activity>
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
+        <activity android:name=".activities.delegation.DelegateDepHeadActivity" />
+        <activity android:name=".activities.delegation.AssignDeptRepActivity" />
+        <activity android:name=".activities.delegation.DelegationSummaryActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
+        <activity android:name=".activities.ProductCatalogue" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
         <activity android:name=".activities.dashboard.StoreClerkDashboardActivity" />
         <activity android:name=".activities.disbursement.DibursementHandOverActivity" />
@@ -31,7 +35,6 @@
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
-        <activity android:name=".activities.delegation.DelegationSummaryActivity" />
         <activity
             android:name=".activities.requisition.RequisitionFormActivity"
             android:windowSoftInputMode="adjustPan" /> <!-- END Requisition Activities -->
