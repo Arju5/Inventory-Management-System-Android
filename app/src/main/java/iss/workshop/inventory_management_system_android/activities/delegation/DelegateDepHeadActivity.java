@@ -3,6 +3,7 @@ package iss.workshop.inventory_management_system_android.activities.delegation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +54,7 @@ public class DelegateDepHeadActivity extends BaseActivity implements AdapterView
     TextView comment;
 
     Button delegate_btn;
+    Button cancel_btn;
 
     List<Employee> emplist_cache;
 
@@ -72,6 +74,7 @@ public class DelegateDepHeadActivity extends BaseActivity implements AdapterView
         end_date = rootView.findViewById(R.id.end_date);
         comment = rootView.findViewById(R.id.comment);
         delegate_btn = rootView.findViewById(R.id.delegate);
+        cancel_btn = rootView.findViewById(R.id.cancel);
 
         tempHeadName_spinner = rootView.findViewById(R.id.tempHeadName);
 
@@ -103,6 +106,14 @@ public class DelegateDepHeadActivity extends BaseActivity implements AdapterView
                 delegationViewModel.setEndDate(end_date.getText().toString());
 
                 SaveEmpDepHead(delegationViewModel);
+            }
+        });
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),DelegationSummaryActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -213,7 +224,7 @@ public class DelegateDepHeadActivity extends BaseActivity implements AdapterView
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.message());
-                    Toast.makeText(getApplicationContext(), "Check Assigned Quantities", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Check Assigned Date", Toast.LENGTH_LONG).show();
                 }
             }
 
