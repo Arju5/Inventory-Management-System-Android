@@ -30,7 +30,7 @@ import iss.workshop.inventory_management_system_android.activities.requisition.A
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_SRFActivity;
-import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalSummaryActivity;
+import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -187,7 +187,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.storeclerk_StationeryRetrievalSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Stationery Retrieval Summary", Toast.LENGTH_SHORT).show();
-            Intent intent   = new Intent(this, SF_StationeryRetrievalSummaryActivity.class);
+            Intent intent   = new Intent(this, SF_StationeryRetrievalFormSummaryListViewActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {

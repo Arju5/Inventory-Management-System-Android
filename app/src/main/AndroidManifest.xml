@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
+        <activity android:name=".activities.podo.DeliveryOrderFormActivity"></activity>
+        <activity android:name=".activities.podo.PurchaseOrderFormActivity" />
+        <activity android:name=".activities.dashboard.DepHeadDashboardActivity" />
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
@@ -35,9 +37,8 @@
         <activity android:name=".activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity" />
         <activity android:name=".activities.stationery.SF_SRFProductActivity" />
         <activity android:name=".activities.stationery.SF_SRFCompletedSRFActivity" />
-        <activity android:name=".activities.SupplierSummaryActivity"></activity>
-        <!--<activity android:name=".activities.disbursement.DisbursementFormActivity" />-->
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.SplashActivity">
+        <activity android:name=".activities.SupplierSummaryActivity" /> <!-- <activity android:name=".activities.disbursement.DisbursementFormActivity" /> -->
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
