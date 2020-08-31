@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,9 @@ import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DibursementHandOverActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementAssignment;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormDetailsActivity;
+import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
+import iss.workshop.inventory_management_system_android.adapters.DelegationSummaryAdapter;
+import iss.workshop.inventory_management_system_android.adapters.DisbursementSummaryAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.viewmodel.DelegationViewModel;
@@ -23,13 +29,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DelegationSummaryActivity extends BaseActivity {
+public class DelegationSummaryActivity extends BaseActivity implements AdapterView.OnClickListener {
 
     private static final String TAG = "DisburseDetailActivity";
     private ServiceHelper.ApiService service;
     private int count = 1;
     private DelegationViewModel delegationViewModel;
     View rootView;
+    private DelegationSummaryAdapter delegationSummaryAdapter;
     SharePreferenceHelper sharePreferenceHelper;
 
 
@@ -49,7 +56,11 @@ public class DelegationSummaryActivity extends BaseActivity {
                 if (response.isSuccessful()) {
                     delegationViewModel = response.body();
                     Log.d(TAG, "onResponse : Success - " + delegationViewModel.departmentHead.username);
-                    //putDataToLayout(delegationViewModel);
+                    delegationSummaryAdapter = new DelegationSummaryAdapter(DelegationSummaryActivity.this, R.layout.delegate_summary_row);
+                    ListView delegationListView = (ListView) rootView.findViewById(R.id.dephead_delegate_summary);
+                    delegationListView.setAdapter(delegationSummaryAdapter);
+                    delegationSummaryAdapter.setDelegationList(delegationViewModel);
+                    //delegationListView.setOnItemClickListener((AdapterView.OnItemClickListener) DelegationSummaryActivity.this);
                 }
             }
             @Override
@@ -58,5 +69,10 @@ public class DelegationSummaryActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, "Delegated Item", Toast.LENGTH_SHORT).show();
     }
 }

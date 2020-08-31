@@ -27,6 +27,7 @@
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
+        <activity android:name=".activities.delegation.DelegationSummaryActivity" />
         <activity
             android:name=".activities.requisition.RequisitionFormActivity"
             android:windowSoftInputMode="adjustPan" /> <!-- END Requisition Activities -->
