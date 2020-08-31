@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.adapters.requisition.ReqProductAdapter;
@@ -30,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RequisitionFormActivity extends AppCompatActivity implements View.OnClickListener {
+public class RequisitionFormActivity extends BaseActivity implements View.OnClickListener {
 
     TextView rfcmt,rfcmt_label,headreply_label;
     EditText head_reply;
@@ -47,19 +48,20 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
     String headcomment;
     private RequisitionForm getrf;
     String Status;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requistion_form);
-
+        rootView = getLayoutInflater().inflate(R.layout.activity_requistion_form, frameLayout);
+        txt_menuTitle.setText("DASHBOARD");
         //Get UserName by sharePreference
         sharePreferenceHelper = new SharePreferenceHelper(this);
         username = sharePreferenceHelper.getUserName();
 
         service = ServiceHelper.getClient(this);
         rfproductadapter = new ReqProductAdapter(RequisitionFormActivity.this, R.layout.reqform_row,reqproductlist);
-        rfproductListview = findViewById(R.id.reqProductlistView);
+        rfproductListview = rootView.findViewById(R.id.reqProductlistView);
 
         //get req Id of chosen item from req summary
         Intent intent = getIntent();
@@ -70,66 +72,17 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
         ViewApprovalRF();
 
         //Buttons
-        btn_approve = (Button) findViewById(R.id.btn_approve);
-        btn_reject = (Button) findViewById(R.id.btn_reject);
-        btnCancel = (Button)findViewById(R.id.cancelBtn);
+        btn_approve = (Button) rootView.findViewById(R.id.btn_approve);
+        btn_reject = (Button) rootView.findViewById(R.id.btn_reject);
+        btnCancel = (Button)rootView.findViewById(R.id.cancelBtn);
         if(btnCancel != null){
             btnCancel.setOnClickListener(this);
         }
 
-
-        /*if(sharePreferenceHelper.getUserRole().equals("Employee")|| Status!="Submitted"){
-            btn_approve.setVisibility(View.GONE);
-            btn_reject.setVisibility(View.GONE);
-        }*/
         btn_approve.setOnClickListener(this);
-        /*btn_approve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<RequisitionFormsProduct> reqProdlist = new ArrayList<>();
-                //search selected product list
-                for (int i = 0; i < rfproductadapter.reqproductlist.size(); i++){
 
-                        reqProdlist.add( rfproductadapter.reqproductlist.get(i));
-                        Log.d(TAG,"approve req qty ::::"+rfproductadapter.reqproductlist.get(i).productApproved);
-                }
-
-                rfViewmodel = new RequisitionViewModel();
-                rfViewmodel.requisitionForm = getrf;
-                rfViewmodel.setRfpList(reqProdlist); //set the requisition prod list with approved qty
-
-                //rfViewmodel.requisitionForm.setRfComments(comment); //save cmt
-                Employee emp = new Employee();
-                emp.setId(sharePreferenceHelper.getuserId());
-                rfViewmodel.setEmployee(emp);
-                //rfViewmodel.requisitionForm.setRfApprovalBy(emp);  //save dept head
-
-                if(rfcmt!=null)
-                { comment = rfcmt.getText().toString();
-                    Log.d(TAG,"cmt in VM:: "+ comment);}
-                rfViewmodel.rFHeadReply = rfcmt.getText().toString();
-                Approve(rfViewmodel);
-            }
-        });*/
         btn_reject.setOnClickListener(this);
-        /*btn_reject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rfViewmodel = new RequisitionViewModel();
-                rfViewmodel.requisitionForm = getrf;
 
-                Employee emp = new Employee();
-                emp.setId(sharePreferenceHelper.getuserId());
-                rfViewmodel.setEmployee(emp);
-                //rfViewmodel.requisitionForm.setRfApprovalBy(emp);  //save dept head
-
-                if(rfcmt!=null)
-                { comment = rfcmt.getText().toString();
-                    Log.d(TAG,"cmt in VM reject:: "+ comment);}
-                rfViewmodel.rFHeadReply = rfcmt.getText().toString();
-                Reject(rfViewmodel);
-            }
-        });*/
     }
 
     private void getReqByid() {
@@ -212,11 +165,11 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
                 if (response.isSuccessful()) {
 
                     RequisitionViewModel rfdetails = response.body();
-                    TextView req_form_code = findViewById(R.id.req_form_code);
+                    TextView req_form_code = rootView.findViewById(R.id.req_form_code);
                     Log.d(TAG,"rf code in viewapprovalrf method::::"+rfdetails.requisitionForm.rfCode);
                     req_form_code.setText(rfdetails.requisitionForm.rfCode);
 
-                    TextView req_form_status = findViewById(R.id.req_form_status);
+                    TextView req_form_status = rootView.findViewById(R.id.req_form_status);
                     switch (rfdetails.requisitionForm.rfStatus) {
                         case 0:
                             req_form_status.setText("Submitted");
@@ -258,8 +211,8 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
                     }
                     //comment boxes
                     //rfcmt raised by employee
-                    rfcmt_label = (TextView)findViewById(R.id.rf_cmt_label);
-                    rfcmt = (TextView)findViewById(R.id.req_comment_txt);
+                    rfcmt_label = (TextView)rootView.findViewById(R.id.rf_cmt_label);
+                    rfcmt = (TextView)rootView.findViewById(R.id.req_comment_txt);
                     if(rfcmt!=null)
                     {
                         if(rfdetails.requisitionForm.rfComments == null){
@@ -271,8 +224,8 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
                         }
                     }
                     //cmt raised by dept head
-                    headreply_label=(TextView)findViewById(R.id.head_reply_label);
-                    head_reply = (EditText)findViewById(R.id.head_reply);
+                    headreply_label=(TextView)rootView.findViewById(R.id.head_reply_label);
+                    head_reply = (EditText)rootView.findViewById(R.id.head_reply);
                     if(head_reply!=null){
                         //emp cannot edit cmt & depthead cannot edit except submitted stage
                         if(sharePreferenceHelper.getUserRole().equals("Employee") || Status!="Submitted"){
@@ -297,11 +250,11 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
                         }
                     }
 
-                    if(sharePreferenceHelper.getUserRole().equals("Employee")|| Status!="Submitted"){
+                    if(sharePreferenceHelper.getUserRole().equals("Employee")||sharePreferenceHelper.getUserRole().equals("Department Representative")|| Status!="Submitted"){
                         btn_approve.setVisibility(View.GONE);
                         btn_reject.setVisibility(View.GONE);
                     }
-                    if( sharePreferenceHelper.getUserRole().equals("Department Head") || Status!= "Submitted" ){
+                    if( sharePreferenceHelper.getUserRole().equals("Department Head") || sharePreferenceHelper.getUserRole().equals("Temporary Department Head") || Status!= "Submitted" ){
                         btnCancel.setVisibility(View.GONE);
                     }
                 }
@@ -330,15 +283,10 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
             rfViewmodel.requisitionForm = getrf;
             rfViewmodel.setRfpList(reqProdlist); //set the requisition prod list with approved qty
 
-            //rfViewmodel.requisitionForm.setRfComments(comment); //save cmt
             Employee emp = new Employee();
             emp.setId(sharePreferenceHelper.getuserId());
             rfViewmodel.setEmployee(emp);
-            //rfViewmodel.requisitionForm.setRfApprovalBy(emp);  //save dept head
 
-            /*if(rfcmt!=null)
-            { rfcomment = rfcmt.getText().toString();
-                Log.d(TAG,"cmt in VM:: "+ rfcomment);}*/
 
             if(headcomment!="")
             { rfViewmodel.rfHeadReply = headcomment;  }
@@ -363,29 +311,24 @@ public class RequisitionFormActivity extends AppCompatActivity implements View.O
 
     }
     private void Cancel() {
-        Log.d(TAG,"response body "+service.Cancel(reqId));
-        Call<String> callcancel = service.Cancel(reqId);
-        //temp sol
-        Toast.makeText(getApplicationContext(), "Cancel Requisition successful!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(RequisitionFormActivity.this, RequisitionLandingActivity.class);
-        intent.putExtra("empType",sharePreferenceHelper.getUserRole());
-        startActivity(intent);
-        //end temp
-        callcancel.enqueue(new Callback<String>() {
+        Call<RequisitionForm> callcancel = service.Cancel(reqId);
+
+        callcancel.enqueue(new Callback<RequisitionForm>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<RequisitionForm> call, Response<RequisitionForm> response) {
                 if(response.isSuccessful()) {
-                    Log.d(TAG,"response body "+response.body());
-                    String rf = response.body();
-                    if(!rf.isEmpty())
+                    RequisitionForm rf = response.body();
+                    if(rf != null)
                     {
                         Toast.makeText(getApplicationContext(), "Cancel Requisition successful!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RequisitionFormActivity.this, RequisitionLandingActivity.class);
+                        startActivity(intent);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<RequisitionForm> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
             }
         });
