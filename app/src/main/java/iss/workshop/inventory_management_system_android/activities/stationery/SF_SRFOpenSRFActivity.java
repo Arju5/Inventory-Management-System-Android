@@ -10,18 +10,21 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.adapters.SF_SRFOpenDelegate;
-import iss.workshop.inventory_management_system_android.adapters.SF_SRFOpenSRFAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_SRFOpenDelegate;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_SRFOpenSRFAdapter;
 import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -66,7 +69,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
     //for Back Button
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
         }
@@ -94,7 +97,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
         Intent intent = getIntent();
         selected_sfId = Integer.parseInt(intent.getStringExtra("SFId"));
 
-        Log.e(TAG, "onCreate: sfId" + selected_sfId );
+        Log.e(TAG, "onCreate: sfId" + selected_sfId);
 
         clerkName = rootView.findViewById(R.id.sclerkname);
         //warehouseName = findViewById(R.id.whousename);
@@ -108,7 +111,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
         productadapter = new SF_SRFOpenSRFAdapter(this);
         rcv = rootView.findViewById(R.id.pd_recycler);
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+        rcv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rcv.setAdapter(productadapter);
 
         btn_openDialog_clerk = rootView.findViewById(R.id.signForClerk);
@@ -136,7 +139,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
         btn_assign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(StationeryRetrievalProduct model:cachelist){
+                for (StationeryRetrievalProduct model : cachelist) {
                     //Log.e(TAG, "onClick: Id" + model.getId() );
                     //Log.e(TAG, "onClick: Qty " + model.getProductReceivedTotal() );
                     StationeryRetrievalProduct srpf = new StationeryRetrievalProduct();
@@ -153,18 +156,18 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
                 empwarehouse.setUsername((btn_openDialog_wh.getText().toString()));
                 empwarehouse.setPassword(pswwarehouse.getText().toString());
 
-                Log.e(TAG, "onClick: Products : " + srplist.size() );
-                Log.e(TAG, "onClick: Clerk " + empclerk.getUsername() );
-                Log.e(TAG, "onClick: Clerk " + empclerk.getPassword() );
+               /* Log.e(TAG, "onClick: Products : " + srplist.size());
+                Log.e(TAG, "onClick: Clerk " + empclerk.getUsername());
+                Log.e(TAG, "onClick: Clerk " + empclerk.getPassword());
                 Log.e(TAG, "onClick: Warehouse " + empwarehouse.getUsername());
-                Log.e(TAG, "onClick: Warehouse " + empwarehouse.getPassword() );
+                Log.e(TAG, "onClick: Warehouse " + empwarehouse.getPassword());*/
 
                 srform.setRetrievalProducts(srplist);
                 srform.setStoreclerk(empclerk);
                 srform.setWarehousepacker(empwarehouse);
                 srform.setSrrfList(srform.getSrrfList());
 
-                Log.e(TAG, "onClick: Stationery Retrieval : " + srform.getStationeryRetrieval() );
+                Log.e(TAG, "onClick: Stationery Retrieval : " + srform.getStationeryRetrieval());
 
                 saveReceivedProducts();
             }
@@ -172,7 +175,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
         getSRFormBySelectedId();
     }
 
-    public void showCustomDialog(final int i){
+    public void showCustomDialog(final int i) {
         final Dialog dialog = new Dialog(SF_SRFOpenSRFActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -188,14 +191,13 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
                 String name = username.getText().toString();
                 String password = psw.getText().toString();
 
-                Log.e(TAG, "onClick: Password : " + password );
+                Log.e(TAG, "onClick: Password : " + password);
 
-                if(i == 1){
+                if (i == 1) {
                     btn_openDialog_clerk.setText(name.toString());
                     pswclerk.setText(String.valueOf(password));
 
-                }
-                else{
+                } else {
                     btn_openDialog_wh.setText(name.toString());
                     pswwarehouse.setText(password.toString());
                     /*srform.getWarehousepacker().setUsername(name);
@@ -215,7 +217,7 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
             @Override
             public void onResponse(Call<StationeryRetrievalViewModel> call, Response<StationeryRetrievalViewModel> response) {
 
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     cachelist = new ArrayList<>();
                     srform = response.body();
                     //Log.e(TAG, "onResponse: Product List : " + srform.retrievalProducts.size() );
@@ -223,31 +225,41 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
                     cName = srform.stationeryRetrieval.storeClerk.getFirstname() + "" + srform.stationeryRetrieval.storeClerk.getLastname();
                     clerkName.setText(cName);
 
-                    createDate.setText(srform.stationeryRetrieval.getSrDate());
+
+                    try {
+                        Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(srform.stationeryRetrieval.getSrDate()));
+                        createDate.setText(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        createDate.setText(srform.stationeryRetrieval.getSrDate());
+                    }
+                    //createDate.setText(srform.stationeryRetrieval.getSrDate());
 
                     retrievalId.setText(srform.stationeryRetrieval.getSrCode());
 
                     status.setText("Open");
-                    for(int i=0;i<srform.retrievalProducts.size();i++){
-                        Log.d(TAG, "onResponse: Requisition number = "+srform.retrievalProducts.get(i).getProduct().getProductName());
+                    for (int i = 0; i < srform.retrievalProducts.size(); i++) {
+                        Log.d(TAG, "onResponse: Requisition number = " + srform.retrievalProducts.get(i).getProduct().getProductName());
                         productadapter.add(srform.retrievalProducts.get(i));
                         cachelist.add(srform.retrievalProducts.get(i));
                     }
                     rcv.setVisibility(View.GONE);
                     rcv.setVisibility(View.VISIBLE);
                 } else {
-                    Log.e(TAG, "onResponse: "+ response.message());
+                    Log.e(TAG, "onResponse: " + response.message());
+                    Toast.makeText(getApplicationContext(),"Check Assigned Quantities",Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationeryRetrievalViewModel> call, Throwable t) {
-                Log.e(TAG, "onFailure: ",t );
+                Log.e(TAG, "onFailure: ", t);
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    public void saveReceivedProducts(){
+    public void saveReceivedProducts() {
         Call<StationeryRetrievalViewModel> callsaveReceivedQty = service.saveReceivedQtyForOpenSRF(srform);
         callsaveReceivedQty.enqueue(new Callback<StationeryRetrievalViewModel>() {
             @Override
@@ -255,22 +267,23 @@ public class SF_SRFOpenSRFActivity extends BaseActivity implements SF_SRFOpenDel
 
                 if (response.isSuccessful()) {
                     StationeryRetrievalViewModel srvm = response.body();
-                    if(srvm != null){
-                        Intent intent = new Intent(SF_SRFOpenSRFActivity.this,SF_StationeryRetrievalSummaryActivity.class);
+                    if (srvm != null) {
+                        Intent intent = new Intent(SF_SRFOpenSRFActivity.this, SF_StationeryRetrievalSummaryActivity.class);
                         startActivity(intent);
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.message());
+                    Toast.makeText(getApplicationContext(), "Check Assigned Quantities", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationeryRetrievalViewModel> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
     }
-
 
 
     @Override

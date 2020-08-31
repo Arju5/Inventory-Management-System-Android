@@ -61,7 +61,7 @@
                     ></TextView>
 
                 <TextView
-                    android:text="Warehouse Stock Available"
+                    android:text="Quantity To Receive From Warehouse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

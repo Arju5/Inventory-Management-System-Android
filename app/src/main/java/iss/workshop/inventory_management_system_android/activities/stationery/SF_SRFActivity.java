@@ -16,7 +16,7 @@ import java.util.List;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.adapters.SF_PARequisitionListAdapter;
+import iss.workshop.inventory_management_system_android.adapters.stationery.SF_PARequisitionListAdapter;
 import iss.workshop.inventory_management_system_android.helper.Pageable;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -53,7 +53,7 @@ public class SF_SRFActivity extends BaseActivity {
         //setContentView(R.layout.activity_sf_requisitionlist);
 
         View rootView = getLayoutInflater().inflate(R.layout.activity_sf_requisitionlist, frameLayout);
-        txt_menuTitle.setText("Create SRF");
+        txt_menuTitle.setText("CREATE STATIONERY RETRIEVAL FORM");
 
         reqadapter = new SF_PARequisitionListAdapter();
         btnselected = (Button) rootView.findViewById(R.id.btnchoosereq);

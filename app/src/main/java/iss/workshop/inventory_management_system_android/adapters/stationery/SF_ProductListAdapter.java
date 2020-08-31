@@ -1,4 +1,4 @@
-package iss.workshop.inventory_management_system_android.adapters;
+package iss.workshop.inventory_management_system_android.adapters.stationery;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.adapters.BaseAdapter;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;
 
 public class SF_ProductListAdapter extends BaseAdapter {

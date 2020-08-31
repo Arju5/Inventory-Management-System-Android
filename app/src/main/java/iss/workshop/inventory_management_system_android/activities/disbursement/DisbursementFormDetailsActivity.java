@@ -1,5 +1,7 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +13,15 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.ParseException;
+import java.util.Date;
+
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
+import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
@@ -35,7 +44,22 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_form_details, frameLayout);
         txt_menuTitle.setText("DISBURSEMENT DETAILS");
         Intent intent = getIntent();
+        currentStatus = intent.getStringExtra("CurrentStatus");
         Log.d(TAG, "onResponse: Disbursement Summary Activity - Details");
+        TextView Qty = (TextView) findViewById(R.id.productQuantityRequested);
+        if (currentStatus.equals("OPEN")) {
+            Qty.setText("Qty To Deliver");
+            TextView Units = (TextView) findViewById(R.id.productQuantityCollected);
+            Units.setText("Units");
+        } else if (currentStatus.equals("PENDING_DELIVERY")) {
+            Qty.setText("Confirmed Delivery");
+            TextView Units = (TextView) findViewById(R.id.productQuantityCollected);
+            Units.setText("Qty DepRep Take");
+        } else if (currentStatus.equals("PENDING_ASSIGNMENT")) {
+            Qty.setText("HandOver Date");
+        } else if (currentStatus.equals("COMPLETED")) {
+            Qty.setText("Completion Date");
+        }
         service = ServiceHelper.getClient(this);
         currentStatus = intent.getStringExtra("CurrentStatus");
         Call<DisbursementViewModel> serviceDVMAPICall = null;
@@ -59,6 +83,7 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         Button mSubmitbutton = (Button) findViewById(R.id.disbursementFormSubmit);
         if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
             mSubmitbutton.setVisibility(View.GONE);
+            Toast.makeText(this, "Pending for Department Approval", Toast.LENGTH_SHORT).show();
         } else if (currentStatus.equals("PENDING_DELIVERY")){
             mSubmitbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,7 +127,14 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
         TextView collectionPoint = findViewById(R.id.collectionPoint);
         collectionPoint.append(disbursementViewModel.disbursementForm.collectionPoint.collectionName);
         TextView collectionDateTime = findViewById(R.id.collectionDateTime);
-        collectionDateTime.append(disbursementViewModel.disbursementForm.dfDeliveryDate);
+        try {
+            MyDateFormat dateFormat = new MyDateFormat();
+            Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(disbursementViewModel.disbursementForm.dfDeliveryDate));
+            collectionDateTime.append(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            collectionDateTime.append(disbursementViewModel.disbursementForm.dfDeliveryDate);
+        }
         TableLayout disbursementRequisitionFormsTable = (TableLayout) findViewById(R.id.disbursementRequisitionForms);
         TableLayout disbursementFormProductsTable = (TableLayout) findViewById(R.id.disbursementFormProducts);
         TableRow.LayoutParams parameters = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
@@ -117,12 +149,9 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
             requisitionCode.setText(disbursementFormRequisitionForm.requisitionForm.rfCode);
             requisitionCode.setLayoutParams(parameters);
             requisitionCode.setGravity(Gravity.CENTER);
-            requisitionDeliveryDate.setText(disbursementFormRequisitionForm.disbursementForm.dfDeliveryDate);
-            requisitionDeliveryDate.setLayoutParams(parameters);
-            requisitionDeliveryDate.setGravity(Gravity.CENTER);
+
             disbursementRequisitionForm.addView(requisitionSerialnumber);
             disbursementRequisitionForm.addView(requisitionCode);
-            disbursementRequisitionForm.addView(requisitionDeliveryDate);
             disbursementRequisitionFormsTable.addView(disbursementRequisitionForm);
             count++;
         }
@@ -142,7 +171,7 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
             productQuantityRequested.setText(String.valueOf(disbursementFormProduct.productToDeliverTotal));
             productQuantityRequested.setLayoutParams(parameters);
             productQuantityRequested.setGravity(Gravity.CENTER);
-            productQuantityReceived.setText(String.valueOf(disbursementFormProduct.productDeliveredTotal));
+            productQuantityReceived.setText(String.valueOf(disbursementFormProduct.productToDeliverTotal));
             productQuantityReceived.setLayoutParams(parameters);
             productQuantityReceived.setGravity(Gravity.CENTER);
             disbursementFormProductrow.addView(productSerialnumber);

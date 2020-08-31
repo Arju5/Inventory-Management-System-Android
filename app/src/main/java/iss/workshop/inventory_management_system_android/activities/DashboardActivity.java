@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboard;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionSummaryActivity;
@@ -41,8 +41,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 */
 
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Intent intent = new Intent(this, StoreClerkDashboard.class);
-            startActivity(intent);
+
 
         } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
             View rootView = getLayoutInflater().inflate(R.layout.activity_dashboard_dept_head, frameLayout);
@@ -66,50 +65,26 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
 
-        /*if(id == R.id.emp_CreateRequisition) {
-            Intent intent = new Intent(this, ApplyRequistionActivity.class);
+        if (id == R.id.CLERK_TOTAL_DF_PENDING_APPROVAL) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_APPROVAL");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_PENDING_DELIVERY) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_DELIVERY");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_PENDING_ASSIGN) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "PENDING_DELIVERY");
+            startActivity(intent);
+        } else if (id == R.id.CLERK_TOTAL_DF_COMPLETED) {
+            Intent intent = new Intent(this, DisbursementSummaryActivity.class);
+            intent.putExtra("Status", "COMPLETED");
             startActivity(intent);
         }
-        else if(id == R.id.emp_Requisitions)
-        {
-            Intent intent = new Intent(this, RequisitionSummaryActivity.class);
-            intent.putExtra("btnId", id);
-            startActivity(intent);
-        }*/
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            ExitApp();
-        }
-    }
-    private void ExitApp() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Logic University Inventory");
-        builder.setMessage("Do You Want To Exit?");
-        builder.setIcon(R.drawable.ic_key);
-        //final AlertDialog dialog = builder.create();
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
-    }
 
 }

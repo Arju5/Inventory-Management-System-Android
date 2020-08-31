@@ -1,6 +1,7 @@
 package iss.workshop.inventory_management_system_android.helper;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,14 +10,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.model.Department;
+import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
+import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.model.Product;
 import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalProduct;
+import iss.workshop.inventory_management_system_android.model.Product;
+import iss.workshop.inventory_management_system_android.model.RequisitionForm;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionForm;
 import iss.workshop.inventory_management_system_android.model.Supplier;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
+import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
@@ -95,19 +101,18 @@ public class ServiceHelper {
         }
     }
 
-
-
     public interface ApiService {
-       /* // Product APIS starts
+        // Product APIS starts
         @GET("Product/GetProductList")
         Call<ArrayList<Product>> getProductList();
 
         // Product APIs ends
-*/
+
         //Employee APIS starts
 
         @GET("Employee/GetEmpObj")//For Login
         Call<Employee> getEmpObj(@Query("Username") String Username, @Query("Password") String Password);
+
 
         @GET("Employee/GetEmployeeById")
         Call<Employee> getEmployeeById(@Query("empId") int empId);
@@ -130,6 +135,7 @@ public class ServiceHelper {
         @GET("Requisition/ViewApprovalRF")
         Call<RequisitionViewModel> ViewApprovalRF(@Query("id") Integer reqId);
 
+
         @GET("Requisition/ApplyRequisitionForm")
         Call<RequisitionViewModel> ApplyRF();
 
@@ -146,15 +152,16 @@ public class ServiceHelper {
         Call<String> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
-        /*//Dashboard APIS starts
+        //Dashboard APIS starts
 
         @GET("Dashboard/GetDashBox")//For Dashboard
         Call<DashboardViewModel> getDash(@Query("Username") String Username);
 
-        @GET("Dashboard/GetDashBox")//For Dashboard
-        Call<Object> getDashTest(@Query("Username") String Username);
+        @GET("Dashboard/GetCountDashboard")//For Dashboard
+        Call<DashboardViewModel> getCountDash(@Query("id") Integer id);
+
         //Dash APIS ends
-*/
+
         // Disbursement APIS starts
         @GET("Disbursement/GetCreatedDisbursementList")
 //For Disbursement Lists
@@ -185,6 +192,9 @@ public class ServiceHelper {
 
         @POST("Disbursement/DeliverDF")
         Call<DisbursementViewModel> DeliverDF(@Body DisbursementViewModel dfViewModel);
+
+        @POST("Disbursement/AssignDF")
+        Call<DisbursementViewModel> AssignDF(@Body DisbursementViewModel dfViewModel);
 
         @POST("Disbursement/ApproveDF")
         Call<DisbursementViewModel> approveDFByDeptRep(@Body DisbursementViewModel dfViewModel);
@@ -223,7 +233,7 @@ public class ServiceHelper {
         Call<StationeryRetrievalViewModel> saveReceivedQtyForOpenSRF(@Body StationeryRetrievalViewModel srvm);
 
         @POST("Stationery/SaveAssignedProductsInPendingSR")
-        Call<StationeryRetrievalViewModel> saveAssignedProductsInPendingSR(@Query("srId") Integer srId,@Body StationeryRetrievalViewModel srvm);
+        Call<StationeryRetrievalViewModel> saveAssignedProductsInPendingSR(@Query("srId") Integer srId, @Body StationeryRetrievalViewModel srvm);
 
 
         @GET("Stationery/GetCompleteSRById")
@@ -241,7 +251,6 @@ public class ServiceHelper {
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
         //Supplier APIs end
-
     }
 
 }
