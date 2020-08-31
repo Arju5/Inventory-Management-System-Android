@@ -17,6 +17,7 @@ import android.widget.Toast;
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
@@ -55,7 +56,7 @@ public class DisbursementAssignment extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DisbursementAssignment.this, "Calling API Assign DF", Toast.LENGTH_SHORT).show();
-                Call<DisbursementViewModel> callsaveReceivedQty = service.DeliverDF(disbursementViewModel);
+                Call<DisbursementViewModel> callsaveReceivedQty = service.AssignDF(disbursementViewModel);
                 callsaveReceivedQty.enqueue(new Callback<DisbursementViewModel>() {
                     @Override
                     public void onResponse(Call<DisbursementViewModel> call, Response<DisbursementViewModel> response) {
@@ -65,7 +66,7 @@ public class DisbursementAssignment extends BaseActivity {
                         if (response.isSuccessful()) {
                             DisbursementViewModel disbursementViewModel = response.body();
                             if(disbursementViewModel != null){
-                                Intent intent = new Intent(DisbursementAssignment.this, DashboardActivity.class);
+                                Intent intent = new Intent(DisbursementAssignment.this, StoreClerkDashboardActivity.class);
                                 startActivity(intent);
                             }
                         } else {
@@ -147,5 +148,4 @@ public class DisbursementAssignment extends BaseActivity {
             count++;
         }
     }
-
 }

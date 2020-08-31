@@ -42,18 +42,19 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
+
                 <EditText
                     android:id="@+id/prod_qty"
+                    android:inputType="number"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
                     android:layout_weight="1"
                     android:background="@color/design_default_color_secondary_variant"
+                    android:gravity="center_horizontal"
                     android:hint="qty"
-                    android:inputType="number"
                     android:textColorHint="@color/colorGray"
-                    android:textSize="20sp"
-                    android:gravity="center_horizontal"/>
+                    android:textSize="20sp" />
             </TableRow>
         </TableLayout>
     </androidx.cardview.widget.CardView>

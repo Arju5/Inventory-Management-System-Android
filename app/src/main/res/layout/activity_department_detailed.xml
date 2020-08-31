@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DepartmentDetailedActivity">
+
+    <TextView
+        android:id="@+id/departmentCodetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department Code: "
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/departmentCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/departmentCodetitle"/>
+
+    <TextView
+        android:id="@+id/departmentNametitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department Name: "
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentCodetitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/departmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentCodetitle"
+        app:layout_constraintLeft_toRightOf="@id/departmentNametitle"/>
+
+    <TextView
+        android:id="@+id/departmentHeadtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department Head"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentNametitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/departmentHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentName"
+        app:layout_constraintLeft_toRightOf="@id/departmentHeadtitle"/>
+
+    <TextView
+        android:id="@+id/departmentReptitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department Rep:"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentHeadtitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/departmentRep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentHead"
+        app:layout_constraintLeft_toRightOf="@id/departmentReptitle"/>
+
+    <TextView
+        android:id="@+id/contactNotitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Number: "
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentReptitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/contactNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/departmentRep"
+        app:layout_constraintLeft_toRightOf="@id/contactNotitle"/>
+
+    <TextView
+        android:id="@+id/emailtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: "
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/contactNotitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/contactNo"
+        app:layout_constraintLeft_toRightOf="@id/emailtitle"/>
+
+    <TextView
+        android:id="@+id/collectionPointtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Collection Point: "
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/emailtitle"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/collectionPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintLeft_toRightOf="@id/collectionPointtitle"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

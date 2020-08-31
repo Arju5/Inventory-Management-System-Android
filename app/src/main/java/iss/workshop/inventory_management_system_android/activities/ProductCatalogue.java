@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +35,7 @@ public class ProductCatalogue extends BaseActivity {
 
         //setContentView(R.layout.activity_product_catalogue);
         View rootView = getLayoutInflater().inflate(R.layout.activity_product_catalogue, frameLayout);
-        txt_menuTitle.setText("Product Catalogue");
+        txt_menuTitle.setText("PRODUCT CATALOGUE");
 
         adapter = new ProductCatalogueAdapter();
 

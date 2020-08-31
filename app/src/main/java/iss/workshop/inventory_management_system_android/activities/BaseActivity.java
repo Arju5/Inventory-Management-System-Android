@@ -27,13 +27,10 @@ import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementSummaryStatusSelectionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.ApplyRequistionActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
 import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_SRFActivity;
 import iss.workshop.inventory_management_system_android.activities.stationery.SF_StationeryRetrievalSummaryActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionFormActivity;
-import iss.workshop.inventory_management_system_android.activities.requisition.RequisitionLandingActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,9 +58,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             //setText(sharePreferenceHelper.getUserName().toUpperCase());
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.base_drawer);
-        } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.storeclerk_drawer);
         } else if (sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.storeclerk_drawer);
@@ -115,38 +109,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            ExitApp();
-        }
-    }
-    private void ExitApp() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-        builder.setTitle("Logic University Inventory");
-        builder.setMessage("Do You Want To Exit?");
-        builder.setIcon(R.drawable.ic_key);
-        //final AlertDialog dialog = builder.create();
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -173,10 +135,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         NavigationView nv= (NavigationView) findViewById(R.id.nav_view);
         Menu m=nv.getMenu();
-
         int id = item.getItemId();
 
         /*Store Clerk Menu Item Expansion*/
@@ -186,14 +146,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.storeclerk_DepartmentSummary).setVisible(b);
             m.findItem(R.id.storeclerk_SupplierSummary).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Inventory) {
-            boolean b=!m.findItem(R.id.storeclerk_ProductCatalogue).isVisible();
-            m.findItem(R.id.storeclerk_ProductCatalogue).setVisible(b);
+        } else if (id == R.id.storeclerk_products) {
+            boolean b=!m.findItem(R.id.storeclerk_product_catalogue).isVisible();
+            m.findItem(R.id.storeclerk_product_catalogue).setVisible(b);
             m.findItem(R.id.storeclerk_UpdateInventory).setVisible(b);
             m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
             m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
             return true;
-        } else if (id == R.id.storeclerk_Requisitions) {
+        } else if (id == R.id.storeclerk_forms) {
             boolean b=!m.findItem(R.id.storeclerk_DisbursementSummary).isVisible();
             m.findItem(R.id.storeclerk_DisbursementSummary).setVisible(b);
             m.findItem(R.id.storeclerk_StationeryRetrievalSummary).setVisible(b);
@@ -210,26 +170,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
             return true;
         }
-        if(id == R.id.storeclerk_ProductCatalogue){
-            Intent intent = new Intent(BaseActivity.this, ProductCatalogue.class);
-            startActivity(intent);
-        }
-        if(id == R.id.storeclerk_CreateStationeryRetrieval){
-            Intent intent = new Intent(BaseActivity.this, SF_SRFActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.storeclerk_StationeryRetrievalSummary){
-            Intent intent = new Intent(BaseActivity.this, SF_StationeryRetrievalSummaryActivity.class);
-            startActivity(intent);
-        }
-        /*------*/
 
         if(id == R.id.logout) {
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(intent);
-        }
-        if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
+        } else if (id == R.id.base_nav_applyrequisitions && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
             startActivity(intent);
@@ -239,22 +185,54 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.base_nav_productcatalogue && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.storeclerk_StationeryRetrievalSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            Toast.makeText(context, "Stationery Retrieval Summary", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, SF_StationeryRetrievalSummaryActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
-        }
-         /*else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-
+        } else if (id == R.id.storeclerk_CreateStationeryRetrieval && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
+            Toast.makeText(context, "Create Stationery Retrieval", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, SF_SRFActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_CreateDisbursement && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementFormActivity.class);
             startActivity(intent);
             finish();
-        }*/
+        } else if (id == R.id.storeclerk_product_catalogue) {
+            Toast.makeText(context, "Product Catalogue", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, ProductCatalogue.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_InventorySummary) {
+            Toast.makeText(context, "Product Catalogue", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, InventorySummary.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_UpdateInventory) {
+            Toast.makeText(context, "Update Inventory is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.storeclerk_InventoryTransaction) {
+            Toast.makeText(context, "Inventory Transaction is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.storeclerk_DepartmentSummary) {
+            Toast.makeText(context, "Department Summary is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, DepartmentSummaryActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.storeclerk_SupplierSummary) {
+            Toast.makeText(context, "Supplier Summary is soon updating. Keep Subscribed", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, SupplierSummaryActivity.class);
+            startActivity(intent);
+        }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-  }
+}

@@ -53,7 +53,7 @@ public class SF_SRFActivity extends BaseActivity {
         //setContentView(R.layout.activity_sf_requisitionlist);
 
         View rootView = getLayoutInflater().inflate(R.layout.activity_sf_requisitionlist, frameLayout);
-        txt_menuTitle.setText("Create SRF");
+        txt_menuTitle.setText("CREATE STATIONERY RETRIEVAL FORM");
 
         reqadapter = new SF_PARequisitionListAdapter();
         btnselected = (Button) rootView.findViewById(R.id.btnchoosereq);

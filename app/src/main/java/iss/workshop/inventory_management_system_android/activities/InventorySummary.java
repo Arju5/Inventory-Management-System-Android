@@ -1,6 +1,5 @@
 package iss.workshop.inventory_management_system_android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.adapters.InventorySummaryAdapter;
-import iss.workshop.inventory_management_system_android.adapters.ProductCatalogueAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.Product;
 import retrofit2.Call;
