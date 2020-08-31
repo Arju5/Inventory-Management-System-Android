@@ -14,30 +14,54 @@
             android:icon="@drawable/ic_dashboard"
             android:title="@string/dashboard" />
 
-            <item
-                android:id="@+id/dephead_approveRequisition"
-                android:icon="@drawable/ic_summary"
-                android:title="Approve Requisition" />
+        <item
+            android:id="@+id/base_nav_products"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/product" />
 
-            <item
-                android:id="@+id/dephead_requisitionSummary"
-                android:icon="@drawable/ic_summary"
-                android:title="@string/requisition_summary" />
+        <!--Hide Sub Menu starts-->
 
-            <item
-                android:id="@+id/dephead_DelegateDepHead"
-                android:icon="@drawable/ic_person"
-                android:title="Delegation Head"/>
+        <item android:id="@+id/base_nav_product_catalogue"
+            android:title="@string/product_catalogue"
+            android:visible="false" />
 
-            <item
-                android:id="@+id/dephead_delegateDepRep"
-                android:icon="@drawable/ic_person"
-                android:title="Delegation Rep" />
+        <!--Hide Sub Menu ends-->
 
-            <item
-                android:id="@+id/logout"
-                android:icon="@drawable/ic_logout"
-                android:title="@string/logout"/>
+        <item
+            android:id="@+id/base_nav_forms"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/forms" />
+
+        <!--Hide Sub Menu starts-->
+
+        <item android:id="@+id/dephead_reqSummary"
+            android:title="@string/requisition_summary"
+            android:visible="false" />
+        <!--Hide Sub Menu ends-->
+        <item
+            android:id="@+id/dephead_delegations"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/delegation" />
+        <!--Hide Sub Menu starts-->
+        <item
+            android:id="@+id/dephead_delegationSummary"
+            android:title="@string/delegation_summary"
+            android:visible="false"/>
+        <item
+            android:id="@+id/dephead_delegateDepRep"
+            android:title="@string/assign_dep_rep"
+            android:visible="false"/>
+        <item
+            android:id="@+id/dephead_DelegateDepHead"
+            android:title="@string/delegate_dep_head"
+            android:visible="false"/>
+
+        <!--Hide Sub Menu ends-->
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout"/>
 
     </group>
 

@@ -12,32 +12,44 @@
         <item
             android:id="@+id/base_nav_dashboard"
             android:icon="@drawable/ic_dashboard"
-            android:title="Dashboard" />
-
-        <menu>
-            <item
-                android:id="@+id/base_nav_createRequisition"
-                android:icon="@drawable/ic_form"
-                android:title="@string/create_requisition" />
-
-            <item
-                android:id="@+id/base_nav_requisitionSummary"
-                android:icon="@drawable/ic_summary"
-                android:title="@string/requisition_summary" />
-
-        </menu>
+            android:title="@string/dashboard" />
 
         <item
-            android:id="@+id/base_nav_disbursements"
-            android:icon="@drawable/ic_form"
-            android:title="Disbursements" />
+            android:id="@+id/base_nav_products"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/product" />
 
+        <!--Hide Sub Menu starts-->
 
+        <item android:id="@+id/base_nav_product_catalogue"
+            android:title="@string/product_catalogue"
+            android:visible="false" />
+
+        <!--Hide Sub Menu ends-->
+
+        <item
+            android:id="@+id/base_nav_forms"
+            android:icon="@drawable/ic_summary"
+            android:title="@string/forms" />
+
+        <!--Hide Sub Menu starts-->
+
+        <item android:id="@+id/base_nav_requisitionSummary"
+            android:title="@string/requisition_summary"
+            android:visible="false" />
+
+        <item android:id="@+id/base_nav_applyrequisitions"
+            android:title="@string/apply_requisition"
+            android:visible="false" />
+
+        <item android:id="@+id/base_nav_disbursements"
+            android:title="@string/disbursement_summary"
+            android:visible="false" />
+        <!--Hide Sub Menu ends-->
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_logout"
             android:title="@string/logout"/>
-
     </group>
 
 </menu>

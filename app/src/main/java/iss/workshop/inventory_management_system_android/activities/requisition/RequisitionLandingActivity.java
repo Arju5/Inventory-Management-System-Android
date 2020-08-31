@@ -16,34 +16,36 @@ public class RequisitionLandingActivity extends BaseActivity
 
     private static final String TAG = "ReqLandingActivity";
     SharePreferenceHelper sharePreferenceHelper;
+    String empType;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_requsition_landing, frameLayout);
-        txt_menuTitle.setText("REQUISITION SUMMARY");
+        rootView = getLayoutInflater().inflate(R.layout.activity_requsition_landing, frameLayout);
+        txt_menuTitle.setText("DASHBOARD");
 
-        Intent intent = getIntent();
-        String empType = intent.getStringExtra("empType");
         sharePreferenceHelper = new SharePreferenceHelper(this);
-        Button pending_req_btn = rootView.findViewById(R.id.view_pending_req);
+        empType = sharePreferenceHelper.getUserRole();
+
+        Button pending_req_btn = findViewById(R.id.view_pending_req);
         if (pending_req_btn != null)
             pending_req_btn.setOnClickListener(this);
 
-        Button processed_req_btn = rootView.findViewById(R.id.view_processed_req);
+        Button processed_req_btn = findViewById(R.id.view_processed_req);
         if (processed_req_btn != null)
             processed_req_btn.setOnClickListener(this);
 
-        Button create_req_btn = rootView.findViewById(R.id.create_req);
+        //Button create_req_btn = findViewById(R.id.create_req);
 
-        if(sharePreferenceHelper.getUserRole().equals("Employee"))
+        /*if(empType.equals("Employee"))
         {
             if(create_req_btn != null)
                 create_req_btn.setOnClickListener(this);
         }
         else{
             create_req_btn.setVisibility(View.GONE);
-        }
+        }*/
     }
 
     @Override
@@ -54,11 +56,11 @@ public class RequisitionLandingActivity extends BaseActivity
             intent.putExtra("btnId", id);
             startActivity(intent);
         }
-        else if(id == R.id.create_req)
+        /*else if(id == R.id.create_req)
         {
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
-        }
+        }*/
 
     }
 }

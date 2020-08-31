@@ -17,12 +17,12 @@
         <item
             android:id="@+id/base_nav_products"
             android:icon="@drawable/ic_summary"
-            android:title="Products" />
+            android:title="@string/product" />
 
         <!--Hide Sub Menu starts-->
 
-        <item android:id="@+id/base_nav_productcatalogue"
-            android:title="Products Catalogue"
+        <item android:id="@+id/base_nav_product_catalogue"
+            android:title="@string/product_catalogue"
             android:visible="false" />
 
         <!--Hide Sub Menu ends-->
@@ -30,16 +30,16 @@
         <item
             android:id="@+id/base_nav_forms"
             android:icon="@drawable/ic_summary"
-            android:title="Forms" />
+            android:title="@string/forms" />
 
         <!--Hide Sub Menu starts-->
 
         <item android:id="@+id/base_nav_requisitionSummary"
-            android:title="Requisitions Summary"
+            android:title="@string/requisition_summary"
             android:visible="false" />
 
         <item android:id="@+id/base_nav_applyrequisitions"
-            android:title="Apply Requisitions"
+            android:title="@string/apply_requisition"
             android:visible="false" />
 
         <!--Hide Sub Menu ends-->
@@ -47,7 +47,6 @@
             android:id="@+id/logout"
             android:icon="@drawable/ic_logout"
             android:title="@string/logout"/>
-
     </group>
 
 </menu>

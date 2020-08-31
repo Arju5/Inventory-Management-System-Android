@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
     tools:context=".activities.requisition.RequisitionLandingActivity">
 
 
@@ -27,14 +28,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_pending_req"/>
-        <Button
+        <!--<Button
             android:id="@+id/create_req"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/create_requisition"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_processed_req"/>
+            app:layout_constraintTop_toBottomOf="@id/view_processed_req"/>-->
 
 
 
