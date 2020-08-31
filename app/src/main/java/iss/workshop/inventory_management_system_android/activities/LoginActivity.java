@@ -60,11 +60,17 @@ public class LoginActivity extends AppCompatActivity {
                             if(employee != null){
                                 Log.e(TAG, "onResponse: employee_name : "+employee.firstname);
                                 Log.e(TAG, "onResponse: employee : "+employee.employeeType.employeeTypeName);
+                                if (employee.tempDeptHeadType != null ) {
+                                    Log.e(TAG, "onResponse: employee : "+employee.tempDeptHeadType.employeeTypeName);
+                                    sharePreferenceHelper.setLogin(employee.getUsername(),employee.getId(),employee.tempDeptHeadType.employeeTypeName);
+                                    emptype = employee.tempDeptHeadType.employeeTypeName;
+                                } else {
+                                    sharePreferenceHelper.setLogin(employee.getUsername(),employee.getId(),employee.employeeType.employeeTypeName);
+                                    emptype = employee.employeeType.employeeTypeName;
+                                }
 
                                 //add username to shared preferences
-                                sharePreferenceHelper.setLogin(employee.getUsername(),employee.getId(),employee.employeeType.employeeTypeName);
 
-                                emptype = employee.employeeType.employeeTypeName;
                                 if (emptype.equals("Store Clerk")) {
                                     Intent intent = new Intent(LoginActivity.this, StoreClerkDashboardActivity.class);
                                     intent.putExtra("Status", emptype);
