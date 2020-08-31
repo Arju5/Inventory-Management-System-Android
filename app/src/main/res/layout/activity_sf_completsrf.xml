@@ -12,6 +12,9 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
+
+
+
         <TableLayout
             android:id="@+id/empdetails"
             android:layout_width="match_parent"
