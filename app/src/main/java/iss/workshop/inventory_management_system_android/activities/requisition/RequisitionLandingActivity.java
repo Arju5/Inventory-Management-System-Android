@@ -8,19 +8,25 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
-public class RequisitionLandingActivity extends AppCompatActivity
+public class RequisitionLandingActivity extends BaseActivity
         implements View.OnClickListener {
 
     private static final String TAG = "ReqLandingActivity";
+    SharePreferenceHelper sharePreferenceHelper;
+    String empType;
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requsition_landing);
+        rootView = getLayoutInflater().inflate(R.layout.activity_requsition_landing, frameLayout);
+        txt_menuTitle.setText("DASHBOARD");
 
-        Intent intent = getIntent();
-        String empType = intent.getStringExtra("empType");
+        sharePreferenceHelper = new SharePreferenceHelper(this);
+        empType = sharePreferenceHelper.getUserRole();
 
         Button pending_req_btn = findViewById(R.id.view_pending_req);
         if (pending_req_btn != null)
@@ -30,16 +36,16 @@ public class RequisitionLandingActivity extends AppCompatActivity
         if (processed_req_btn != null)
             processed_req_btn.setOnClickListener(this);
 
-        Button create_req_btn = findViewById(R.id.create_req);
+        //Button create_req_btn = findViewById(R.id.create_req);
 
-        if(empType.equals("Employee"))
+        /*if(empType.equals("Employee"))
         {
             if(create_req_btn != null)
                 create_req_btn.setOnClickListener(this);
         }
         else{
             create_req_btn.setVisibility(View.GONE);
-        }
+        }*/
     }
 
     @Override
@@ -50,11 +56,11 @@ public class RequisitionLandingActivity extends AppCompatActivity
             intent.putExtra("btnId", id);
             startActivity(intent);
         }
-        else if(id == R.id.create_req)
+        /*else if(id == R.id.create_req)
         {
             Intent intent = new Intent(this, ApplyRequistionActivity.class);
             startActivity(intent);
-        }
+        }*/
 
     }
 }

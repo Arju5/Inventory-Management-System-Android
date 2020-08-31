@@ -31,10 +31,14 @@
     <string name="sr_summary">Stationery Summary</string>
     <string name="disbursement_summary">Disbursement Summary</string>
     <string name="requisition">Requisition</string>
+    <string name="apply_requisition">Apply Requisition</string>
     <string name="create_sr">Create Stationery Retrieval</string>
     <string name="disbursement">Disbursement</string>
     <string name="create_disbursement">Create Disbursement</string>
-    <string name="delegation">Delegation</string>
+    <string name="delegation">Delegations</string>
+    <string name="delegation_summary">Delegation Summary</string>
+    <string name="assign_dep_rep">Assign Temp Dept Rep</string>
+    <string name="delegate_dep_head">Delegate Temp Dept Head</string>
     <string name="trendAnalysis">Trend Analysis</string>
     <string name="reports">Reports</string>
     <string name="logout">Logout</string>
