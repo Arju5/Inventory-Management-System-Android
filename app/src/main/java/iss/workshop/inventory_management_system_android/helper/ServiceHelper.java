@@ -150,7 +150,7 @@ public class ServiceHelper {
         Call<RequisitionViewModel> Reject(@Body RequisitionViewModel requisitionViewModel);
 
         @POST("Requisition/Cancel")
-        Call<String> Cancel(@Query("id") Integer reqId);
+        Call<RequisitionForm> Cancel(@Query("id") Integer reqId);
         //Requisition APIs ends
 
         //Dashboard APIS starts
