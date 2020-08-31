@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DibursementHandOverActivity;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementAssignment;
 import iss.workshop.inventory_management_system_android.activities.disbursement.DisbursementFormDetailsActivity;
@@ -29,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DelegationSummaryActivity extends BaseActivity implements AdapterView.OnClickListener {
+public class DelegationSummaryActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private static final String TAG = "DisburseDetailActivity";
     private ServiceHelper.ApiService service;
@@ -71,8 +72,12 @@ public class DelegationSummaryActivity extends BaseActivity implements AdapterVi
 
     }
 
+
     @Override
-    public void onClick(View view) {
-        Toast.makeText(this, "Delegated Item", Toast.LENGTH_SHORT).show();
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(this, "Manage Delegation", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DelegationSummaryActivity.this, DepHeadDashboardActivity.class);
+
+        startActivity(intent);
     }
 }

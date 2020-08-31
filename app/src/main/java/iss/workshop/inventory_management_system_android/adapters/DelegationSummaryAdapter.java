@@ -2,6 +2,7 @@ package iss.workshop.inventory_management_system_android.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,9 @@ public class DelegationSummaryAdapter extends ArrayAdapter {
         endDate.setText(removeTfromTimeStamp(delegationList.get(position).endDate));
         TextView delegateComments = view.findViewById(R.id.dephead_delegateComments);
         delegateComments.setText(delegationList.get(position).delegateComment);
-
+        TextView delegationType = view.findViewById(R.id.dephead_delegateType);
+        delegationType.setTextColor(Color.BLUE);
+        delegationType.setText(delegationList.get(position).delegatedType.employeeTypeName);
         return view;
     }
 

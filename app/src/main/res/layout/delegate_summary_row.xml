@@ -75,6 +75,20 @@
                 android:padding="5dip" />
         </TableRow>
 
+        <TableRow>
+            <TextView
+                android:text="Action"
+                android:padding="5dip" />
+            <TextView
+                android:id="@+id/dephead_delegateType"
+                android:text="Delegation Type"
+                android:textStyle="bold"
+                android:autoLink="all"
+                android:clickable="true"
+                android:gravity="left"
+                android:padding="5dip" />
+        </TableRow>
+
     </TableLayout>
 
 </LinearLayout>
