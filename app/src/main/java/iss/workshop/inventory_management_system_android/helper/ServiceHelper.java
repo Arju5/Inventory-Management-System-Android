@@ -234,7 +234,7 @@ public class ServiceHelper {
         Call<ArrayList<Department>> getDepartmentList();
 
         @GET("Department/GetDepartmentInfo")
-        Call<Department> getDepartmentInfo(@Query("deptName") String deptName);
+        Call<Department> getDepartmentInfo(@Query("deptname") String deptname);
         //Department APIs end
 
         //Supplier APIs start
