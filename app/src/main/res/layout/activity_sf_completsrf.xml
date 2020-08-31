@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="60dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:id="@+id/empdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:id="@+id/sclerk"
+                    android:text="Store Clerk : "
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/sclerkname"
+                    android:text="Yamone"
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/date"
+                    android:text="Creation Date : "
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/crdate"
+                    android:text="12/3/20"
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/retrieval_label"
+                    android:text="Retrieval Id : "
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/retrieval_name"
+                    android:text="#44444"
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/status_label"
+                    android:text="Status : "
+                    android:padding="5dip" />
+                <TextView
+                    android:id="@+id/status_name"
+                    android:text="open"
+                    android:gravity="left"
+                    android:padding="5dip" />
+            </TableRow>
+            <TableRow android:layout_margin="10dp"
+                android:id="@+id/requisition_header"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal">
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/label1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Requisition Form Within This Stationery Retrieval"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+
+        <TableLayout
+            android:id="@+id/req_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Requisition Number"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Date"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Status"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"/>
+            </TableRow>
+        </TableLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/requ_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/label2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Warehouse Stock Preview"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+
+        <TableLayout
+            android:id="@+id/warehouse_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Description"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Quantity Requested"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack" />
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Quantity Received"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack" />
+            </TableRow>
+        </TableLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/warehouse_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/label3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Assignment Summary"
+            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+
+        <TableLayout
+            android:id="@+id/summary_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:weightSum="5">
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="RF Code"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Requested"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Collected"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Received"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_weight="1"/>
+            </TableRow>
+        </TableLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/summary_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</ScrollView>

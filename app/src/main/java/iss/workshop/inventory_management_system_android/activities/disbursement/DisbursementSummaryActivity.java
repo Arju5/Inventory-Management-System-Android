@@ -28,25 +28,27 @@ public class DisbursementSummaryActivity extends BaseActivity implements Adapter
 
     private ServiceHelper.ApiService service;
     private DisbursementSummaryAdapter dfSummaryAdapter;
-    private String status;
+    public static String status;
+    View rootView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_summary, frameLayout);
+        rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_summary, frameLayout);
         txt_menuTitle.setText("DISBURSEMENT SUMMARY");
         service = ServiceHelper.getClient(this);
         dfSummaryAdapter = new DisbursementSummaryAdapter(DisbursementSummaryActivity.this, R.layout.disbursement_summary_row);
         Intent intent = getIntent();
         status = intent.getStringExtra("Status");
+
         getDisbursementsList(status);
     }
 
     private void getDisbursementsList(String status) {
 
         dfSummaryAdapter.clear();
-        final ListView disbursementListView = (ListView) findViewById(R.id.disbursementsummary);
+        final ListView disbursementListView = (ListView) rootView.findViewById(R.id.disbursementsummary);
         Call<ArrayList<DisbursementForm>> serviceDFAPICall = null;
         if(status.equals("OPEN"))
             serviceDFAPICall = service.getCreatedDisbursementList();

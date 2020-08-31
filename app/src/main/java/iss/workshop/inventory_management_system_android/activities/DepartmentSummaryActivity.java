@@ -30,7 +30,7 @@ public class DepartmentSummaryActivity extends BaseActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rootView = getLayoutInflater().inflate(R.layout.activity_department, frameLayout);
-        txt_menuTitle.setText("DASHBOARD");
+        txt_menuTitle.setText("DEPARTMENT SUMMARY");
         service = ServiceHelper.getClient(this);
         deptSummaryAdapter = new DepartmentSummaryAdapter(DepartmentSummaryActivity.this, R.layout.deptlist_row);
         getDepartmentList();

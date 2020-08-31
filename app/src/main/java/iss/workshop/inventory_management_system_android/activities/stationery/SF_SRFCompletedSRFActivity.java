@@ -6,16 +6,21 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.ParseException;
+import java.util.Date;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFReqAdapter;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFSummaryAdapter;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_CompletedSRFWarehouseAdapter;
+import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRetrievalViewModel;
@@ -56,6 +61,8 @@ public class SF_SRFCompletedSRFActivity extends BaseActivity {
 
     StationeryRetrievalViewModel srform;
 
+    MyDateFormat dateFormat;
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == android.R.id.home){
@@ -80,6 +87,8 @@ public class SF_SRFCompletedSRFActivity extends BaseActivity {
         //Get UserName by sharePreference
         sharePreferenceHelper = new SharePreferenceHelper(this);
         username = sharePreferenceHelper.getUserName();
+
+        dateFormat = new MyDateFormat();
 
         Intent intent = getIntent();
         selected_sfId = Integer.parseInt(intent.getStringExtra("SFId"));
@@ -129,7 +138,15 @@ public class SF_SRFCompletedSRFActivity extends BaseActivity {
                     cName = srform.stationeryRetrieval.storeClerk.getFirstname() + "" + srform.stationeryRetrieval.storeClerk.getLastname();
                     clerkName.setText(cName);
 
-                    createDate.setText(srform.stationeryRetrieval.getSrDate());
+                    try {
+                        Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(srform.stationeryRetrieval.getSrDate()));
+                        createDate.setText(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        createDate.setText(srform.stationeryRetrieval.getSrDate());
+                    }
+
+                    //createDate.setText(srform.stationeryRetrieval.getSrDate());
 
                     retrievalId.setText(srform.stationeryRetrieval.getSrCode());
 
@@ -159,12 +176,14 @@ public class SF_SRFCompletedSRFActivity extends BaseActivity {
 
                 } else {
                     Log.e(TAG, "onResponse: "+ response.message());
+                    Toast.makeText(getApplicationContext(),"Check Assigned Quantities",Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationeryRetrievalViewModel> call, Throwable t) {
                 Log.e(TAG, "onFailure: ",t );
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
     }

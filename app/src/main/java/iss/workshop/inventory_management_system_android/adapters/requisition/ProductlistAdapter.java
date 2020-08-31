@@ -112,7 +112,7 @@ public class ProductlistAdapter extends ArrayAdapter {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                requested_qty = Integer.parseInt(holder.qty.getText().toString());
+                requested_qty = Integer.parseInt(holder.qty.getText().toString(), 0);
                 ApplyRequistionActivity.prodModelList.get(position).setProductRequested(requested_qty);
             }
 

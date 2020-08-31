@@ -1,5 +1,6 @@
 package iss.workshop.inventory_management_system_android.activities.stationery;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,12 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import iss.workshop.inventory_management_system_android.R;
@@ -20,6 +24,7 @@ import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_SRFOpenDelegate;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_SRFPendingAssignedAdapter;
 import iss.workshop.inventory_management_system_android.adapters.stationery.SF_SRFPendingSRFAdapter;
+import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.model.StationeryRetrievalRequisitionFormProduct;
@@ -55,6 +60,7 @@ public class SF_SRFPendingSRFActivity extends BaseActivity implements SF_SRFOpen
     private SF_SRFPendingAssignedAdapter pendingAssignedAdapter;
     StationeryRetrievalViewModel srform;
     List<StationeryRetrievalRequisitionFormProduct> cachelist;
+    MyDateFormat dateFormat;
 
     //for Back Button
     @Override
@@ -74,6 +80,8 @@ public class SF_SRFPendingSRFActivity extends BaseActivity implements SF_SRFOpen
 
         View rootView = getLayoutInflater().inflate(R.layout.activity_sf_pendingsrf, frameLayout);
         txt_menuTitle.setText("Pending SRF");
+
+        dateFormat = new MyDateFormat();
 
         //for Back Button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -150,7 +158,15 @@ public class SF_SRFPendingSRFActivity extends BaseActivity implements SF_SRFOpen
                     cName = srform.stationeryRetrieval.warehousePacker.getFirstname() + "" + srform.stationeryRetrieval.storeClerk.getLastname();
                     warehousepacker.setText(cName);
 
-                    createDate.setText(srform.stationeryRetrieval.getSrDate());
+                    try {
+                        Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(srform.stationeryRetrieval.getSrDate()));
+                        createDate.setText(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        createDate.setText(srform.stationeryRetrieval.getSrDate());
+                    }
+
+                    //createDate.setText(srform.stationeryRetrieval.getSrDate());
 
                     retrievalId.setText(srform.stationeryRetrieval.getSrCode());
 
@@ -208,12 +224,14 @@ public class SF_SRFPendingSRFActivity extends BaseActivity implements SF_SRFOpen
                     }
                 } else {
                     Log.e(TAG, "onResponse: " + response.message());
+                    Toast.makeText(SF_SRFPendingSRFActivity.this, "Check Assigned Quantities", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationeryRetrievalViewModel> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
     }

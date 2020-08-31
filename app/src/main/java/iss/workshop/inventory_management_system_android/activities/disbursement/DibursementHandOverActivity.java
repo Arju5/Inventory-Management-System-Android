@@ -1,12 +1,8 @@
 package iss.workshop.inventory_management_system_android.activities.disbursement;
 
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,12 +15,17 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.util.Date;
+
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
-import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+//import iss.workshop.inventorymanagementsystem.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
+import iss.workshop.inventory_management_system_android.model.Employee;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +40,7 @@ public class DibursementHandOverActivity extends BaseActivity {
     TextView passStoreClerk, passDepRep, mstoreclerknamefordelivery, mdf_depRepName, mdf_dfcode, mdf_collectionpointName, mdf_Status, mdf_DeliveryDateTime;
     private ServiceHelper.ApiService service;
     private int count = 1;
+
 
     public static void setDisbursementViewModel(DisbursementViewModel dfViewModel) {
         DibursementHandOverActivity.disbursementViewModel = dfViewModel;
@@ -64,12 +66,20 @@ public class DibursementHandOverActivity extends BaseActivity {
         mdf_dfcode.setText(disbursementViewModel.disbursementForm.dfCode);
         mdf_collectionpointName.setText(disbursementViewModel.disbursementForm.collectionPoint.collectionName);
         mdf_Status.setText(String.valueOf(disbursementViewModel.disbursementForm.dfStatus));
-        mdf_DeliveryDateTime.setText(disbursementViewModel.disbursementForm.dfDeliveryDate);
+        try {
+            MyDateFormat dateFormat = new MyDateFormat();
+            Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(disbursementViewModel.disbursementForm.dfDeliveryDate));
+            mdf_DeliveryDateTime.append(dateFormat.DATE_FORMAT_DMY_HMS_AAA.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            mdf_DeliveryDateTime.setText(disbursementViewModel.disbursementForm.dfDeliveryDate);
+        }
+
 
         passStoreClerk = rootView.findViewById(R.id.df_handOverpasswordclerk);
         passDepRep = rootView.findViewById(R.id.df_handOverpasswordDepRep);
         btn_SigninClerk = (Button) rootView.findViewById(R.id.df_handOversignForClerk);
-        btn_SigninDepRep = (Button) rootView.findViewById(R.id.df_handOversignForClerk);
+        btn_SigninDepRep = (Button) rootView.findViewById(R.id.df_handOversignForDepRep);
         btn_Delivered = (Button) rootView.findViewById(R.id.df_handOverdisbursementFormSubmit);
 
         TableLayout disbursementRequisitionFormsTable = (TableLayout) findViewById(R.id.df_handOverdisbursementRequisitionForms);
@@ -129,14 +139,14 @@ public class DibursementHandOverActivity extends BaseActivity {
             public void onClick(View view) {
                 showCustomDialog(1);
 
-                btn_SigninClerk.setBackgroundColor(R.color.colorGreen);
+                btn_SigninClerk.setBackgroundColor(R.drawable.badgegreen);
             }
         });
         btn_SigninDepRep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showCustomDialog(2);
-                btn_SigninDepRep.setBackgroundColor(R.drawable.bg3);
+                btn_SigninDepRep.setBackgroundColor(R.drawable.badgegreen);
             }
         });
 
@@ -145,6 +155,17 @@ public class DibursementHandOverActivity extends BaseActivity {
         btn_Delivered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Employee empclerk = new Employee();
+                empclerk.setUsername(btn_SigninClerk.getText().toString());
+                empclerk.setPassword(passStoreClerk.getText().toString());
+
+                Employee empdeprep = new Employee();
+                empdeprep.setUsername((btn_SigninDepRep.getText().toString()));
+                empdeprep.setPassword(passDepRep.getText().toString());
+                disbursementViewModel.setStoreclerk(empdeprep);
+                disbursementViewModel.setDeptrep(empdeprep);
+                disbursementViewModel.setComment("");
                 Toast.makeText(DibursementHandOverActivity.this, "Calling API Deliver DF", Toast.LENGTH_SHORT).show();
                 Call<DisbursementViewModel> callsaveReceivedQty = service.DeliverDF(disbursementViewModel);
                 callsaveReceivedQty.enqueue(new Callback<DisbursementViewModel>() {
@@ -156,7 +177,7 @@ public class DibursementHandOverActivity extends BaseActivity {
                         if (response.isSuccessful()) {
                             DisbursementViewModel disbursementViewModel = response.body();
                             if(disbursementViewModel != null){
-                                Intent intent = new Intent(DibursementHandOverActivity.this, DashboardActivity.class);
+                                Intent intent = new Intent(DibursementHandOverActivity.this, DisbursementSummaryStatusSelectionActivity.class);
                                 startActivity(intent);
                             }
                         } else {
@@ -200,8 +221,8 @@ public class DibursementHandOverActivity extends BaseActivity {
                 }
                 else{
                     btn_SigninDepRep.setText(name.toString());
-                    /*//pswwarehouse.setText(password.toString());
-                    srform.getWarehousepacker().setUsername(name);
+                    passDepRep.setText(password.toString());
+                    /*srform.getWarehousepacker().setUsername(name);
                     srform.getWarehousepacker().setPassword(password);*/
                 }
                 dialog.dismiss();
