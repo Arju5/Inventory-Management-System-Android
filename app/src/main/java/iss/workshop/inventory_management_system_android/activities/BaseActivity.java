@@ -167,7 +167,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         /*Store side Menu Item Expansion ends*/
         /*Dept side Menu Item Expansion starts*/
-        else if (id == R.id.base_nav_products && getUserRole.equals("Employee")||getUserRole.equals("Department Head")||getUserRole.equals("Department Representative")) {
+        else if (id == R.id.base_nav_products && (getUserRole.equals("Employee")||getUserRole.equals("Department Head")||getUserRole.equals("Department Representative"))) {
             boolean b=!m.findItem(R.id.base_nav_product_catalogue).isVisible();
             m.findItem(R.id.base_nav_product_catalogue).setVisible(b);
             return true;
@@ -195,11 +195,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             m.findItem(R.id.dephead_delegationSummary).setVisible(b);
             m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
             m.findItem(R.id.dephead_DelegateDepHead).setVisible(b);
+            return true;
         }
         else if(id==R.id.dephead_delegations && getUserRole.equals("Temporary Department Head")){
             boolean b=!m.findItem(R.id.dephead_delegationSummary).isVisible();
             m.findItem(R.id.dephead_delegationSummary).setVisible(b);
             m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
+            return true;
         }
         /*Dept side Menu Item Expansion ends*/
         /*------*/
@@ -236,7 +238,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
             //Intent intent   = new Intent(this, DisbursementFormActivity.class);
             //startActivity(intent);
-            finish();
+            //finish();
         }
         /* Dept side */
         else if(id== R.id.base_nav_requisitionSummary ){

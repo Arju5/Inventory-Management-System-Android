@@ -34,7 +34,7 @@
 
         <!--Hide Sub Menu starts-->
 
-        <item android:id="@+id/dephead_reqSummary"
+        <item android:id="@+id/base_nav_requisitionSummary"
             android:title="@string/requisition_summary"
             android:visible="false" />
         <!--Hide Sub Menu ends-->
