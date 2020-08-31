@@ -13,6 +13,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.DeptRepDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.TempDeptHeadDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.StoreManagerDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.StoreSupervisorDashboardActivity"></activity>
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />

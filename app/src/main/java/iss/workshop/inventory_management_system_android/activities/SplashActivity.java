@@ -40,15 +40,27 @@ public class SplashActivity extends AppCompatActivity {
                        startActivity(intent);
                    } else if (sharePreferenceHelper.getUserRole().equals("Employee")) {
                        Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
+                       //To be the last activity for back button(need to delete the login activity)
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
                        startActivity(intent);
                    } else if (sharePreferenceHelper.getUserRole().equals("Store Manager")) {
                        Intent intent = new Intent(SplashActivity.this, StoreManagerDashboardActivity.class);
+                       //To be the last activity for back button(need to delete the login activity)
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
                        startActivity(intent);
                    } else if (sharePreferenceHelper.getUserRole().equals("Department Representative")) {
                        Intent intent = new Intent(SplashActivity.this, DeptRepDashboardActivity.class);
+                       //To be the last activity for back button(need to delete the login activity)
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
                        startActivity(intent);
                    } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
                        Intent intent = new Intent(SplashActivity.this, DepHeadDashboardActivity.class);
+                       //To be the last activity for back button(need to delete the login activity)
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
                        startActivity(intent);
                    }
 

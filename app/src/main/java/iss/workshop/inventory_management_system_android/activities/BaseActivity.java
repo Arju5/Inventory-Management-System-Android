@@ -76,12 +76,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (getUserRole.equals("Temporary Department Head")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.tempdepthead_drawer);
-        } else if (getUserRole.equals("Store Manager")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.storemanager_drawer);
-        } else if (getUserRole.equals("Store Supervisor")) {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.storesupervisor_drawer);
         }
 
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) BaseActivity.this);
@@ -146,10 +140,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         /*Store side Menu Item Expansion*/
-        if (id == R.id.base_nav_products && getUserRole.equals("Store Clerk")||getUserRole.equals("Store Supervisor")||getUserRole.equals("Store Manager")) {
-            boolean b=!m.findItem(R.id.base_nav_product_catalogue).isVisible();
-            m.findItem(R.id.base_nav_product_catalogue).setVisible(b);
+
+        if (id == R.id.storeclerk_products) {
+            boolean b;
+            b=!m.findItem(R.id.storeclerk_product_catalogue).isVisible();
+            m.findItem(R.id.storeclerk_product_catalogue).setVisible(b);
+            m.findItem(R.id.storeclerk_UpdateInventory).setVisible(b);
             m.findItem(R.id.storeclerk_InventorySummary).setVisible(b);
+            m.findItem(R.id.storeclerk_InventoryTransaction).setVisible(b);
             return true;
         } else if(id == R.id.storeclerk_Directory){
             boolean b=!m.findItem(R.id.storeclerk_DepartmentSummary).isVisible();
@@ -167,40 +165,39 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         /*Store side Menu Item Expansion ends*/
         /*Dept side Menu Item Expansion starts*/
-        else if (id == R.id.base_nav_products && (getUserRole.equals("Employee")||getUserRole.equals("Department Head")||getUserRole.equals("Department Representative"))) {
+
+        if ((getUserRole.equals("Department Head") || getUserRole.equals("Temporary Department Head")) && (m.findItem(R.id.dephead_delegations).isVisible() == false)) {
+            m.findItem(R.id.dephead_delegations).setVisible(true);
+            synchronized (m) {
+                m.notify();
+            }
+            return true;
+        }
+
+        if (id == R.id.base_nav_products) {
             boolean b=!m.findItem(R.id.base_nav_product_catalogue).isVisible();
             m.findItem(R.id.base_nav_product_catalogue).setVisible(b);
             return true;
-        }
-        else if (id == R.id.base_nav_forms && getUserRole.equals("Department Head")) {
+        } else if (id == R.id.base_nav_forms) {
             boolean b=!m.findItem(R.id.base_nav_requisitionSummary).isVisible();
             m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
+            if (getUserRole.equals("Employee")) {
+                b=!m.findItem(R.id.base_nav_applyrequisitions).isVisible();
+                m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
+            } else if (getUserRole.equals("Department Representative")) {
+                b=!m.findItem(R.id.base_nav_applyrequisitions).isVisible();
+                m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
+                m.findItem(R.id.deprep_disbursementsummary).setVisible(b);
+            }
             return true;
-        }
-        else if (id == R.id.base_nav_forms && getUserRole.equals("Employee")) {
-            boolean b=!m.findItem(R.id.base_nav_requisitionSummary).isVisible();
-            m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
-            m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
-            return true;
-        }
-        else if (id == R.id.base_nav_forms && getUserRole.equals("Department Representative")) {
-            boolean b=!m.findItem(R.id.base_nav_requisitionSummary).isVisible();
-            m.findItem(R.id.base_nav_requisitionSummary).setVisible(b);
-            m.findItem(R.id.base_nav_applyrequisitions).setVisible(b);
-            m.findItem(R.id.base_nav_disbursements).setVisible(b);
-            return true;
-        }
-        else if(id==R.id.dephead_delegations && getUserRole.equals("Department Head")){
+        } else if (id == R.id.dephead_delegations && ((getUserRole.contains("Department Head")))) {
             boolean b=!m.findItem(R.id.dephead_delegationSummary).isVisible();
             m.findItem(R.id.dephead_delegationSummary).setVisible(b);
             m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
-            m.findItem(R.id.dephead_DelegateDepHead).setVisible(b);
-            return true;
-        }
-        else if(id==R.id.dephead_delegations && getUserRole.equals("Temporary Department Head")){
-            boolean b=!m.findItem(R.id.dephead_delegationSummary).isVisible();
-            m.findItem(R.id.dephead_delegationSummary).setVisible(b);
-            m.findItem(R.id.dephead_delegateDepRep).setVisible(b);
+            if (getUserRole.equals("Department Head")) {
+                b=!m.findItem(R.id.dephead_DelegateDepHead).isVisible();
+                m.findItem(R.id.dephead_DelegateDepHead).setVisible(b);
+            }
             return true;
         }
         /*Dept side Menu Item Expansion ends*/
@@ -213,6 +210,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.base_nav_product_catalogue) {
             Toast.makeText(context, "Product Catalogue Activity", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, ProductCatalogue.class);
+            startActivity(intent);
         }else if (id == R.id.storeclerk_InventorySummary) {
             Toast.makeText(context, "Inventory Summary Activity", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.storeclerk_DepartmentSummary ) {

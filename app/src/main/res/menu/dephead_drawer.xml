@@ -5,12 +5,12 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/dephead_menuProfile"
+            android:id="@+id/base_nav_Profile"
             android:icon="@drawable/ic_profile"
             android:title="@string/profile" />
 
         <item
-            android:id="@+id/dephead_dashboard"
+            android:id="@+id/base_nav_dashboard"
             android:icon="@drawable/ic_dashboard"
             android:title="@string/dashboard" />
 
@@ -37,10 +37,20 @@
         <item android:id="@+id/base_nav_requisitionSummary"
             android:title="@string/requisition_summary"
             android:visible="false" />
+
+        <item android:id="@+id/base_nav_applyrequisitions"
+            android:title="@string/apply_requisition"
+            android:visible="false" />
+
+        <item android:id="@+id/deprep_disbursementsummary"
+            android:title="@string/disbursement_summary"
+            android:visible="false" />
+
         <!--Hide Sub Menu ends-->
         <item
             android:id="@+id/dephead_delegations"
             android:icon="@drawable/ic_summary"
+            android:visible="false"
             android:title="@string/delegation" />
         <!--Hide Sub Menu starts-->
         <item
