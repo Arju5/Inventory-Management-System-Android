@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
+        <activity android:name=".activities.dashboard.TempDeptHeadDashboardActivity"/>
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.disbursement.DisbursementAssignment" />
         <activity android:name=".activities.disbursement.DisbursementSummaryStatusSelectionActivity" />
@@ -24,8 +25,9 @@
         <activity android:name=".activities.department.EmployeeDisbursementSummarySelectionActivity" /> <!-- <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" /> -->
         <!-- Requisition Activities -->
         <!-- by htp -->
-        <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
+        <activity android:name=".activities.requisition.RequisitionFormActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
+        <activity android:name=".activities.dashboard.DeptRepDashboardActivity" />
         <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
         <activity android:name=".activities.ProductCatalogue" />

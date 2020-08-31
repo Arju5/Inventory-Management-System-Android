@@ -1,6 +1,10 @@
 package iss.workshop.inventory_management_system_android.model;
 
-public class RequisitionForm {
+import java.io.Serializable;
+
+import iss.workshop.inventory_management_system_android.helper.Pageable;
+
+public class RequisitionForm implements Serializable, Pageable {
     public int id;
     public Employee employee;
     public String rfCode;

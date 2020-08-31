@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 
 import iss.workshop.inventory_management_system_android.R;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DepHeadDashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.DeptRepDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.activities.dashboard.StoreManagerDashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
@@ -41,6 +43,12 @@ public class SplashActivity extends AppCompatActivity {
                        startActivity(intent);
                    } else if (sharePreferenceHelper.getUserRole().equals("Store Manager")) {
                        Intent intent = new Intent(SplashActivity.this, StoreManagerDashboardActivity.class);
+                       startActivity(intent);
+                   } else if (sharePreferenceHelper.getUserRole().equals("Department Representative")) {
+                       Intent intent = new Intent(SplashActivity.this, DeptRepDashboardActivity.class);
+                       startActivity(intent);
+                   } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
+                       Intent intent = new Intent(SplashActivity.this, DepHeadDashboardActivity.class);
                        startActivity(intent);
                    }
 

@@ -150,36 +150,5 @@ public class StoreClerkDashboardActivity extends BaseActivity implements View.On
         });
         builder.show();
     }
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            ExitApp();
-        }
-    }
-    private void ExitApp() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Logic University Inventory");
-        builder.setMessage("Do You Want To Exit?");
-        builder.setIcon(R.drawable.ic_key);
-        //final AlertDialog dialog = builder.create();
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.show();
-    }
 }

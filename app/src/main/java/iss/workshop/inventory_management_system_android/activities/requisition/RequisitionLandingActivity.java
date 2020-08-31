@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class RequisitionLandingActivity extends BaseActivity
         implements View.OnClickListener {
 
     private static final String TAG = "ReqLandingActivity";
+    SharePreferenceHelper sharePreferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class RequisitionLandingActivity extends BaseActivity
 
         Intent intent = getIntent();
         String empType = intent.getStringExtra("empType");
-
+        sharePreferenceHelper = new SharePreferenceHelper(this);
         Button pending_req_btn = rootView.findViewById(R.id.view_pending_req);
         if (pending_req_btn != null)
             pending_req_btn.setOnClickListener(this);
@@ -34,7 +36,7 @@ public class RequisitionLandingActivity extends BaseActivity
 
         Button create_req_btn = rootView.findViewById(R.id.create_req);
 
-        if(empType.equals("Employee"))
+        if(sharePreferenceHelper.getUserRole().equals("Employee"))
         {
             if(create_req_btn != null)
                 create_req_btn.setOnClickListener(this);

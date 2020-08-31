@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="60dp"
+    android:layout_marginTop="20dp"
     app:layout_constraintTop_toBottomOf="@+id/toolbar"
     tools:context=".activities.requisition.ApplyRequistionActivity"
     >
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="Requisition Form"
                 android:textSize="25sp"
-                android:gravity="left"
+                android:gravity="center_horizontal"
                 android:textColor="@color/colorBlack"
                 app:layout_constraintBottom_toTopOf="@+id/search"/>
         </TableRow>
@@ -48,7 +48,7 @@
                 android:id="@+id/search_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:text="Search"
                 android:textSize="15sp"
                 android:background="@drawable/bg2"/>
