@@ -59,6 +59,7 @@
             </intent-filter>
             -->
         </activity>
+        <activity android:name=".activities.delegation.DelegateDepHeadActivity" />
     </application>
 
 </manifest>
