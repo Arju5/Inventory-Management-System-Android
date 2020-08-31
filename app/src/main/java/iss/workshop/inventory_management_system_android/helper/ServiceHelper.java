@@ -23,6 +23,7 @@ import iss.workshop.inventory_management_system_android.model.StationeryRetrieva
 import iss.workshop.inventory_management_system_android.model.Supplier;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DashboardViewModel;
+import iss.workshop.inventory_management_system_android.viewmodel.DelegationViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionSummaryViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.RequisitionViewModel;
 import iss.workshop.inventory_management_system_android.viewmodel.StationeryRequisitionProductViewModel;
@@ -251,6 +252,13 @@ public class ServiceHelper {
         @GET("Supplier/GetSupplierList")
         Call<ArrayList<Supplier>> getSupplierList();
         //Supplier APIs end
+
+        // Delegation API Starts
+
+        @GET("delegation/summary")
+        Call<DelegationViewModel> getDelegateSummary(@Query("id") Integer id);
+
+        // Delegation API Ends
     }
 
 }
