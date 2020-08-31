@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.stationery.SF_StationeryRetrievalSummaryActivity"
-    android:layout_marginTop="60dp">
+    android:layout_marginTop="60dp"
+    android:layout_gravity="center_vertical">
 
     <Button
         android:id="@+id/opensr"
@@ -46,7 +47,7 @@
         android:textColor="#ffffff"
         android:textSize="24sp" />
 
-    <Button
+    <!--<Button
         android:id="@+id/createsr"
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -57,6 +58,6 @@
         android:background="@drawable/bg1"
         android:text="Create SR"
         android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textSize="24sp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

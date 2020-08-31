@@ -10,21 +10,21 @@ import android.view.View;
 import java.util.ArrayList;
 
 import iss.workshop.inventory_management_system_android.R;
-import iss.workshop.inventory_management_system_android.adapters.ProductCatalogueAdapter;
+import iss.workshop.inventory_management_system_android.adapters.InventorySummaryAdapter;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
 import iss.workshop.inventory_management_system_android.model.Product;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductCatalogue extends BaseActivity {
+public class InventorySummary extends BaseActivity {
 
-    private static final String TAG = "ProductCatalogue";
+    private static final String TAG = "InventorySummary";
 
 
     RecyclerView rcv;
 
-    private ProductCatalogueAdapter adapter;
+    private InventorySummaryAdapter adapter;
 
     private ServiceHelper.ApiService service;
     private ArrayList<Product> pm;
@@ -34,12 +34,12 @@ public class ProductCatalogue extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         //setContentView(R.layout.activity_product_catalogue);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_product_catalogue, frameLayout);
-        txt_menuTitle.setText("PRODUCT CATALOGUE");
+        View rootView = getLayoutInflater().inflate(R.layout.activity_inventory_summary, frameLayout);
+        txt_menuTitle.setText("Inventory Summary");
 
-        adapter = new ProductCatalogueAdapter();
+        adapter = new InventorySummaryAdapter();
 
-        rcv = findViewById(R.id.recycler);
+        rcv = findViewById(R.id.recycler_inventory);
 
         rcv.setAdapter(adapter);//Data source of recycler view
         rcv.setHasFixedSize(true);//recycler view => list view => fixed size

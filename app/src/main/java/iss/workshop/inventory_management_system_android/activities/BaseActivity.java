@@ -175,7 +175,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             sharePreferenceHelper.logoutSharePreference();
             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(intent);
-        } else if (id == R.id.base_nav_createRequisition && sharePreferenceHelper.getUserRole().equals("Employee")) {
+        } else if (id == R.id.base_nav_applyrequisitions && sharePreferenceHelper.getUserRole().equals("Employee")) {
             Toast.makeText(context, "Create Requisition", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, ApplyRequistionActivity.class);
             startActivity(intent);
@@ -191,12 +191,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_DisbursementSummary && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Toast.makeText(context, "Create Disbursement", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, DisbursementSummaryStatusSelectionActivity.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.storeclerk_CreateStationeryRetrieval && sharePreferenceHelper.getUserRole().equals("Store Clerk")) {
-            Toast.makeText(context, "Disbursement Summary", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Create Stationery Retrieval", Toast.LENGTH_SHORT).show();
             Intent intent   = new Intent(this, SF_SRFActivity.class);
             startActivity(intent);
             finish();
@@ -205,6 +205,29 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent   = new Intent(this, DisbursementFormActivity.class);
             startActivity(intent);
             finish();
+        } else if (id == R.id.storeclerk_product_catalogue) {
+            Toast.makeText(context, "Product Catalogue", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, ProductCatalogue.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_InventorySummary) {
+            Toast.makeText(context, "Product Catalogue", Toast.LENGTH_SHORT).show();
+            Intent intent   = new Intent(this, InventorySummary.class);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.storeclerk_UpdateInventory) {
+            Toast.makeText(context, "Update Inventory is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.storeclerk_InventoryTransaction) {
+            Toast.makeText(context, "Inventory Transaction is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.storeclerk_DepartmentSummary) {
+            Toast.makeText(context, "Department Summary is soon arriving. Keep subscribed", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, DepartmentSummaryActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.storeclerk_SupplierSummary) {
+            Toast.makeText(context, "Supplier Summary is soon updating. Keep Subscribed", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, SupplierSummaryActivity.class);
+            startActivity(intent);
         }
 
 

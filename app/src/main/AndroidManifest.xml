@@ -26,7 +26,11 @@
         <!-- by htp -->
         <activity android:name=".activities.department.EmployeeRequisitionSummarySelectionActivity" />
         <activity android:name=".activities.requisition.RequisitionSummaryActivity" />
+        <activity android:name=".activities.requisition.RequisitionLandingActivity" />
         <activity android:name=".activities.requisition.ApplyRequistionActivity" />
+        <activity android:name=".activities.ProductCatalogue" />
+        <activity android:name=".activities.ProductCatalogueDetails" />
+        <activity android:name=".activities.InventorySummary" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.stationery.SF_StationeryRetrievalSummaryActivity" />
         <activity android:name=".activities.stationery.SF_SRFActivity" />
@@ -36,6 +40,8 @@
         <activity android:name=".activities.stationery.SF_SRFProductActivity" />
         <activity android:name=".activities.stationery.SF_SRFCompletedSRFActivity" />
         <activity android:name=".activities.SupplierSummaryActivity"></activity>
+        <activity android:name=".activities.DepartmentSummaryActivity"></activity>
+        <activity android:name=".activities.DepartmentDetailedActivity"></activity>
         <!--<activity android:name=".activities.disbursement.DisbursementFormActivity" />-->
         <activity android:name="iss.workshop.inventory_management_system_android.activities.SplashActivity">
             <intent-filter>

@@ -88,6 +88,8 @@ public class LoginActivity extends AppCompatActivity {
                                 }
 
                             }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login Failed. Please report to Logic University IT Care", Toast.LENGTH_SHORT).show();
                         }
                     }
 

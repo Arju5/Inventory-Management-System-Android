@@ -10,21 +10,24 @@ import android.widget.Button;
 
 import iss.workshop.inventory_management_system_android.R;
 import iss.workshop.inventory_management_system_android.activities.BaseActivity;
+import iss.workshop.inventory_management_system_android.activities.DashboardActivity;
+import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
+import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 
 public class DisbursementSummaryStatusSelectionActivity extends BaseActivity {
-
+    SharePreferenceHelper sharePreferenceHelper;
     private static final String TAG = "DisburSumStatusSelecion";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = getLayoutInflater().inflate(R.layout.activity_disbursement_summary_status_selection, frameLayout);
-        txt_menuTitle.setText("Disbursement Summary");
+        txt_menuTitle.setText("DISBURSEMENT SUMMARY");
         Button createdDF = (Button)rootView.findViewById(R.id.df_CREATED);
         Button pendingDeliveryDF = (Button)rootView.findViewById(R.id.df_PENDING_DELIVERY);
         Button pendingAssignedDF = (Button)rootView.findViewById(R.id.df_PENDING_ASSIGNED);
         Button completedDF = (Button)rootView.findViewById(R.id.df_COMPLETED);
         final Intent intent = new Intent(DisbursementSummaryStatusSelectionActivity.this, DisbursementSummaryActivity.class);
-
+        sharePreferenceHelper = new SharePreferenceHelper(this);
         createdDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,5 +67,15 @@ public class DisbursementSummaryStatusSelectionActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        sharePreferenceHelper = new SharePreferenceHelper(this);
+        if(sharePreferenceHelper.getUserRole().contains("Store")) {
+            Intent intent = new Intent(this, StoreClerkDashboardActivity.class);
+        } else {
+            Intent intent = new Intent(this, DashboardActivity.class);
+        }
     }
 }

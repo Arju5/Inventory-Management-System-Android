@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/productdetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                app:layout_constraintTop_toTopOf="parent">
+                <TableRow>
+                    <TextView
+                        android:text="Product Category"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip" />
+                    <TextView
+                        android:id="@+id/txtcategory"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Description"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip" />
+                    <TextView
+                        android:id="@+id/txtproduct"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="UOM"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip" />
+                    <TextView
+                        android:id="@+id/txtuom"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Inventory Quantity"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip"/>
+                    <TextView
+                        android:id="@+id/txtinventory"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Reorder Level"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip"/>
+                    <TextView
+                        android:id="@+id/txtlevel"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Reorder Quantity"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip"/>
+                    <TextView
+                        android:id="@+id/txtqty"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Inventory Location"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:padding="5dip"/>
+                    <TextView
+                        android:id="@+id/txtlocation"
+                        android:textSize="15dp"
+                        android:gravity="left"
+                        android:padding="5dip" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.core.widget.NestedScrollView>

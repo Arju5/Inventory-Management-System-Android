@@ -101,16 +101,6 @@
                 android:text="Requisition ID"
                 android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/requisitionDeliveryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:textColor="@color/colorBlack"
-                android:text="Date"
-                android:textSize="15dp" />
-
         </TableRow>
 
 
