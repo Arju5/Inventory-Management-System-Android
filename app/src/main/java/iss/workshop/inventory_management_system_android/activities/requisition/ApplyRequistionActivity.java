@@ -60,8 +60,8 @@ public class ApplyRequistionActivity extends BaseActivity
         ApplyRF();
 
         //editsearch.setOnQueryTextListener(this);
-        btnsearch = (Button)rootView.findViewById(R.id.search_btn);
-        btnsearch.setOnClickListener(this);
+       /* btnsearch = (Button)rootView.findViewById(R.id.search_btn);
+        btnsearch.setOnClickListener(this);*/
 
         add_rf_cmt = (EditText)rootView.findViewById(R.id.add_rf_comment) ;
 
@@ -157,13 +157,13 @@ public class ApplyRequistionActivity extends BaseActivity
 
             SaveRf(rfViewmodel);
         }
-        else if(btnid == R.id.search_btn){
+       /* else if(btnid == R.id.search_btn){
             //locate the search text view
             editsearch = (EditText) rootView.findViewById(R.id.search);
             searchText = editsearch.getText().toString();
             Log.d(TAG, "search text in onCreate: "+searchText);
             productlistAdapter.filter(searchText);
 
-        }
+        }*/
     }
 }

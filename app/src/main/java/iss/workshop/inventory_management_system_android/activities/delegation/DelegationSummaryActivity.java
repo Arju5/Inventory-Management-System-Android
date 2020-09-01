@@ -61,7 +61,7 @@ public class DelegationSummaryActivity extends BaseActivity implements AdapterVi
                     ListView delegationListView = (ListView) rootView.findViewById(R.id.dephead_delegate_summary);
                     delegationListView.setAdapter(delegationSummaryAdapter);
                     delegationSummaryAdapter.setDelegationList(delegationViewModel);
-                    //delegationListView.setOnItemClickListener((AdapterView.OnItemClickListener) DelegationSummaryActivity.this);
+                    delegationListView.setOnItemClickListener((AdapterView.OnItemClickListener) DelegationSummaryActivity.this);
                 }
             }
             @Override
@@ -72,12 +72,13 @@ public class DelegationSummaryActivity extends BaseActivity implements AdapterVi
 
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, "Manage Delegation", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(DelegationSummaryActivity.this, DepHeadDashboardActivity.class);
-
-        startActivity(intent);
+        Toast.makeText(this, "Manage Delegation soon Arriving. Please keep subscribed", Toast.LENGTH_SHORT).show();
+        /*TextView textView = view.findViewById(R.id.dephead_delegationid);
+        String expr = textView.getText().toString();
+        Intent intent = new Intent(DelegationSummaryActivity.this, UpdateDepHeadDelegationActivity.class);
+        intent.putExtra("delegationId", textView.getText());
+        startActivity(intent);*/
     }
 }

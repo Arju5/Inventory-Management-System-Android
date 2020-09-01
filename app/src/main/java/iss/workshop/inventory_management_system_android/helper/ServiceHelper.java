@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import iss.workshop.inventory_management_system_android.model.DelegationForm;
 import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.Department;
 import iss.workshop.inventory_management_system_android.model.DisbursementForm;
@@ -269,6 +270,9 @@ public class ServiceHelper {
 
         @GET("delegation/delegatedeptrep")
         Call<DelegationViewModel> DelegateDeptRep(@Query("id") Integer user_id);
+
+        @GET("delegation/ViewDL")
+        Call<DelegationForm> ViewDLFormById(@Query("id") Integer user_id);
 
         // Delegation API Ends
     }

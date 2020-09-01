@@ -63,10 +63,12 @@ public class DelegationSummaryAdapter extends ArrayAdapter {
         TextView delegationType = view.findViewById(R.id.dephead_delegateType);
         delegationType.setTextColor(Color.BLUE);
         delegationType.setText(delegationList.get(position).delegatedType.employeeTypeName);
+        TextView delegationid = view.findViewById(R.id.dephead_delegationid);
+        delegationid.setText(String.valueOf(delegationList.get(position).id));
         return view;
     }
 
-    private static String removeTfromTimeStamp(String datetime) {
+    public static String removeTfromTimeStamp(String datetime) {
         try {
             MyDateFormat dateFormat = new MyDateFormat();
             Date date = dateFormat.DATE_FORMAT_YMD_HMS.parse(dateFormat.removeTfromServerDate(datetime));

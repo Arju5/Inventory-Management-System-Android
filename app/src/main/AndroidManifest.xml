@@ -12,11 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.dashboard.DepHeadDashboardActivity"></activity>
-        <activity android:name=".activities.dashboard.DeptRepDashboardActivity"></activity>
-        <activity android:name=".activities.dashboard.TempDeptHeadDashboardActivity"></activity>
-        <activity android:name=".activities.dashboard.StoreManagerDashboardActivity"></activity>
-        <activity android:name=".activities.dashboard.StoreSupervisorDashboardActivity"></activity>
+        <activity android:name=".activities.delegation.UpdateDepHeadDelegationActivity"></activity>
+        <activity android:name=".activities.dashboard.DepHeadDashboardActivity" />
+        <activity android:name=".activities.dashboard.DeptRepDashboardActivity" />
+        <activity android:name=".activities.dashboard.TempDeptHeadDashboardActivity" />
+        <activity android:name=".activities.dashboard.StoreManagerDashboardActivity" />
+        <activity android:name=".activities.dashboard.StoreSupervisorDashboardActivity" />
         <activity android:name=".activities.department.DepHeadApproveDisbursementActivity" />
         <activity android:name=".activities.delegation.DelegateDepHeadActivity" />
         <activity android:name=".activities.delegation.AssignDeptRepActivity" />
@@ -46,9 +47,8 @@
         <activity android:name=".activities.stationery.SF_StationeryRetrievalFormSummaryListViewActivity" />
         <activity android:name=".activities.stationery.SF_SRFProductActivity" />
         <activity android:name=".activities.stationery.SF_SRFCompletedSRFActivity" />
-        <activity android:name=".activities.SupplierSummaryActivity"></activity>
-        <!--<activity android:name=".activities.disbursement.DisbursementFormActivity" />-->
-        <activity android:name="iss.workshop.inventory_management_system_android.activities.SplashActivity">
+        <activity android:name=".activities.SupplierSummaryActivity" /> <!-- <activity android:name=".activities.disbursement.DisbursementFormActivity" /> -->
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

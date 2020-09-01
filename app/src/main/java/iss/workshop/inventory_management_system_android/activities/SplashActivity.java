@@ -56,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK );//(need to delete the login activity)
                        startActivity(intent);
-                   } else if (sharePreferenceHelper.getUserRole().equals("Department Head")) {
+                   } else if (sharePreferenceHelper.getUserRole().equals("Department Head") || (sharePreferenceHelper.getUserRole().equals("Temporary Department Head"))) {
                        Intent intent = new Intent(SplashActivity.this, DepHeadDashboardActivity.class);
                        //To be the last activity for back button(need to delete the login activity)
                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

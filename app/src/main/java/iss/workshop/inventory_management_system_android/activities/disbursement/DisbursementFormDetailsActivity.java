@@ -23,6 +23,7 @@ import iss.workshop.inventory_management_system_android.activities.BaseActivity;
 import iss.workshop.inventory_management_system_android.activities.dashboard.StoreClerkDashboardActivity;
 import iss.workshop.inventory_management_system_android.helper.MyDateFormat;
 import iss.workshop.inventory_management_system_android.helper.ServiceHelper;
+import iss.workshop.inventory_management_system_android.helper.SharePreferenceHelper;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormProduct;
 import iss.workshop.inventory_management_system_android.model.DisbursementFormRequisitionForm;
 import iss.workshop.inventory_management_system_android.viewmodel.DisbursementViewModel;
@@ -37,7 +38,7 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
     private int count = 1;
     private DisbursementViewModel disbursementViewModel;
     private  String currentStatus;
-
+    SharePreferenceHelper sharePreferenceHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,9 +80,41 @@ public class DisbursementFormDetailsActivity extends BaseActivity {
                 Log.e(TAG, "onFailure: ",t );
             }
         });
-
+        sharePreferenceHelper = new SharePreferenceHelper(this);
         Button mSubmitbutton = (Button) findViewById(R.id.disbursementFormSubmit);
-        if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
+        if (currentStatus.equals("OPEN") && sharePreferenceHelper.getUserRole().equals("Department Representative")) {
+            mSubmitbutton.setText("Approve");
+            mSubmitbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Call<DisbursementViewModel> callsaveRF = service.approveDFByDeptRep(disbursementViewModel);
+                    callsaveRF.enqueue(new Callback<DisbursementViewModel>() {
+                        @Override
+                        public void onResponse(Call<DisbursementViewModel> call, Response<DisbursementViewModel> response) {
+                            Log.d(TAG, "Response Code - " + response.code());
+                            Log.d(TAG, "Response Code - " + response.message());
+                            Log.d(TAG, "Response Code - " + response.toString());
+                            if (response.isSuccessful()) {
+                                DisbursementViewModel dfViewModel = response.body();
+                                if (dfViewModel != null) {
+                                    Toast.makeText(getApplicationContext(), "Create Disbursement is successful!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(DisbursementFormDetailsActivity.this, DisbursementSummaryStatusSelectionActivity.class);
+                                    intent.putExtra("empType", sharePreferenceHelper.getUserRole());
+                                    startActivity(intent);
+                                }
+                            } else {
+                                Log.e(TAG, "onResponse: " + response.message());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<DisbursementViewModel> call, Throwable t) {
+                            Log.e(TAG, "onFailure: ", t);
+                        }
+                    });
+                }
+            });
+        } else if (currentStatus.equals("OPEN") || currentStatus.equals("COMPLETED")) {
             mSubmitbutton.setVisibility(View.GONE);
             Toast.makeText(this, "Pending for Department Approval", Toast.LENGTH_SHORT).show();
         } else if (currentStatus.equals("PENDING_DELIVERY")){
